@@ -48,7 +48,7 @@
 
 void ReadInput() 
 {
-    angleDesired = 180;
+    angleDesired = 10;
 //            (ADCC_GetSingleConversion(getRippleChannel) * 45) >> 7;
 //    printf("angleDesired = %d \n\r", angleDesired);
     if((angleDesired <= remainingAngle ) || (remainingAngle == 0))

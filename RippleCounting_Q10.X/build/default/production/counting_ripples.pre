@@ -19298,7 +19298,7 @@ void TMR4_DefaultInterruptHandler(void);
 # 49 "counting_ripples.c"
 void ReadInput()
 {
-angleDesired = 180;
+angleDesired = 10;
 
 
 if((angleDesired <= remainingAngle ) || (remainingAngle == 0))
@@ -19330,6 +19330,11 @@ void ExpectedRippleCountToEndPoint()
 angleDesired = 360 - remainingAngle;
 expectedRippleCount = (angleDesired * round(((float)(1*250* 3)/180))) + 10;
 dummy = 1;
+}
+
+void ExpectedRippleCountfromStall()
+{
+
 }
 
 void CompareLoadValue()
