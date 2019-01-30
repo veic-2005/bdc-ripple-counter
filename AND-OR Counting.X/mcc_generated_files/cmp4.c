@@ -70,11 +70,11 @@ void CMP4_Initialize(void)
 	// C4INTN no_intFlag; C4INTP intFlag_pos;                          
     CM4CON1 = 0x02;
 	
-	// C4NCH CIN0-;                          
-    CM4NSEL = 0x00;
+	// C4NCH OPA2IN-;                          
+    CM4NSEL = 0x0A;
 	
-	// C4PCH DAC1;                          
-    CM4PSEL = 0x05;
+	// C4PCH FVR_buf2;                          
+    CM4PSEL = 0x02;
 	
     // Clearing IF flag before enabling the interrupt.
     PIR2bits.C4IF = 0;

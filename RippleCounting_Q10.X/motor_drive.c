@@ -60,6 +60,8 @@ void Reverse_Dir()
     {
         inputSet = 0;
         reverseDirection = 1;
+        reverseOrigin = 1; 
+//        TRISB = 0xFE;
         if(totalAngleTurned <= HOME)
         {
             StopMotor();

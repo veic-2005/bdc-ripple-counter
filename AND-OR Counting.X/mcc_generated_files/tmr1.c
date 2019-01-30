@@ -55,7 +55,6 @@
   Section: Global Variables Definitions
 */
 volatile uint16_t timer1ReloadVal;
-void (*TMR1_InterruptHandler)(void);
 
 /**
   Section: TMR1 APIs
@@ -65,29 +64,29 @@ void TMR1_Initialize(void)
 {
     //Set the Timer to the options selected in the GUI
 
-    //GSS SYNC_C1OUT; TMR1GE enabled; T1GTM disabled; T1GPOL low; T1GGO_nDONE done; T1GSPM disabled; 
-    T1GCON = 0x82;
+    //GSS T1G_pin; TMR1GE enabled; T1GTM enabled; T1GPOL high; T1GGO_nDONE done; T1GSPM disabled; 
+    T1GCON = 0xE0;
 
-    //TMR 224; 
-    TMR1H = 0xE0;
+    //TMR 127; 
+    TMR1H = 0x7F;
 
-    //TMR 192; 
-    TMR1L = 0xC0;
+    //TMR 255; 
+    TMR1L = 0xFF;
 
     // Load the TMR value to reload variable
     timer1ReloadVal=(uint16_t)((TMR1H << 8) | TMR1L);
 
-    // Clearing IF flag before enabling the interrupt.
+    // Clearing IF flag.
     PIR1bits.TMR1IF = 0;
 
+    // Clearing IF flag before enabling the interrupt.
+    PIR1bits.TMR1GIF = 0;
+
     // Enabling TMR1 interrupt.
-    PIE1bits.TMR1IE = 1;
+    PIE1bits.TMR1GIE = 1;
 
-    // Set Default Interrupt Handler
-    TMR1_SetInterruptHandler(TMR1_DefaultInterruptHandler);
-
-    // CKPS 1:1; T1OSCEN disabled; nT1SYNC synchronize; CS FOSC/4; TMR1ON enabled; 
-    T1CON = 0x01;
+    // CKPS 1:1; T1OSCEN disabled; nT1SYNC synchronize; CS External; TMR1ON disabled; 
+    T1CON = 0x80;
 }
 
 void TMR1_StartTimer(void)
@@ -154,29 +153,16 @@ uint8_t TMR1_CheckGateValueStatus(void)
     return (T1GCONbits.T1GVAL);
 }
 
-void TMR1_ISR(void)
+bool TMR1_HasOverflowOccured(void)
 {
-
-    // Clear the TMR1 interrupt flag
-    PIR1bits.TMR1IF = 0;
-    TMR1_WriteTimer(timer1ReloadVal);
-
-    if(TMR1_InterruptHandler)
-    {
-        TMR1_InterruptHandler();
-    }
+    // check if  overflow has occurred by checking the TMRIF bit
+    return(PIR1bits.TMR1IF);
 }
-
-
-void TMR1_SetInterruptHandler(void (* InterruptHandler)(void)){
-    TMR1_InterruptHandler = InterruptHandler;
-}
-
-void TMR1_DefaultInterruptHandler(void){
-    // add your TMR1 interrupt custom code
-    // or set custom function using TMR1_SetInterruptHandler()
-}
-
+//void TMR1_GATE_ISR(void)
+//{
+//    // clear the TMR1 interrupt flag
+//    PIR1bits.TMR1GIF = 0;
+//}
 /**
   End of File
 */

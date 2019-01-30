@@ -14361,9 +14361,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr4.c: 75: T4RST = 0x10;
 "75
 [e = _T4RST -> -> 16 `i `uc ]
-[; ;tmr4.c: 78: T4PR = 0x03;
+[; ;tmr4.c: 78: T4PR = 0x01;
 "78
-[e = _T4PR -> -> 3 `i `uc ]
+[e = _T4PR -> -> 1 `i `uc ]
 [; ;tmr4.c: 81: T4TMR = 0x00;
 "81
 [e = _T4TMR -> -> 0 `i `uc ]

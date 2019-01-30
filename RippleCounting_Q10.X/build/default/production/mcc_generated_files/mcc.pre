@@ -19181,6 +19181,15 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 812
 bool TMR2_HasOverflowOccured(void);
 
+# 97 "mcc_generated_files/pwm2.h"
+void PWM2_Initialize(void);
+
+# 124
+void PWM2_LoadDutyValue(uint16_t dutyValue);
+
+# 156
+bool PWM2_OutputStatusGet(void);
+
 # 72 "mcc_generated_files/adcc.h"
 typedef uint16_t adc_result_t;
 
@@ -19274,15 +19283,6 @@ bool ADCC_HasErrorCrossedLowerThreshold(void);
 
 # 827
 uint8_t ADCC_GetConversionStageStatus(void);
-
-# 97 "mcc_generated_files/pwm2.h"
-void PWM2_Initialize(void);
-
-# 124
-void PWM2_LoadDutyValue(uint16_t dutyValue);
-
-# 156
-bool PWM2_OutputStatusGet(void);
 
 # 99 "mcc_generated_files/memory.h"
 uint8_t FLASH_ReadByte(uint32_t flashAddr);

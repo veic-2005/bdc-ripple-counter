@@ -18811,7 +18811,6 @@ uint16_t remainingAngle = 360;
 uint16_t totalAngleTurned = 0;
 
 uint16_t compareLoadValue = 0;
-uint16_t actualRippleCount = 0;
 uint16_t expectedRippleCount = 0;
 
 
@@ -18820,6 +18819,8 @@ void(*TMR1_GateInterruptHandler)(void);
 
 void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
+
+
 
 
 void MotorPosition();
@@ -18844,7 +18845,6 @@ void StallDetection();
 void ExpectedRippleCountRemainingAngle();
 void ExpectedRippleCountToHome();
 void ExpectedRippleCountToEndPoint();
-void ExpectedRippleCountfromStall();
 void CompareLoadValue();
 void Compare_ISR();
 void GetAngleTurned();
@@ -18911,7 +18911,7 @@ reverseOrigin = 0;
 ExpectedRippleCountRemainingAngle();
 }
 
-if(!reverseOrigin)
+else
 {
 ExpectedRippleCountToHome();
 }
@@ -18935,16 +18935,17 @@ if(endBtnPressed)
 {
 endBtnPressed = 0;
 
-if(!reverseOrigin)
-{
-ExpectedRippleCountRemainingAngle();
-}
-
 if(reverseOrigin)
 {
 reverseOrigin = 0;
 ExpectedRippleCountToEndPoint();
 }
+else
+{
+ExpectedRippleCountRemainingAngle();
+}
+
+
 CompareLoadValue();
 Forward_Dir();
 }

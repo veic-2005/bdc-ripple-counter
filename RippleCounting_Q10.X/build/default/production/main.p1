@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15774 `(v ~T0 @X0 0 tf ]
-[v F15781 `(v ~T0 @X0 0 tf ]
+[v F15773 `(v ~T0 @X0 0 tf ]
+[v F15780 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
 "79 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
@@ -36,34 +36,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1695 . . . . ]
 "37524
 [v _INTCONbits `VS1695 ~T0 @X0 0 e@4082 ]
-[v F15778 `(v ~T0 @X0 0 tf ]
-"83 motorcontrol.h
-[v _CCP1_CompareSetInterruptHandler `(v ~T0 @X0 0 ef1`*F15778 ]
+[v F15777 `(v ~T0 @X0 0 tf ]
+"82 motorcontrol.h
+[v _CCP1_CompareSetInterruptHandler `(v ~T0 @X0 0 ef1`*F15777 ]
 "111
 [v _Compare_ISR `(v ~T0 @X0 0 ef ]
-"103
+"104
 [v _StallDetection `(v ~T0 @X0 0 ef ]
-"91
+"92
 [v _ReadMotorPositionFromEEPROM `(v ~T0 @X0 0 ef ]
-"98
+"99
 [v _ReadInput `(v ~T0 @X0 0 ef ]
-"96
-[v _CheckForwardButton `(v ~T0 @X0 0 ef ]
 "97
+[v _CheckForwardButton `(v ~T0 @X0 0 ef ]
+"98
 [v _CheckReverseButton `(v ~T0 @X0 0 ef ]
-"94
-[v _CheckHomeButton `(v ~T0 @X0 0 ef ]
 "95
+[v _CheckHomeButton `(v ~T0 @X0 0 ef ]
+"96
 [v _CheckEndButton `(v ~T0 @X0 0 ef ]
 "112
 [v _GetAngleTurned `(v ~T0 @X0 0 ef ]
-"87
+"88
 [v _MotorPosition `(v ~T0 @X0 0 ef ]
 [v F15339 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
 [v __delay `JF15339 ~T0 @X0 0 e ]
 [p i __delay ]
-"102 motorcontrol.h
+"103 motorcontrol.h
 [v _ResumeMotor `(v ~T0 @X0 0 ef ]
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;htc.h: 27: extern const char __xc8_OPTIM_SPEED;
@@ -14385,6 +14385,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr2.h: 722: void TMR2_Period8BitSet(uint8_t periodVal);
 [; ;tmr2.h: 774: void TMR2_LoadPeriodRegister(uint8_t periodVal);
 [; ;tmr2.h: 812: bool TMR2_HasOverflowOccured(void);
+[; ;pwm2.h: 97: void PWM2_Initialize(void);
+[; ;pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
+[; ;pwm2.h: 156: bool PWM2_OutputStatusGet(void);
 [; ;adcc.h: 72: typedef uint16_t adc_result_t;
 [; ;adcc.h: 89: typedef enum
 [; ;adcc.h: 90: {
@@ -14421,9 +14424,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.h: 772: bool ADCC_HasErrorCrossedUpperThreshold(void);
 [; ;adcc.h: 800: bool ADCC_HasErrorCrossedLowerThreshold(void);
 [; ;adcc.h: 827: uint8_t ADCC_GetConversionStageStatus(void);
-[; ;pwm2.h: 97: void PWM2_Initialize(void);
-[; ;pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
-[; ;pwm2.h: 156: bool PWM2_OutputStatusGet(void);
 [; ;memory.h: 99: uint8_t FLASH_ReadByte(uint32_t flashAddr);
 [; ;memory.h: 125: uint16_t FLASH_ReadWord(uint32_t flashAddr);
 [; ;memory.h: 152: void FLASH_WriteWord(uint32_t flashAddr, uint16_t word);
@@ -14582,44 +14582,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
 "76
-[v _actualRippleCount `ui ~T0 @X0 1 e ]
-[i _actualRippleCount
--> -> 0 `i `ui
-]
-[; ;motorcontrol.h: 76: uint16_t actualRippleCount = 0;
-"77
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 77: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 80: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"81
-[v _TMR1_GateInterruptHandler `*F15774 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 81: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 83: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"84
-[v _CCP1_CompareInterruptHandler `*F15781 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 84: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 87: void MotorPosition();
-[; ;motorcontrol.h: 88: void ForwardPosition();
-[; ;motorcontrol.h: 89: void ReversePosition();
-[; ;motorcontrol.h: 90: void StorePosition();
-[; ;motorcontrol.h: 91: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 94: void CheckHomeButton();
-[; ;motorcontrol.h: 95: void CheckEndButton();
-[; ;motorcontrol.h: 96: void CheckForwardButton();
-[; ;motorcontrol.h: 97: void CheckReverseButton();
-[; ;motorcontrol.h: 98: void ReadInput();
-[; ;motorcontrol.h: 99: void Forward_Dir();
-[; ;motorcontrol.h: 100: void Reverse_Dir();
-[; ;motorcontrol.h: 101: void BrakingMechanism();
-[; ;motorcontrol.h: 102: void ResumeMotor();
-[; ;motorcontrol.h: 103: void StallDetection();
-[; ;motorcontrol.h: 106: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountfromStall();
+[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"80
+[v _TMR1_GateInterruptHandler `*F15773 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"83
+[v _CCP1_CompareInterruptHandler `*F15780 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 88: void MotorPosition();
+[; ;motorcontrol.h: 89: void ForwardPosition();
+[; ;motorcontrol.h: 90: void ReversePosition();
+[; ;motorcontrol.h: 91: void StorePosition();
+[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
+[; ;motorcontrol.h: 95: void CheckHomeButton();
+[; ;motorcontrol.h: 96: void CheckEndButton();
+[; ;motorcontrol.h: 97: void CheckForwardButton();
+[; ;motorcontrol.h: 98: void CheckReverseButton();
+[; ;motorcontrol.h: 99: void ReadInput();
+[; ;motorcontrol.h: 100: void Forward_Dir();
+[; ;motorcontrol.h: 101: void Reverse_Dir();
+[; ;motorcontrol.h: 102: void BrakingMechanism();
+[; ;motorcontrol.h: 103: void ResumeMotor();
+[; ;motorcontrol.h: 104: void StallDetection();
+[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
+[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
+[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
 [; ;motorcontrol.h: 110: void CompareLoadValue();
 [; ;motorcontrol.h: 111: void Compare_ISR();
 [; ;motorcontrol.h: 112: void GetAngleTurned();
@@ -14706,12 +14699,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _MotorPosition ..  ]
 "81
 }
-[; ;main.c: 81: }
-[e $U 1740  ]
-"83
 [e :U 1739 ]
-[; ;main.c: 83: else if(motorStalled)
-[e $ ! != -> _motorStalled `i -> -> -> 0 `i `uc `i 1741  ]
+[; ;main.c: 81: }
+[; ;main.c: 83: if(motorStalled)
+"83
+[e $ ! != -> _motorStalled `i -> -> -> 0 `i `uc `i 1740  ]
 [; ;main.c: 84: {
 "84
 {
@@ -14732,9 +14724,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ResumeMotor ..  ]
 "90
 }
-[e :U 1741 ]
-"91
 [e :U 1740 ]
+"91
 }
 [e :U 1736 ]
 "65

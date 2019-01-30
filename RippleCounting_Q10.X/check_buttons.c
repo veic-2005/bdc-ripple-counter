@@ -62,7 +62,7 @@ void CheckHomeButton()
                 ExpectedRippleCountRemainingAngle();
             }
             
-            if(!reverseOrigin)
+            else
             {
                 ExpectedRippleCountToHome();
             }
@@ -86,16 +86,17 @@ void CheckEndButton()
         {
             endBtnPressed = 0;
             
-            if(!reverseOrigin)
-            {
-                ExpectedRippleCountRemainingAngle();
-            }
-            
             if(reverseOrigin)
             {
                 reverseOrigin = 0;
                 ExpectedRippleCountToEndPoint();
             }
+            else
+            {
+                ExpectedRippleCountRemainingAngle();
+            }
+            
+            
             CompareLoadValue();
             Forward_Dir();
         }

@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include "motorcontrol.h"
 #include "math.h"
+#include "stdlib.h"
 #include "mcc_generated_files/adcc.h"
 #include "mcc_generated_files/ccp1.h"
 #include "mcc_generated_files/cwg.h"
@@ -48,9 +49,10 @@
 
 void ReadInput() 
 {
-    angleDesired = 10;
-//            (ADCC_GetSingleConversion(getRippleChannel) * 45) >> 7;
-//    printf("angleDesired = %d \n\r", angleDesired);
+    angleDesired = ((ADCC_GetSingleConversion(getRippleChannel) * 45) >> 8) + 1; // for 180 degrees  shift to the right by 8
+    (angleDesired % 5 != 0)? printf("") :  
+    printf("angleDesired = %d \t\r\n", angleDesired);  
+        
     if((angleDesired <= remainingAngle ) || (remainingAngle == 0))
     {
         expectedRippleCount = angleDesired *  round(RIPPLE_COUNT_PER_ANGLE);
@@ -70,7 +72,7 @@ void ExpectedRippleCountRemainingAngle()
 
 void ExpectedRippleCountToHome()
 {
-    expectedRippleCount = (totalAngleTurned * round(RIPPLE_COUNT_PER_ANGLE)) + 10;
+    expectedRippleCount = (totalAngleTurned * round(RIPPLE_COUNT_PER_ANGLE)) + 14;
     dummy = 1;
     
 }
@@ -78,18 +80,13 @@ void ExpectedRippleCountToHome()
 void ExpectedRippleCountToEndPoint()
 {
     angleDesired = END_POINT - remainingAngle;
-    expectedRippleCount = (angleDesired * round(RIPPLE_COUNT_PER_ANGLE)) + 10;
+    expectedRippleCount = (angleDesired * round(RIPPLE_COUNT_PER_ANGLE)) + 14;
     dummy = 1;
-}
-
-void ExpectedRippleCountfromStall()
-{
-    
 }
 
 void CompareLoadValue()
 {
-    compareLoadValue = ((expectedRippleCount - 10 )>> 1) + INITIAL_TIMER_VALUE + 1;
+    compareLoadValue = ((expectedRippleCount - 8)>> 1) + INITIAL_TIMER_VALUE + 1;
 }
 
 void StartCounting()
@@ -114,16 +111,18 @@ void Compare_ISR()
 
 void GetAngleTurned()
 {
+    uint16_t actualRippleCount;
+    
     if(dummy)
     {
         dummy = 0;
-        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1);
+        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) - 6;
     }
     else
     {
-        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) + 10;
+        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ 8;
     }
-    angleTurned = (actualRippleCount / round(RIPPLE_COUNT_PER_ANGLE));
+    angleTurned = (abs(actualRippleCount) / round(RIPPLE_COUNT_PER_ANGLE));
     
     printf("actualRippleCount = %d \n\r ", actualRippleCount);
     printf( "AngleTurned = %d \n\r", angleTurned);

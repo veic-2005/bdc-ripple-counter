@@ -42,8 +42,10 @@
  */
 
 #include "mcc_generated_files/mcc.h"
-#include "Motor_Control.h"
+#include "motorcontrol.h"
 
+void CheckMotorSelectorButton();
+void nextMotor();
 /*
                          Main application
  */
@@ -54,56 +56,80 @@ void main(void) {
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    MotorNumber = ADC_GetConversion(POT)>> 9;
-    TMR4_SetInterruptHandler(MotorStall_Detection);
-    TMR1_SetInterruptHandler(OverCurrent_Detection);
-    TMR3_SetInterruptHandler(OverCurrent_Detection);
+    StallDetection();
+    OvercurrentDetectionMotor01();
+    OvercurrentDetectionMotor02();
     
-    while (1) {
-        
-        positionMemory = FLASH_ReadWord(Motor01Addr00);
-        positionMemory02 = FLASH_ReadWord(Motor02Addr00);
-        
-        printf("Position = %u \n\r", positionMemory);
-        printf("Position02 = %u \n\r", positionMemory02);
+    CCP1_CompareSetInterruptHandler(Compare_ISR);
+            
+    while (1) 
+    {
+        ReadInput();
+        CheckMotorSelectorButton();
 
-        if ((positionMemory < maxValue) && (positionMemory02 < maxValue)) {
-            actualPosition01 = positionMemory;
-            actualPosition02 = positionMemory02;
+        if(motorNumber) 
+        {
+            MotorDrive01();
+        }
+        else
+        {
+            MotorDrive02();
         }
         
-//        checkButtonS3();
-//        switch(motorNumber){
-        
-//            case 1:     Motor_Drive01();    break;
-//            case 2:     Motor_Drive02();    break;
-
+        if(getCountDone)
+        {
+            getCountDone = 0;
+            GetActualRippleCount();
+           
+            if(motorNumber)
+            {
+               Motor01Position();
+            }
+            else
+            {
+               Motor02Position(); 
+            }
         }
-//        if(switchEvent){
-//            nextMotor();
+        
+//        if(motorStalled)
+//        {
+//            motorStalled = 0;
+//            GetActualRippleCount();
+//           
+//            if(motorNumber)
+//            {
+//               Motor01Position();
+//            }
+//            else if
+//            {
+//               Motor02Position(); 
+//            }
+//            __delay_ms(5000);
+//            ResumeMotor();
 //        }
-//}
     }
+ }
 
-void checkButtonS3(void){
-    if(btnState == NOT_PRESSED){
-        if(S3_PORT == LOW){  
-            __delay_ms(100);
-            btnState = PRESSED;
-        }
-    }else if(S3_PORT == HIGH){
-            btnState = NOT_PRESSED;   
-            switchEvent = 1;                                                   
+void CheckMotorSelectorButton(void)
+{
+    if( MotorSelect_Button_PORT == LOW)
+    {  
+        __delay_ms(100);
+        motorSelectorPressed = 1;    
+    }
+    
+    else if( MotorSelect_Button_PORT == HIGH)
+    {
+        if(motorSelectorPressed)
+        {
+            motorSelectorPressed = 0;
+            nextMotor();
+        }                                                   
     }
 }
 
 void nextMotor(void) {
-    switchEvent = 0; 
-    motorNumber++;                                                        
-
-    if (motorNumber > 2) {
-        motorNumber = 1;
-    }
+    motorNumber = ~motorNumber;      
 }
 /**
  End of File

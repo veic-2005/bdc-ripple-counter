@@ -73,7 +73,6 @@ uint16_t remainingAngle = END_POINT;
 uint16_t totalAngleTurned = 0;
 
 uint16_t compareLoadValue = 0;
-uint16_t actualRippleCount = 0;
 uint16_t expectedRippleCount = 0;
 
 //Interrupt handlers 
@@ -82,6 +81,8 @@ void(*TMR1_GateInterruptHandler)(void);
 
 void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
+
+
 
 //Below are the list of functions used for handling position
 void MotorPosition();
@@ -106,7 +107,6 @@ void StallDetection();
 void ExpectedRippleCountRemainingAngle();
 void ExpectedRippleCountToHome();
 void ExpectedRippleCountToEndPoint();
-void ExpectedRippleCountfromStall();
 void CompareLoadValue();
 void Compare_ISR();
 void GetAngleTurned();

@@ -80,7 +80,7 @@ void main(void)
             MotorPosition();   
         }
         
-        else if(motorStalled)
+        if(motorStalled)
         {
             motorStalled = 0;
             GetAngleTurned();

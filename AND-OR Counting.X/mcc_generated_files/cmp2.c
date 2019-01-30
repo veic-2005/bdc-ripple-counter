@@ -70,11 +70,11 @@ void CMP2_Initialize(void)
 	// C2INTN no_intFlag; C2INTP intFlag_pos;                          
     CM2CON1 = 0x02;
 	
-	// C2NCH CIN1-;                          
-    CM2NSEL = 0x01;
+	// C2NCH OPA1IN-;                          
+    CM2NSEL = 0x09;
 	
-	// C2PCH DAC1;                          
-    CM2PSEL = 0x05;
+	// C2PCH FVR_buf2;                          
+    CM2PSEL = 0x02;
 	
     // Clearing IF flag before enabling the interrupt.
     PIR2bits.C2IF = 0;
@@ -88,11 +88,11 @@ bool CMP2_GetOutputStatus(void)
 	return (CMOUTbits.MC2OUT);
 }
 
-void CMP2_ISR(void)
-{
-    // clear the CMP2 interrupt flag
-    PIR2bits.C2IF = 0;
-}
+//void CMP2_ISR(void)
+//{
+//    // clear the CMP2 interrupt flag
+//    PIR2bits.C2IF = 0;
+//}
 
 /**
  End of File

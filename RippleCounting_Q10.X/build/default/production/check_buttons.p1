@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15399 `(v ~T0 @X0 0 tf ]
-[v F15406 `(v ~T0 @X0 0 tf ]
+[v F15398 `(v ~T0 @X0 0 tf ]
+[v F15405 `(v ~T0 @X0 0 tf ]
 "28409 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
 [s S1220 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1220 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -13,7 +13,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
 [v __delay `JF15343 ~T0 @X0 0 e ]
 [p i __delay ]
-"99 motorcontrol.h
+"100 motorcontrol.h
 [v _Forward_Dir `(v ~T0 @X0 0 ef ]
 "28471 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
 [s S1222 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -23,15 +23,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1221 . . ]
 "28482
 [v _PORTCbits `VS1221 ~T0 @X0 0 e@3982 ]
-"100 motorcontrol.h
+"101 motorcontrol.h
 [v _Reverse_Dir `(v ~T0 @X0 0 ef ]
-"106
-[v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 0 ef ]
 "107
+[v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 0 ef ]
+"108
 [v _ExpectedRippleCountToHome `(v ~T0 @X0 0 ef ]
 "110
 [v _CompareLoadValue `(v ~T0 @X0 0 ef ]
-"108
+"109
 [v _ExpectedRippleCountToEndPoint `(v ~T0 @X0 0 ef ]
 [; ;pin_manager.h: 336: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 348: void PIN_MANAGER_IOC(void);
@@ -14304,44 +14304,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
 "76
-[v _actualRippleCount `ui ~T0 @X0 1 e ]
-[i _actualRippleCount
--> -> 0 `i `ui
-]
-[; ;motorcontrol.h: 76: uint16_t actualRippleCount = 0;
-"77
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 77: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 80: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"81
-[v _TMR1_GateInterruptHandler `*F15399 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 81: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 83: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"84
-[v _CCP1_CompareInterruptHandler `*F15406 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 84: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 87: void MotorPosition();
-[; ;motorcontrol.h: 88: void ForwardPosition();
-[; ;motorcontrol.h: 89: void ReversePosition();
-[; ;motorcontrol.h: 90: void StorePosition();
-[; ;motorcontrol.h: 91: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 94: void CheckHomeButton();
-[; ;motorcontrol.h: 95: void CheckEndButton();
-[; ;motorcontrol.h: 96: void CheckForwardButton();
-[; ;motorcontrol.h: 97: void CheckReverseButton();
-[; ;motorcontrol.h: 98: void ReadInput();
-[; ;motorcontrol.h: 99: void Forward_Dir();
-[; ;motorcontrol.h: 100: void Reverse_Dir();
-[; ;motorcontrol.h: 101: void BrakingMechanism();
-[; ;motorcontrol.h: 102: void ResumeMotor();
-[; ;motorcontrol.h: 103: void StallDetection();
-[; ;motorcontrol.h: 106: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountfromStall();
+[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"80
+[v _TMR1_GateInterruptHandler `*F15398 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"83
+[v _CCP1_CompareInterruptHandler `*F15405 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 88: void MotorPosition();
+[; ;motorcontrol.h: 89: void ForwardPosition();
+[; ;motorcontrol.h: 90: void ReversePosition();
+[; ;motorcontrol.h: 91: void StorePosition();
+[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
+[; ;motorcontrol.h: 95: void CheckHomeButton();
+[; ;motorcontrol.h: 96: void CheckEndButton();
+[; ;motorcontrol.h: 97: void CheckForwardButton();
+[; ;motorcontrol.h: 98: void CheckReverseButton();
+[; ;motorcontrol.h: 99: void ReadInput();
+[; ;motorcontrol.h: 100: void Forward_Dir();
+[; ;motorcontrol.h: 101: void Reverse_Dir();
+[; ;motorcontrol.h: 102: void BrakingMechanism();
+[; ;motorcontrol.h: 103: void ResumeMotor();
+[; ;motorcontrol.h: 104: void StallDetection();
+[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
+[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
+[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
 [; ;motorcontrol.h: 110: void CompareLoadValue();
 [; ;motorcontrol.h: 111: void Compare_ISR();
 [; ;motorcontrol.h: 112: void GetAngleTurned();
@@ -14536,11 +14529,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ExpectedRippleCountRemainingAngle ..  ]
 "63
 }
-[e :U 1740 ]
 [; ;check_buttons.c: 63: }
-[; ;check_buttons.c: 65: if(!reverseOrigin)
+[e $U 1741  ]
 "65
-[e $ ! ! != -> _reverseOrigin `i -> -> -> 0 `i `uc `i 1741  ]
+[e :U 1740 ]
+[; ;check_buttons.c: 65: else
 [; ;check_buttons.c: 66: {
 "66
 {
@@ -14610,51 +14603,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;check_buttons.c: 87: endBtnPressed = 0;
 "87
 [e = _endBtnPressed -> -> 0 `i `uc ]
-[; ;check_buttons.c: 89: if(!reverseOrigin)
+[; ;check_buttons.c: 89: if(reverseOrigin)
 "89
-[e $ ! ! != -> _reverseOrigin `i -> -> -> 0 `i `uc `i 1747  ]
+[e $ ! != -> _reverseOrigin `i -> -> -> 0 `i `uc `i 1747  ]
 [; ;check_buttons.c: 90: {
 "90
 {
-[; ;check_buttons.c: 91: ExpectedRippleCountRemainingAngle();
+[; ;check_buttons.c: 91: reverseOrigin = 0;
 "91
-[e ( _ExpectedRippleCountRemainingAngle ..  ]
+[e = _reverseOrigin -> -> 0 `i `uc ]
+[; ;check_buttons.c: 92: ExpectedRippleCountToEndPoint();
 "92
+[e ( _ExpectedRippleCountToEndPoint ..  ]
+"93
 }
-[e :U 1747 ]
-[; ;check_buttons.c: 92: }
-[; ;check_buttons.c: 94: if(reverseOrigin)
+[; ;check_buttons.c: 93: }
+[e $U 1748  ]
 "94
-[e $ ! != -> _reverseOrigin `i -> -> -> 0 `i `uc `i 1748  ]
+[e :U 1747 ]
+[; ;check_buttons.c: 94: else
 [; ;check_buttons.c: 95: {
 "95
 {
-[; ;check_buttons.c: 96: reverseOrigin = 0;
+[; ;check_buttons.c: 96: ExpectedRippleCountRemainingAngle();
 "96
-[e = _reverseOrigin -> -> 0 `i `uc ]
-[; ;check_buttons.c: 97: ExpectedRippleCountToEndPoint();
+[e ( _ExpectedRippleCountRemainingAngle ..  ]
 "97
-[e ( _ExpectedRippleCountToEndPoint ..  ]
-"98
 }
 [e :U 1748 ]
-[; ;check_buttons.c: 98: }
-[; ;check_buttons.c: 99: CompareLoadValue();
-"99
-[e ( _CompareLoadValue ..  ]
-[; ;check_buttons.c: 100: Forward_Dir();
+[; ;check_buttons.c: 97: }
+[; ;check_buttons.c: 100: CompareLoadValue();
 "100
-[e ( _Forward_Dir ..  ]
+[e ( _CompareLoadValue ..  ]
+[; ;check_buttons.c: 101: Forward_Dir();
 "101
-}
-[e :U 1746 ]
+[e ( _Forward_Dir ..  ]
 "102
 }
-[e :U 1745 ]
+[e :U 1746 ]
 "103
+}
+[e :U 1745 ]
+"104
 [e :U 1744 ]
-[; ;check_buttons.c: 101: }
 [; ;check_buttons.c: 102: }
 [; ;check_buttons.c: 103: }
+[; ;check_buttons.c: 104: }
 [e :UE 1742 ]
 }

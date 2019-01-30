@@ -32,6 +32,7 @@
 #include "mcc_generated_files/eusart1.h"
 #include "mcc_generated_files/memory.h"
 #include "motorcontrol.h"
+#include "stdlib.h"
 #include "mcc_generated_files/pin_manager.h"
 
 void ForwardPosition()
@@ -45,6 +46,7 @@ void ForwardPosition()
         {
             EndPointReachedLED_SetHigh();
             endPointReached = 1;
+//            TRISB = 0xEE ;
         }
     }
     else
@@ -77,8 +79,6 @@ void ReversePosition()
     {
         StopMotor();
     }
-    
-        
     endPointReached = 0;
     reverseOrigin = 1;
     EndPointReachedLED_SetLow();
@@ -103,7 +103,14 @@ void ReadMotorPositionFromEEPROM()
     
     if (actualPosition < INITIAL_ADDRESS_VALUE) 
     {
-        totalAngleTurned = actualPosition;
+        if(actualPosition < 0)
+        {
+            totalAngleTurned = abs(actualPosition);
+        }
+        else
+        {
+            totalAngleTurned = actualPosition;
+        }
         printf("actualPosition = %d \n\r", actualPosition);
     }
 }

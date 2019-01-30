@@ -1,9 +1,16 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15457 `(v ~T0 @X0 0 tf ]
-[v F15464 `(v ~T0 @X0 0 tf ]
+[v F15456 `(v ~T0 @X0 0 tf ]
+[v F15463 `(v ~T0 @X0 0 tf ]
+"52 counting_ripples.c
+[c E15666 0 60 61 62 63 .. ]
+[n E15666 . getRippleChannel channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
+"252 mcc_generated_files/adcc.h
+[v _ADCC_GetSingleConversion `(ui ~T0 @X0 0 ef1`E15666 ]
+"195 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "55 C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h
 [v _round `(d ~T0 @X0 0 ef1`d ]
-"106 motorcontrol.h
+"107 motorcontrol.h
 [v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 0 ef ]
 "110
 [v _CompareLoadValue `(v ~T0 @X0 0 ef ]
@@ -57,7 +64,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1423 . . . . . ]
 "32337
 [v _T4CONbits `VS1423 ~T0 @X0 0 e@4022 ]
-"101 motorcontrol.h
+"102 motorcontrol.h
 [v _BrakingMechanism `(v ~T0 @X0 0 ef ]
 "522 mcc_generated_files/tmr4.h
 [v _TMR4_StopTimer `(v ~T0 @X0 0 ef ]
@@ -65,8 +72,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TMR1_StopTimer `(v ~T0 @X0 0 ef ]
 "196
 [v _TMR1_ReadTimer `(ui ~T0 @X0 0 ef ]
-"195 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"92 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
+[v _abs `(i ~T0 @X0 0 ef1`i ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -14366,44 +14373,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
 "76
-[v _actualRippleCount `ui ~T0 @X0 1 e ]
-[i _actualRippleCount
--> -> 0 `i `ui
-]
-[; ;motorcontrol.h: 76: uint16_t actualRippleCount = 0;
-"77
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 77: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 80: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"81
-[v _TMR1_GateInterruptHandler `*F15457 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 81: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 83: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"84
-[v _CCP1_CompareInterruptHandler `*F15464 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 84: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 87: void MotorPosition();
-[; ;motorcontrol.h: 88: void ForwardPosition();
-[; ;motorcontrol.h: 89: void ReversePosition();
-[; ;motorcontrol.h: 90: void StorePosition();
-[; ;motorcontrol.h: 91: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 94: void CheckHomeButton();
-[; ;motorcontrol.h: 95: void CheckEndButton();
-[; ;motorcontrol.h: 96: void CheckForwardButton();
-[; ;motorcontrol.h: 97: void CheckReverseButton();
-[; ;motorcontrol.h: 98: void ReadInput();
-[; ;motorcontrol.h: 99: void Forward_Dir();
-[; ;motorcontrol.h: 100: void Reverse_Dir();
-[; ;motorcontrol.h: 101: void BrakingMechanism();
-[; ;motorcontrol.h: 102: void ResumeMotor();
-[; ;motorcontrol.h: 103: void StallDetection();
-[; ;motorcontrol.h: 106: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountfromStall();
+[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"80
+[v _TMR1_GateInterruptHandler `*F15456 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"83
+[v _CCP1_CompareInterruptHandler `*F15463 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 88: void MotorPosition();
+[; ;motorcontrol.h: 89: void ForwardPosition();
+[; ;motorcontrol.h: 90: void ReversePosition();
+[; ;motorcontrol.h: 91: void StorePosition();
+[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
+[; ;motorcontrol.h: 95: void CheckHomeButton();
+[; ;motorcontrol.h: 96: void CheckEndButton();
+[; ;motorcontrol.h: 97: void CheckForwardButton();
+[; ;motorcontrol.h: 98: void CheckReverseButton();
+[; ;motorcontrol.h: 99: void ReadInput();
+[; ;motorcontrol.h: 100: void Forward_Dir();
+[; ;motorcontrol.h: 101: void Reverse_Dir();
+[; ;motorcontrol.h: 102: void BrakingMechanism();
+[; ;motorcontrol.h: 103: void ResumeMotor();
+[; ;motorcontrol.h: 104: void StallDetection();
+[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
+[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
+[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
 [; ;motorcontrol.h: 110: void CompareLoadValue();
 [; ;motorcontrol.h: 111: void Compare_ISR();
 [; ;motorcontrol.h: 112: void GetAngleTurned();
@@ -14434,6 +14434,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 53: extern double fmod(double, double);
 [; ;math.h: 54: extern double trunc(double);
 [; ;math.h: 55: extern double round(double);
+[; ;stdlib.h: 7: typedef unsigned short wchar_t;
+[; ;stdlib.h: 15: typedef struct {
+[; ;stdlib.h: 16: int rem;
+[; ;stdlib.h: 17: int quot;
+[; ;stdlib.h: 18: } div_t;
+[; ;stdlib.h: 19: typedef struct {
+[; ;stdlib.h: 20: unsigned rem;
+[; ;stdlib.h: 21: unsigned quot;
+[; ;stdlib.h: 22: } udiv_t;
+[; ;stdlib.h: 23: typedef struct {
+[; ;stdlib.h: 24: long quot;
+[; ;stdlib.h: 25: long rem;
+[; ;stdlib.h: 26: } ldiv_t;
+[; ;stdlib.h: 27: typedef struct {
+[; ;stdlib.h: 28: unsigned long quot;
+[; ;stdlib.h: 29: unsigned long rem;
+[; ;stdlib.h: 30: } uldiv_t;
+[; ;stdlib.h: 53: extern double atof(const char *);
+[; ;stdlib.h: 54: extern double strtod(const char *, const char **);
+[; ;stdlib.h: 55: extern int atoi(const char *);
+[; ;stdlib.h: 56: extern unsigned xtoi(const char *);
+[; ;stdlib.h: 57: extern long atol(const char *);
+[; ;stdlib.h: 58: extern long strtol(const char *, char **, int);
+[; ;stdlib.h: 60: extern int rand(void);
+[; ;stdlib.h: 61: extern void srand(unsigned int);
+[; ;stdlib.h: 62: extern void * calloc(size_t, size_t);
+[; ;stdlib.h: 63: extern div_t div(int numer, int denom);
+[; ;stdlib.h: 64: extern udiv_t udiv(unsigned numer, unsigned denom);
+[; ;stdlib.h: 65: extern ldiv_t ldiv(long numer, long denom);
+[; ;stdlib.h: 66: extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+[; ;stdlib.h: 67: extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 68: extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+[; ;stdlib.h: 69: extern unsigned int _rotl(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 70: extern unsigned int _rotr(unsigned int value, unsigned int shift);
+[; ;stdlib.h: 75: extern void * malloc(size_t);
+[; ;stdlib.h: 76: extern void free(void *);
+[; ;stdlib.h: 77: extern void * realloc(void *, size_t);
+[; ;stdlib.h: 86: extern int atexit(void (*)(void));
+[; ;stdlib.h: 87: extern char * getenv(const char *);
+[; ;stdlib.h: 88: extern char ** environ;
+[; ;stdlib.h: 89: extern int system(char *);
+[; ;stdlib.h: 90: extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+[; ;stdlib.h: 91: extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+[; ;stdlib.h: 92: extern int abs(int);
+[; ;stdlib.h: 93: extern long labs(long);
+[; ;stdlib.h: 95: extern char * itoa(char * buf, int val, int base);
+[; ;stdlib.h: 96: extern char * utoa(char * buf, unsigned val, int base);
+[; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
+[; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
+[; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
 [; ;adcc.h: 72: typedef uint16_t adc_result_t;
 [; ;adcc.h: 89: typedef enum
 [; ;adcc.h: 90: {
@@ -14568,262 +14618,259 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr4.h: 810: void TMR4_SetInterruptHandler(void (* InterruptHandler)(void));
 [; ;tmr4.h: 828: extern void (*TMR4_InterruptHandler)(void);
 [; ;tmr4.h: 846: void TMR4_DefaultInterruptHandler(void);
-"49 counting_ripples.c
+"50 counting_ripples.c
 [v _ReadInput `(v ~T0 @X0 1 ef ]
-"50
+"51
 {
-[; ;counting_ripples.c: 49: void ReadInput()
-[; ;counting_ripples.c: 50: {
+[; ;counting_ripples.c: 50: void ReadInput()
+[; ;counting_ripples.c: 51: {
 [e :U _ReadInput ]
 [f ]
-[; ;counting_ripples.c: 51: angleDesired = 10;
-"51
-[e = _angleDesired -> -> 10 `i `ui ]
-[; ;counting_ripples.c: 54: if((angleDesired <= remainingAngle ) || (remainingAngle == 0))
+[; ;counting_ripples.c: 52: angleDesired = ((ADCC_GetSingleConversion(getRippleChannel) * 45) >> 8) + 1;
+"52
+[e = _angleDesired + >> * ( _ADCC_GetSingleConversion (1 . `E15666 0 -> -> 45 `i `ui -> 8 `i -> -> 1 `i `ui ]
+[; ;counting_ripples.c: 53: (angleDesired % 5 != 0)? printf("") :
+[; ;counting_ripples.c: 54: printf("angleDesired = %d \t\r\n", angleDesired);
 "54
-[e $ ! || <= _angleDesired _remainingAngle == _remainingAngle -> -> 0 `i `ui 1730  ]
-[; ;counting_ripples.c: 55: {
-"55
-{
-[; ;counting_ripples.c: 56: expectedRippleCount = angleDesired * round(((float)(1*250* 3)/180));
+[e ? != % _angleDesired -> -> 5 `i `ui -> -> 0 `i `ui : ( _printf :s 1C ( _printf , (. :s 2C _angleDesired ]
+[; ;counting_ripples.c: 56: if((angleDesired <= remainingAngle ) || (remainingAngle == 0))
 "56
-[e = _expectedRippleCount -> * -> _angleDesired `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
+[e $ ! || <= _angleDesired _remainingAngle == _remainingAngle -> -> 0 `i `ui 1734  ]
+[; ;counting_ripples.c: 57: {
 "57
-}
-[; ;counting_ripples.c: 57: }
-[e $U 1731  ]
+{
+[; ;counting_ripples.c: 58: expectedRippleCount = angleDesired * round(((float)(1*250* 3)/180));
 "58
-[e :U 1730 ]
-[; ;counting_ripples.c: 58: else if(angleDesired > remainingAngle)
-[e $ ! > _angleDesired _remainingAngle 1732  ]
-[; ;counting_ripples.c: 59: {
+[e = _expectedRippleCount -> * -> _angleDesired `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
 "59
-{
-[; ;counting_ripples.c: 60: ExpectedRippleCountRemainingAngle();
+}
+[; ;counting_ripples.c: 59: }
+[e $U 1735  ]
 "60
-[e ( _ExpectedRippleCountRemainingAngle ..  ]
+[e :U 1734 ]
+[; ;counting_ripples.c: 60: else if(angleDesired > remainingAngle)
+[e $ ! > _angleDesired _remainingAngle 1736  ]
+[; ;counting_ripples.c: 61: {
 "61
-}
-[e :U 1732 ]
-"62
-[e :U 1731 ]
-[; ;counting_ripples.c: 61: }
-[; ;counting_ripples.c: 62: CompareLoadValue();
-[e ( _CompareLoadValue ..  ]
-[; ;counting_ripples.c: 63: inputSet = 1;
-"63
-[e = _inputSet -> -> 1 `i `uc ]
-[; ;counting_ripples.c: 64: }
-"64
-[e :UE 1729 ]
-}
-"66
-[v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 1 ef ]
-"67
 {
-[; ;counting_ripples.c: 66: void ExpectedRippleCountRemainingAngle()
-[; ;counting_ripples.c: 67: {
-[e :U _ExpectedRippleCountRemainingAngle ]
-[f ]
-[; ;counting_ripples.c: 68: expectedRippleCount = remainingAngle * round(((float)(1*250* 3)/180));
-"68
-[e = _expectedRippleCount -> * -> _remainingAngle `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
-[; ;counting_ripples.c: 69: }
-"69
+[; ;counting_ripples.c: 62: ExpectedRippleCountRemainingAngle();
+"62
+[e ( _ExpectedRippleCountRemainingAngle ..  ]
+"63
+}
+[e :U 1736 ]
+"64
+[e :U 1735 ]
+[; ;counting_ripples.c: 63: }
+[; ;counting_ripples.c: 64: CompareLoadValue();
+[e ( _CompareLoadValue ..  ]
+[; ;counting_ripples.c: 65: inputSet = 1;
+"65
+[e = _inputSet -> -> 1 `i `uc ]
+[; ;counting_ripples.c: 66: }
+"66
 [e :UE 1733 ]
 }
+"68
+[v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 1 ef ]
+"69
+{
+[; ;counting_ripples.c: 68: void ExpectedRippleCountRemainingAngle()
+[; ;counting_ripples.c: 69: {
+[e :U _ExpectedRippleCountRemainingAngle ]
+[f ]
+[; ;counting_ripples.c: 70: expectedRippleCount = remainingAngle * round(((float)(1*250* 3)/180));
+"70
+[e = _expectedRippleCount -> * -> _remainingAngle `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
+[; ;counting_ripples.c: 71: }
 "71
-[v _ExpectedRippleCountToHome `(v ~T0 @X0 1 ef ]
-"72
-{
-[; ;counting_ripples.c: 71: void ExpectedRippleCountToHome()
-[; ;counting_ripples.c: 72: {
-[e :U _ExpectedRippleCountToHome ]
-[f ]
-[; ;counting_ripples.c: 73: expectedRippleCount = (totalAngleTurned * round(((float)(1*250* 3)/180))) + 10;
-"73
-[e = _expectedRippleCount -> + * -> _totalAngleTurned `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d -> -> 10 `i `d `ui ]
-[; ;counting_ripples.c: 74: dummy = 1;
-"74
-[e = _dummy -> -> 1 `i `uc ]
-[; ;counting_ripples.c: 76: }
-"76
-[e :UE 1734 ]
-}
-"78
-[v _ExpectedRippleCountToEndPoint `(v ~T0 @X0 1 ef ]
-"79
-{
-[; ;counting_ripples.c: 78: void ExpectedRippleCountToEndPoint()
-[; ;counting_ripples.c: 79: {
-[e :U _ExpectedRippleCountToEndPoint ]
-[f ]
-[; ;counting_ripples.c: 80: angleDesired = 360 - remainingAngle;
-"80
-[e = _angleDesired - -> -> 360 `i `ui _remainingAngle ]
-[; ;counting_ripples.c: 81: expectedRippleCount = (angleDesired * round(((float)(1*250* 3)/180))) + 10;
-"81
-[e = _expectedRippleCount -> + * -> _angleDesired `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d -> -> 10 `i `d `ui ]
-[; ;counting_ripples.c: 82: dummy = 1;
-"82
-[e = _dummy -> -> 1 `i `uc ]
-[; ;counting_ripples.c: 83: }
-"83
-[e :UE 1735 ]
-}
-"85
-[v _ExpectedRippleCountfromStall `(v ~T0 @X0 1 ef ]
-"86
-{
-[; ;counting_ripples.c: 85: void ExpectedRippleCountfromStall()
-[; ;counting_ripples.c: 86: {
-[e :U _ExpectedRippleCountfromStall ]
-[f ]
-[; ;counting_ripples.c: 88: }
-"88
-[e :UE 1736 ]
-}
-"90
-[v _CompareLoadValue `(v ~T0 @X0 1 ef ]
-"91
-{
-[; ;counting_ripples.c: 90: void CompareLoadValue()
-[; ;counting_ripples.c: 91: {
-[e :U _CompareLoadValue ]
-[f ]
-[; ;counting_ripples.c: 92: compareLoadValue = ((expectedRippleCount - 10 )>> 1) + 0x7FFF + 1;
-"92
-[e = _compareLoadValue + + >> - _expectedRippleCount -> -> 10 `i `ui -> 1 `i -> -> 32767 `i `ui -> -> 1 `i `ui ]
-[; ;counting_ripples.c: 93: }
-"93
 [e :UE 1737 ]
 }
-"95
-[v _StartCounting `(v ~T0 @X0 1 ef ]
-"96
+"73
+[v _ExpectedRippleCountToHome `(v ~T0 @X0 1 ef ]
+"74
 {
-[; ;counting_ripples.c: 95: void StartCounting()
-[; ;counting_ripples.c: 96: {
+[; ;counting_ripples.c: 73: void ExpectedRippleCountToHome()
+[; ;counting_ripples.c: 74: {
+[e :U _ExpectedRippleCountToHome ]
+[f ]
+[; ;counting_ripples.c: 75: expectedRippleCount = (totalAngleTurned * round(((float)(1*250* 3)/180))) + 14;
+"75
+[e = _expectedRippleCount -> + * -> _totalAngleTurned `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d -> -> 14 `i `d `ui ]
+[; ;counting_ripples.c: 76: dummy = 1;
+"76
+[e = _dummy -> -> 1 `i `uc ]
+[; ;counting_ripples.c: 78: }
+"78
+[e :UE 1738 ]
+}
+"80
+[v _ExpectedRippleCountToEndPoint `(v ~T0 @X0 1 ef ]
+"81
+{
+[; ;counting_ripples.c: 80: void ExpectedRippleCountToEndPoint()
+[; ;counting_ripples.c: 81: {
+[e :U _ExpectedRippleCountToEndPoint ]
+[f ]
+[; ;counting_ripples.c: 82: angleDesired = 360 - remainingAngle;
+"82
+[e = _angleDesired - -> -> 360 `i `ui _remainingAngle ]
+[; ;counting_ripples.c: 83: expectedRippleCount = (angleDesired * round(((float)(1*250* 3)/180))) + 14;
+"83
+[e = _expectedRippleCount -> + * -> _angleDesired `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d -> -> 14 `i `d `ui ]
+[; ;counting_ripples.c: 84: dummy = 1;
+"84
+[e = _dummy -> -> 1 `i `uc ]
+[; ;counting_ripples.c: 85: }
+"85
+[e :UE 1739 ]
+}
+"87
+[v _CompareLoadValue `(v ~T0 @X0 1 ef ]
+"88
+{
+[; ;counting_ripples.c: 87: void CompareLoadValue()
+[; ;counting_ripples.c: 88: {
+[e :U _CompareLoadValue ]
+[f ]
+[; ;counting_ripples.c: 89: compareLoadValue = ((expectedRippleCount - 8)>> 1) + 0x7FFF + 1;
+"89
+[e = _compareLoadValue + + >> - _expectedRippleCount -> -> 8 `i `ui -> 1 `i -> -> 32767 `i `ui -> -> 1 `i `ui ]
+[; ;counting_ripples.c: 90: }
+"90
+[e :UE 1740 ]
+}
+"92
+[v _StartCounting `(v ~T0 @X0 1 ef ]
+"93
+{
+[; ;counting_ripples.c: 92: void StartCounting()
+[; ;counting_ripples.c: 93: {
 [e :U _StartCounting ]
 [f ]
-[; ;counting_ripples.c: 97: do { LATAbits.LATA7 = 1; } while(0);
-"97
-[e :U 1741 ]
+[; ;counting_ripples.c: 94: do { LATAbits.LATA7 = 1; } while(0);
+"94
+[e :U 1744 ]
 {
 [e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
 }
-[e :U 1740 ]
-[; ;counting_ripples.c: 98: CCP1_SetCompareCount(compareLoadValue);
-"98
+[e :U 1743 ]
+[; ;counting_ripples.c: 95: CCP1_SetCompareCount(compareLoadValue);
+"95
 [e ( _CCP1_SetCompareCount (1 _compareLoadValue ]
-[; ;counting_ripples.c: 99: TMR1_Reload();
-"99
+[; ;counting_ripples.c: 96: TMR1_Reload();
+"96
 [e ( _TMR1_Reload ..  ]
-[; ;counting_ripples.c: 100: TMR4_Period8BitSet(0x3);
-"100
+[; ;counting_ripples.c: 97: TMR4_Period8BitSet(0x3);
+"97
 [e ( _TMR4_Period8BitSet (1 -> -> 3 `i `uc ]
-[; ;counting_ripples.c: 101: TMR1_StartTimer();
-"101
+[; ;counting_ripples.c: 98: TMR1_StartTimer();
+"98
 [e ( _TMR1_StartTimer ..  ]
-[; ;counting_ripples.c: 102: do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0);
-"102
-[e :U 1744 ]
+[; ;counting_ripples.c: 99: do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0);
+"99
+[e :U 1747 ]
 {
 [e = . . _CWG1AS0bits 2 4 -> -> 0 `i `uc ]
 }
-[e :U 1743 ]
-[; ;counting_ripples.c: 103: do{T4CONbits.TMR4ON = 1;} while(0);
-"103
-[e :U 1747 ]
+[e :U 1746 ]
+[; ;counting_ripples.c: 100: do{T4CONbits.TMR4ON = 1;} while(0);
+"100
+[e :U 1750 ]
 {
 [e = . . _T4CONbits 3 7 -> -> 1 `i `uc ]
 }
-[e :U 1746 ]
-[; ;counting_ripples.c: 104: }
-"104
-[e :UE 1738 ]
+[e :U 1749 ]
+[; ;counting_ripples.c: 101: }
+"101
+[e :UE 1741 ]
 }
-"105
+"102
 [v _Compare_ISR `(v ~T0 @X0 1 ef ]
-"106
+"103
 {
-[; ;counting_ripples.c: 105: void Compare_ISR()
-[; ;counting_ripples.c: 106: {
+[; ;counting_ripples.c: 102: void Compare_ISR()
+[; ;counting_ripples.c: 103: {
 [e :U _Compare_ISR ]
 [f ]
-[; ;counting_ripples.c: 107: BrakingMechanism();
-"107
+[; ;counting_ripples.c: 104: BrakingMechanism();
+"104
 [e ( _BrakingMechanism ..  ]
-[; ;counting_ripples.c: 108: do { LATAbits.LATA7 = 0; } while(0);
-"108
-[e :U 1751 ]
+[; ;counting_ripples.c: 105: do { LATAbits.LATA7 = 0; } while(0);
+"105
+[e :U 1754 ]
 {
 [e = . . _LATAbits 0 7 -> -> 0 `i `uc ]
 }
-[e :U 1750 ]
-[; ;counting_ripples.c: 109: TMR4_StopTimer();
-"109
+[e :U 1753 ]
+[; ;counting_ripples.c: 106: TMR4_StopTimer();
+"106
 [e ( _TMR4_StopTimer ..  ]
-[; ;counting_ripples.c: 110: TMR1_StopTimer();
-"110
+[; ;counting_ripples.c: 107: TMR1_StopTimer();
+"107
 [e ( _TMR1_StopTimer ..  ]
-[; ;counting_ripples.c: 112: getCountDone = 1;
-"112
+[; ;counting_ripples.c: 109: getCountDone = 1;
+"109
 [e = _getCountDone -> -> 1 `i `uc ]
-[; ;counting_ripples.c: 113: }
-"113
-[e :UE 1748 ]
+[; ;counting_ripples.c: 110: }
+"110
+[e :UE 1751 ]
 }
-"115
+"112
 [v _GetAngleTurned `(v ~T0 @X0 1 ef ]
-"116
+"113
 {
-[; ;counting_ripples.c: 115: void GetAngleTurned()
-[; ;counting_ripples.c: 116: {
+[; ;counting_ripples.c: 112: void GetAngleTurned()
+[; ;counting_ripples.c: 113: {
 [e :U _GetAngleTurned ]
 [f ]
-[; ;counting_ripples.c: 117: if(dummy)
+"114
+[v _actualRippleCount `ui ~T0 @X0 1 a ]
+[; ;counting_ripples.c: 114: uint16_t actualRippleCount;
+[; ;counting_ripples.c: 116: if(dummy)
+"116
+[e $ ! != -> _dummy `i -> -> -> 0 `i `uc `i 1756  ]
+[; ;counting_ripples.c: 117: {
 "117
-[e $ ! != -> _dummy `i -> -> -> 0 `i `uc `i 1753  ]
-[; ;counting_ripples.c: 118: {
+{
+[; ;counting_ripples.c: 118: dummy = 0;
 "118
-{
-[; ;counting_ripples.c: 119: dummy = 0;
-"119
 [e = _dummy -> -> 0 `i `uc ]
-[; ;counting_ripples.c: 120: actualRippleCount = ((TMR1_ReadTimer()+ (0xFFFF - 0x7FFF)) << 1);
+[; ;counting_ripples.c: 119: actualRippleCount = ((TMR1_ReadTimer()+ (0xFFFF - 0x7FFF)) << 1) - 6;
+"119
+[e = _actualRippleCount - << + ( _TMR1_ReadTimer ..  - -> 65535 `ui -> -> 32767 `i `ui -> 1 `i -> -> 6 `i `ui ]
 "120
-[e = _actualRippleCount << + ( _TMR1_ReadTimer ..  - -> 65535 `ui -> -> 32767 `i `ui -> 1 `i ]
+}
+[; ;counting_ripples.c: 120: }
+[e $U 1757  ]
 "121
-}
-[; ;counting_ripples.c: 121: }
-[e $U 1754  ]
+[e :U 1756 ]
+[; ;counting_ripples.c: 121: else
+[; ;counting_ripples.c: 122: {
 "122
-[e :U 1753 ]
-[; ;counting_ripples.c: 122: else
-[; ;counting_ripples.c: 123: {
-"123
 {
-[; ;counting_ripples.c: 124: actualRippleCount = ((TMR1_ReadTimer()+ (0xFFFF - 0x7FFF)) << 1) + 10;
+[; ;counting_ripples.c: 123: actualRippleCount = ((TMR1_ReadTimer()+ (0xFFFF - 0x7FFF)) << 1)+ 8;
+"123
+[e = _actualRippleCount + << + ( _TMR1_ReadTimer ..  - -> 65535 `ui -> -> 32767 `i `ui -> 1 `i -> -> 8 `i `ui ]
 "124
-[e = _actualRippleCount + << + ( _TMR1_ReadTimer ..  - -> 65535 `ui -> -> 32767 `i `ui -> 1 `i -> -> 10 `i `ui ]
-"125
 }
-[e :U 1754 ]
-[; ;counting_ripples.c: 125: }
-[; ;counting_ripples.c: 126: angleTurned = (actualRippleCount / round(((float)(1*250* 3)/180)));
-"126
-[e = _angleTurned -> / -> _actualRippleCount `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
-[; ;counting_ripples.c: 128: printf("actualRippleCount = %d \n\r ", actualRippleCount);
+[e :U 1757 ]
+[; ;counting_ripples.c: 124: }
+[; ;counting_ripples.c: 125: angleTurned = (abs(actualRippleCount) / round(((float)(1*250* 3)/180)));
+"125
+[e = _angleTurned -> / -> ( _abs (1 -> _actualRippleCount `i `d ( _round (1 -> / -> * * -> 1 `i -> 250 `i -> 3 `i `f -> -> 180 `i `f `d `ui ]
+[; ;counting_ripples.c: 127: printf("actualRippleCount = %d \n\r ", actualRippleCount);
+"127
+[e ( _printf , (. :s 3C _actualRippleCount ]
+[; ;counting_ripples.c: 128: printf( "AngleTurned = %d \n\r", angleTurned);
 "128
-[e ( _printf , (. :s 1C _actualRippleCount ]
-[; ;counting_ripples.c: 129: printf( "AngleTurned = %d \n\r", angleTurned);
+[e ( _printf , (. :s 4C _angleTurned ]
+[; ;counting_ripples.c: 129: }
 "129
-[e ( _printf , (. :s 2C _angleTurned ]
-[; ;counting_ripples.c: 130: }
-"130
-[e :UE 1752 ]
+[e :UE 1755 ]
 }
 [p f _printf 8388736 ]
-[a 1C 97 99 116 117 97 108 82 105 112 112 108 101 67 111 117 110 116 32 61 32 37 100 32 10 13 32 0 ]
-[a 2C 65 110 103 108 101 84 117 114 110 101 100 32 61 32 37 100 32 10 13 0 ]
+[a 3C 97 99 116 117 97 108 82 105 112 112 108 101 67 111 117 110 116 32 61 32 37 100 32 10 13 32 0 ]
+[a 4C 65 110 103 108 101 84 117 114 110 101 100 32 61 32 37 100 32 10 13 0 ]
+[a 2C 97 110 103 108 101 68 101 115 105 114 101 100 32 61 32 37 100 32 9 13 10 0 ]
+[a 1C 0 ]

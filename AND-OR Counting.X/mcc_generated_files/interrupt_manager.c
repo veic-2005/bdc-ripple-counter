@@ -86,9 +86,13 @@ void __interrupt() INTERRUPT_InterruptManager (void)
         {
             TMR3_ISR();
         } 
-        else if(PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
+        else if(PIE1bits.CCP1IE == 1 && PIR1bits.CCP1IF == 1)
         {
-            TMR1_ISR();
+            CCP1_CompareISR();
+        } 
+        else if(PIE1bits.TMR1GIE == 1 && PIR1bits.TMR1GIF == 1)
+        {
+            TMR1_GATE_ISR();
         } 
         else
         {

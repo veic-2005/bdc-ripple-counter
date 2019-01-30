@@ -14367,6 +14367,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr2.h: 722: void TMR2_Period8BitSet(uint8_t periodVal);
 [; ;tmr2.h: 774: void TMR2_LoadPeriodRegister(uint8_t periodVal);
 [; ;tmr2.h: 812: bool TMR2_HasOverflowOccured(void);
+[; ;pwm2.h: 97: void PWM2_Initialize(void);
+[; ;pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
+[; ;pwm2.h: 156: bool PWM2_OutputStatusGet(void);
 [; ;adcc.h: 72: typedef uint16_t adc_result_t;
 [; ;adcc.h: 89: typedef enum
 [; ;adcc.h: 90: {
@@ -14403,9 +14406,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.h: 772: bool ADCC_HasErrorCrossedUpperThreshold(void);
 [; ;adcc.h: 800: bool ADCC_HasErrorCrossedLowerThreshold(void);
 [; ;adcc.h: 827: uint8_t ADCC_GetConversionStageStatus(void);
-[; ;pwm2.h: 97: void PWM2_Initialize(void);
-[; ;pwm2.h: 124: void PWM2_LoadDutyValue(uint16_t dutyValue);
-[; ;pwm2.h: 156: bool PWM2_OutputStatusGet(void);
 [; ;memory.h: 99: uint8_t FLASH_ReadByte(uint32_t flashAddr);
 [; ;memory.h: 125: uint16_t FLASH_ReadWord(uint32_t flashAddr);
 [; ;memory.h: 152: void FLASH_WriteWord(uint32_t flashAddr, uint16_t word);
