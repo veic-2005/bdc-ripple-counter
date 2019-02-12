@@ -47,9 +47,11 @@
 #define MAXIMUM_TIMER_VALUE     0xFFFF
 #define PERIOD_TIMER1_VALUE   (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
 
+bool dummy = 0;
+
 void ReadInput() 
 {
-    angleDesired = ((ADCC_GetSingleConversion(getRippleChannel) * 45) >> 8) + 1; // for 180 degrees  shift to the right by 8
+    angleDesired = (((ADCC_GetSingleConversion(getRippleChannel) * 45) + 1 ) >> 8); // for 180 degrees  shift to the right by 8
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d \t\r\n", angleDesired);  
         

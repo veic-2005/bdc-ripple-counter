@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15410 `(v ~T0 @X0 0 tf ]
-[v F15417 `(v ~T0 @X0 0 tf ]
+[v F15407 `(v ~T0 @X0 0 tf ]
+[v F15414 `(v ~T0 @X0 0 tf ]
 "22603 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
 [s S973 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S973 . MODE . LD EN ]
@@ -35,7 +35,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S980 . . . . . ]
 "22811
 [v _CWG1AS0bits `VS980 ~T0 @X0 0 e@3905 ]
-"113 motorcontrol.h
+"85 motorcontrol.h
+[v _StorePosition `(v ~T0 @X0 0 ef ]
+"107
 [v _StartCounting `(v ~T0 @X0 0 ef ]
 "22946 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
 [v _CWG1STR `Vuc ~T0 @X0 0 e@3907 ]
@@ -14232,18 +14234,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;cwg.h: 289: void CWG_AutoShutdownEventClear();
 [; ;pin_manager.h: 336: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 348: void PIN_MANAGER_IOC(void);
-"57 motorcontrol.h
+"58 motorcontrol.h
 [v _inputSet `uc ~T0 @X0 1 e ]
 [i _inputSet
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 57: bool inputSet = 0;
-"58
+[; ;motorcontrol.h: 58: bool inputSet = 0;
+"59
 [v _reverseOrigin `uc ~T0 @X0 1 e ]
 [i _reverseOrigin
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 58: bool reverseOrigin = 0;
+[; ;motorcontrol.h: 59: bool reverseOrigin = 0;
 "60
 [v _getCountDone `uc ~T0 @X0 1 e ]
 [i _getCountDone
@@ -14263,181 +14265,169 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 62: bool reverseDirection = 0;
 "63
-[v _dummy `uc ~T0 @X0 1 e ]
-[i _dummy
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 63: bool dummy = 0;
-"65
 [v _motorStalled `uc ~T0 @X0 1 e ]
 [i _motorStalled
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 65: bool motorStalled = 0;
-"67
-[v _homeReached `uc ~T0 @X0 1 e ]
-[i _homeReached
--> -> 1 `i `uc
-]
-[; ;motorcontrol.h: 67: bool homeReached = 1;
-"68
-[v _endPointReached `uc ~T0 @X0 1 e ]
-[i _endPointReached
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 68: bool endPointReached = 0;
-"70
+[; ;motorcontrol.h: 63: bool motorStalled = 0;
+"66
 [v _angleDesired `ui ~T0 @X0 1 e ]
 [i _angleDesired
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 70: uint16_t angleDesired = 0;
-"71
+[; ;motorcontrol.h: 66: uint16_t angleDesired = 0;
+"67
 [v _angleTurned `ui ~T0 @X0 1 e ]
 [i _angleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 71: uint16_t angleTurned = 0;
-"72
+[; ;motorcontrol.h: 67: uint16_t angleTurned = 0;
+"68
 [v _remainingAngle `ui ~T0 @X0 1 e ]
 [i _remainingAngle
 -> -> 360 `i `ui
 ]
-[; ;motorcontrol.h: 72: uint16_t remainingAngle = 360;
-"73
+[; ;motorcontrol.h: 68: uint16_t remainingAngle = 360;
+"69
 [v _totalAngleTurned `ui ~T0 @X0 1 e ]
 [i _totalAngleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 73: uint16_t totalAngleTurned = 0;
-"75
+[; ;motorcontrol.h: 69: uint16_t totalAngleTurned = 0;
+"71
 [v _compareLoadValue `ui ~T0 @X0 1 e ]
 [i _compareLoadValue
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
-"76
+[; ;motorcontrol.h: 71: uint16_t compareLoadValue = 0;
+"72
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"80
-[v _TMR1_GateInterruptHandler `*F15410 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"83
-[v _CCP1_CompareInterruptHandler `*F15417 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 88: void MotorPosition();
-[; ;motorcontrol.h: 89: void ForwardPosition();
-[; ;motorcontrol.h: 90: void ReversePosition();
-[; ;motorcontrol.h: 91: void StorePosition();
-[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 95: void CheckHomeButton();
-[; ;motorcontrol.h: 96: void CheckEndButton();
-[; ;motorcontrol.h: 97: void CheckForwardButton();
-[; ;motorcontrol.h: 98: void CheckReverseButton();
-[; ;motorcontrol.h: 99: void ReadInput();
-[; ;motorcontrol.h: 100: void Forward_Dir();
-[; ;motorcontrol.h: 101: void Reverse_Dir();
-[; ;motorcontrol.h: 102: void BrakingMechanism();
-[; ;motorcontrol.h: 103: void ResumeMotor();
-[; ;motorcontrol.h: 104: void StallDetection();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 110: void CompareLoadValue();
-[; ;motorcontrol.h: 111: void Compare_ISR();
-[; ;motorcontrol.h: 112: void GetAngleTurned();
-[; ;motorcontrol.h: 113: void StartCounting();
-"36 motor_drive.c
+[; ;motorcontrol.h: 72: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 75: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"76
+[v _TMR1_GateInterruptHandler `*F15407 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 76: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 78: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"79
+[v _CCP1_CompareInterruptHandler `*F15414 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 79: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void MotorPosition(void);
+[; ;motorcontrol.h: 83: void ForwardPosition(void);
+[; ;motorcontrol.h: 84: void ReversePosition(void);
+[; ;motorcontrol.h: 85: void StorePosition(void);
+[; ;motorcontrol.h: 86: void ReadMotorPositionFromEEPROM(void);
+[; ;motorcontrol.h: 89: void CheckHomeButton(void);
+[; ;motorcontrol.h: 90: void CheckEndButton(void);
+[; ;motorcontrol.h: 91: void CheckForwardButton(void);
+[; ;motorcontrol.h: 92: void CheckReverseButton(void);
+[; ;motorcontrol.h: 93: void ReadInput(void);
+[; ;motorcontrol.h: 94: void Forward_Dir(void);
+[; ;motorcontrol.h: 95: void Reverse_Dir(void);
+[; ;motorcontrol.h: 96: void BrakingMechanism(void);
+[; ;motorcontrol.h: 97: void ResumeMotor(void);
+[; ;motorcontrol.h: 98: void StallDetection(void);
+[; ;motorcontrol.h: 101: void ExpectedRippleCountRemainingAngle(void);
+[; ;motorcontrol.h: 102: void ExpectedRippleCountToHome(void);
+[; ;motorcontrol.h: 103: void ExpectedRippleCountToEndPoint(void);
+[; ;motorcontrol.h: 104: void CompareLoadValue(void);
+[; ;motorcontrol.h: 105: void Compare_ISR(void);
+[; ;motorcontrol.h: 106: void GetAngleTurned(void);
+[; ;motorcontrol.h: 107: void StartCounting(void);
+"35 motor_drive.c
 [v _Forward_Dir `(v ~T0 @X0 1 ef ]
-"37
+"36
 {
-[; ;motor_drive.c: 36: void Forward_Dir()
-[; ;motor_drive.c: 37: {
+[; ;motor_drive.c: 35: void Forward_Dir()
+[; ;motor_drive.c: 36: {
 [e :U _Forward_Dir ]
 [f ]
-[; ;motor_drive.c: 38: CWG1CON0bits.MODE = 0x2;
-"38
+[; ;motor_drive.c: 37: CWG1CON0bits.MODE = 0x2;
+"37
 [e = . . _CWG1CON0bits 0 0 -> -> 2 `i `uc ]
-[; ;motor_drive.c: 40: if (inputSet)
-"40
+[; ;motor_drive.c: 39: if (inputSet)
+"39
 [e $ ! != -> _inputSet `i -> -> -> 0 `i `uc `i 1726  ]
-[; ;motor_drive.c: 41: {
+[; ;motor_drive.c: 40: {
+"40
+{
+[; ;motor_drive.c: 41: inputSet = 0;
 "41
-{
-[; ;motor_drive.c: 42: inputSet = 0;
-"42
 [e = _inputSet -> -> 0 `i `uc ]
-[; ;motor_drive.c: 43: forwardDirection = 1;
-"43
+[; ;motor_drive.c: 42: forwardDirection = 1;
+"42
 [e = _forwardDirection -> -> 1 `i `uc ]
-[; ;motor_drive.c: 44: if(totalAngleTurned >= 360)
-"44
+[; ;motor_drive.c: 43: if(totalAngleTurned >= 360)
+"43
 [e $ ! >= _totalAngleTurned -> -> 360 `i `ui 1727  ]
-[; ;motor_drive.c: 45: {
-"45
+[; ;motor_drive.c: 44: {
+"44
 {
-[; ;motor_drive.c: 46: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
-"46
+[; ;motor_drive.c: 45: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
+"45
 [e :U 1730 ]
 {
 [e = . . _CWG1AS0bits 2 4 -> -> 1 `i `uc ]
 }
 [e :U 1729 ]
+[; ;motor_drive.c: 46: totalAngleTurned = 360;
+"46
+[e = _totalAngleTurned -> -> 360 `i `ui ]
+[; ;motor_drive.c: 47: StorePosition();
 "47
-}
-[; ;motor_drive.c: 47: }
-[e $U 1731  ]
+[e ( _StorePosition ..  ]
 "48
-[e :U 1727 ]
-[; ;motor_drive.c: 48: else
-[; ;motor_drive.c: 49: {
-"49
-{
-[; ;motor_drive.c: 50: StartCounting();
-"50
-[e ( _StartCounting ..  ]
-"51
 }
-[e :U 1731 ]
+[; ;motor_drive.c: 48: }
+[e $U 1731  ]
+"49
+[e :U 1727 ]
+[; ;motor_drive.c: 49: else
+[; ;motor_drive.c: 50: {
+"50
+{
+[; ;motor_drive.c: 51: StartCounting();
+"51
+[e ( _StartCounting ..  ]
 "52
 }
+[e :U 1731 ]
+"53
+}
 [e :U 1726 ]
-[; ;motor_drive.c: 51: }
 [; ;motor_drive.c: 52: }
 [; ;motor_drive.c: 53: }
-"53
+[; ;motor_drive.c: 54: }
+"54
 [e :UE 1725 ]
 }
-"55
-[v _Reverse_Dir `(v ~T0 @X0 1 ef ]
 "56
+[v _Reverse_Dir `(v ~T0 @X0 1 ef ]
+"57
 {
-[; ;motor_drive.c: 55: void Reverse_Dir()
-[; ;motor_drive.c: 56: {
+[; ;motor_drive.c: 56: void Reverse_Dir()
+[; ;motor_drive.c: 57: {
 [e :U _Reverse_Dir ]
 [f ]
-[; ;motor_drive.c: 57: CWG1CON0bits.MODE = 0x3;
-"57
+[; ;motor_drive.c: 58: CWG1CON0bits.MODE = 0x3;
+"58
 [e = . . _CWG1CON0bits 0 0 -> -> 3 `i `uc ]
-[; ;motor_drive.c: 59: if (inputSet)
-"59
-[e $ ! != -> _inputSet `i -> -> -> 0 `i `uc `i 1733  ]
-[; ;motor_drive.c: 60: {
+[; ;motor_drive.c: 60: if (inputSet)
 "60
-{
-[; ;motor_drive.c: 61: inputSet = 0;
+[e $ ! != -> _inputSet `i -> -> -> 0 `i `uc `i 1733  ]
+[; ;motor_drive.c: 61: {
 "61
-[e = _inputSet -> -> 0 `i `uc ]
-[; ;motor_drive.c: 62: reverseDirection = 1;
+{
+[; ;motor_drive.c: 62: inputSet = 0;
 "62
-[e = _reverseDirection -> -> 1 `i `uc ]
-[; ;motor_drive.c: 63: reverseOrigin = 1;
+[e = _inputSet -> -> 0 `i `uc ]
+[; ;motor_drive.c: 63: reverseDirection = 1;
 "63
+[e = _reverseDirection -> -> 1 `i `uc ]
+[; ;motor_drive.c: 64: reverseOrigin = 1;
+"64
 [e = _reverseOrigin -> -> 1 `i `uc ]
 [; ;motor_drive.c: 65: if(totalAngleTurned <= 0)
 "65

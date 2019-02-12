@@ -18913,19 +18913,14 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 
 void MEMORY_Tasks(void);
 
-# 57 "motorcontrol.h"
+# 58 "motorcontrol.h"
 bool inputSet = 0;
 bool reverseOrigin = 0;
-
 bool getCountDone = 0;
 bool forwardDirection = 0;
 bool reverseDirection = 0;
-bool dummy = 0;
-
 bool motorStalled = 0;
 
-bool homeReached = 1;
-bool endPointReached = 0;
 
 uint16_t angleDesired = 0;
 uint16_t angleTurned = 0;
@@ -18943,34 +18938,32 @@ void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
 
 
+void MotorPosition(void);
+void ForwardPosition(void);
+void ReversePosition(void);
+void StorePosition(void);
+void ReadMotorPositionFromEEPROM(void);
 
 
-void MotorPosition();
-void ForwardPosition();
-void ReversePosition();
-void StorePosition();
-void ReadMotorPositionFromEEPROM();
+void CheckHomeButton(void);
+void CheckEndButton(void);
+void CheckForwardButton(void);
+void CheckReverseButton(void);
+void ReadInput(void);
+void Forward_Dir(void);
+void Reverse_Dir(void);
+void BrakingMechanism(void);
+void ResumeMotor(void);
+void StallDetection(void);
 
 
-void CheckHomeButton();
-void CheckEndButton();
-void CheckForwardButton();
-void CheckReverseButton();
-void ReadInput();
-void Forward_Dir();
-void Reverse_Dir();
-void BrakingMechanism();
-void ResumeMotor();
-void StallDetection();
-
-
-void ExpectedRippleCountRemainingAngle();
-void ExpectedRippleCountToHome();
-void ExpectedRippleCountToEndPoint();
-void CompareLoadValue();
-void Compare_ISR();
-void GetAngleTurned();
-void StartCounting();
+void ExpectedRippleCountRemainingAngle(void);
+void ExpectedRippleCountToHome(void);
+void ExpectedRippleCountToEndPoint(void);
+void CompareLoadValue(void);
+void Compare_ISR(void);
+void GetAngleTurned(void);
+void StartCounting(void);
 
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h"
 typedef unsigned short wchar_t;
@@ -19058,8 +19051,6 @@ remainingAngle = 360 - totalAngleTurned;
 if(remainingAngle == 0)
 {
 do { LATAbits.LATA4 = 1; } while(0);
-endPointReached = 1;
-
 }
 }
 else
@@ -19067,7 +19058,6 @@ else
 do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
 }
 
-homeReached = 0;
 reverseOrigin = 0;
 do { LATAbits.LATA5 = 0; } while(0);
 
@@ -19085,14 +19075,13 @@ remainingAngle = totalAngleTurned;
 if(remainingAngle == 0)
 {
 do { LATAbits.LATA5 = 1; } while(0);
-homeReached = 1;
 }
 }
 else
 {
 do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
 }
-endPointReached = 0;
+
 reverseOrigin = 1;
 do { LATAbits.LATA4 = 0; } while(0);
 

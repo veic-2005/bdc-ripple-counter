@@ -19460,8 +19460,8 @@ INTERRUPT_Initialize();
 PMD_Initialize();
 PIN_MANAGER_Initialize();
 OSCILLATOR_Initialize();
-CLC1_Initialize();
 PWM2_Initialize();
+CLC1_Initialize();
 ADCC_Initialize();
 CCP1_Initialize();
 TMR4_Initialize();
@@ -19480,7 +19480,7 @@ OSCCON3 = 0x00;
 
 OSCEN = 0x00;
 
-OSCFRQ = 0x05;
+OSCFRQ = 0x06;
 
 OSCTUNE = 0x00;
 }

@@ -45,8 +45,6 @@ void ForwardPosition()
         if(remainingAngle == 0)
         {
             EndPointReachedLED_SetHigh();
-            endPointReached = 1;
-//            TRISB = 0xEE ;
         }
     }
     else
@@ -54,7 +52,6 @@ void ForwardPosition()
         StopMotor();
     }
     
-    homeReached = 0;
     reverseOrigin = 0;
     HomeReachedLED_SetLow();
     
@@ -72,14 +69,13 @@ void ReversePosition()
         if(remainingAngle == 0)
         {
             HomeReachedLED_SetHigh();
-            homeReached = 1;
         }
     }
     else
     {
         StopMotor();
     }
-    endPointReached = 0;
+    
     reverseOrigin = 1;
     EndPointReachedLED_SetLow();
 

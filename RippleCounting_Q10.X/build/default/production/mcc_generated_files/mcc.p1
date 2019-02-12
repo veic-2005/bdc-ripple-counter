@@ -7,10 +7,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
 "92 mcc_generated_files/mcc.h
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"91 mcc_generated_files/clc1.h
-[v _CLC1_Initialize `(v ~T0 @X0 0 ef ]
 "97 mcc_generated_files/pwm2.h
 [v _PWM2_Initialize `(v ~T0 @X0 0 ef ]
+"91 mcc_generated_files/clc1.h
+[v _CLC1_Initialize `(v ~T0 @X0 0 ef ]
 "130 mcc_generated_files/adcc.h
 [v _ADCC_Initialize `(v ~T0 @X0 0 ef ]
 "126 mcc_generated_files/ccp1.h
@@ -14499,12 +14499,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.c: 55: OSCILLATOR_Initialize();
 "55
 [e ( _OSCILLATOR_Initialize ..  ]
-[; ;mcc.c: 56: CLC1_Initialize();
+[; ;mcc.c: 56: PWM2_Initialize();
 "56
-[e ( _CLC1_Initialize ..  ]
-[; ;mcc.c: 57: PWM2_Initialize();
-"57
 [e ( _PWM2_Initialize ..  ]
+[; ;mcc.c: 57: CLC1_Initialize();
+"57
+[e ( _CLC1_Initialize ..  ]
 [; ;mcc.c: 58: ADCC_Initialize();
 "58
 [e ( _ADCC_Initialize ..  ]
@@ -14547,9 +14547,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.c: 74: OSCEN = 0x00;
 "74
 [e = _OSCEN -> -> 0 `i `uc ]
-[; ;mcc.c: 76: OSCFRQ = 0x05;
+[; ;mcc.c: 76: OSCFRQ = 0x06;
 "76
-[e = _OSCFRQ -> -> 5 `i `uc ]
+[e = _OSCFRQ -> -> 6 `i `uc ]
 [; ;mcc.c: 78: OSCTUNE = 0x00;
 "78
 [e = _OSCTUNE -> -> 0 `i `uc ]

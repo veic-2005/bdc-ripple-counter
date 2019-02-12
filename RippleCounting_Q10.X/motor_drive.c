@@ -28,7 +28,6 @@
 */
 
 #include "mcc_generated_files/cwg.h"
-
 #include "mcc_generated_files/device_config.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
@@ -44,6 +43,8 @@ void Forward_Dir()
         if(totalAngleTurned >= END_POINT)
         {
             StopMotor();
+            totalAngleTurned = END_POINT;
+            StorePosition();
         }
         else
         {   
@@ -61,7 +62,6 @@ void Reverse_Dir()
         inputSet = 0;
         reverseDirection = 1;
         reverseOrigin = 1; 
-//        TRISB = 0xFE;
         if(totalAngleTurned <= HOME)
         {
             StopMotor();

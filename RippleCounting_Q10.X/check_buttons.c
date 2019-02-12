@@ -95,8 +95,6 @@ void CheckEndButton()
             {
                 ExpectedRippleCountRemainingAngle();
             }
-            
-            
             CompareLoadValue();
             Forward_Dir();
         }

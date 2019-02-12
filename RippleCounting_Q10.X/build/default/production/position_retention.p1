@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15500 `(v ~T0 @X0 0 tf ]
-[v F15507 `(v ~T0 @X0 0 tf ]
+[v F15497 `(v ~T0 @X0 0 tf ]
+[v F15504 `(v ~T0 @X0 0 tf ]
 "27517 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
 [s S1188 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1188 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
@@ -28,7 +28,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CWG1AS0bits `VS980 ~T0 @X0 0 e@3905 ]
 "195 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"91 motorcontrol.h
+"85 motorcontrol.h
 [v _StorePosition `(v ~T0 @X0 0 ef ]
 "282 mcc_generated_files/memory.h
 [v _DATAEE_WriteByte `(v ~T0 @X0 0 ef2`uc`uc ]
@@ -14272,18 +14272,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 282: void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
 [; ;memory.h: 308: uint8_t DATAEE_ReadByte(uint8_t bAdd);
 [; ;memory.h: 310: void MEMORY_Tasks(void);
-"57 motorcontrol.h
+"58 motorcontrol.h
 [v _inputSet `uc ~T0 @X0 1 e ]
 [i _inputSet
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 57: bool inputSet = 0;
-"58
+[; ;motorcontrol.h: 58: bool inputSet = 0;
+"59
 [v _reverseOrigin `uc ~T0 @X0 1 e ]
 [i _reverseOrigin
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 58: bool reverseOrigin = 0;
+[; ;motorcontrol.h: 59: bool reverseOrigin = 0;
 "60
 [v _getCountDone `uc ~T0 @X0 1 e ]
 [i _getCountDone
@@ -14303,95 +14303,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 62: bool reverseDirection = 0;
 "63
-[v _dummy `uc ~T0 @X0 1 e ]
-[i _dummy
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 63: bool dummy = 0;
-"65
 [v _motorStalled `uc ~T0 @X0 1 e ]
 [i _motorStalled
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 65: bool motorStalled = 0;
-"67
-[v _homeReached `uc ~T0 @X0 1 e ]
-[i _homeReached
--> -> 1 `i `uc
-]
-[; ;motorcontrol.h: 67: bool homeReached = 1;
-"68
-[v _endPointReached `uc ~T0 @X0 1 e ]
-[i _endPointReached
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 68: bool endPointReached = 0;
-"70
+[; ;motorcontrol.h: 63: bool motorStalled = 0;
+"66
 [v _angleDesired `ui ~T0 @X0 1 e ]
 [i _angleDesired
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 70: uint16_t angleDesired = 0;
-"71
+[; ;motorcontrol.h: 66: uint16_t angleDesired = 0;
+"67
 [v _angleTurned `ui ~T0 @X0 1 e ]
 [i _angleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 71: uint16_t angleTurned = 0;
-"72
+[; ;motorcontrol.h: 67: uint16_t angleTurned = 0;
+"68
 [v _remainingAngle `ui ~T0 @X0 1 e ]
 [i _remainingAngle
 -> -> 360 `i `ui
 ]
-[; ;motorcontrol.h: 72: uint16_t remainingAngle = 360;
-"73
+[; ;motorcontrol.h: 68: uint16_t remainingAngle = 360;
+"69
 [v _totalAngleTurned `ui ~T0 @X0 1 e ]
 [i _totalAngleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 73: uint16_t totalAngleTurned = 0;
-"75
+[; ;motorcontrol.h: 69: uint16_t totalAngleTurned = 0;
+"71
 [v _compareLoadValue `ui ~T0 @X0 1 e ]
 [i _compareLoadValue
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
-"76
+[; ;motorcontrol.h: 71: uint16_t compareLoadValue = 0;
+"72
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"80
-[v _TMR1_GateInterruptHandler `*F15500 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"83
-[v _CCP1_CompareInterruptHandler `*F15507 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 88: void MotorPosition();
-[; ;motorcontrol.h: 89: void ForwardPosition();
-[; ;motorcontrol.h: 90: void ReversePosition();
-[; ;motorcontrol.h: 91: void StorePosition();
-[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 95: void CheckHomeButton();
-[; ;motorcontrol.h: 96: void CheckEndButton();
-[; ;motorcontrol.h: 97: void CheckForwardButton();
-[; ;motorcontrol.h: 98: void CheckReverseButton();
-[; ;motorcontrol.h: 99: void ReadInput();
-[; ;motorcontrol.h: 100: void Forward_Dir();
-[; ;motorcontrol.h: 101: void Reverse_Dir();
-[; ;motorcontrol.h: 102: void BrakingMechanism();
-[; ;motorcontrol.h: 103: void ResumeMotor();
-[; ;motorcontrol.h: 104: void StallDetection();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 110: void CompareLoadValue();
-[; ;motorcontrol.h: 111: void Compare_ISR();
-[; ;motorcontrol.h: 112: void GetAngleTurned();
-[; ;motorcontrol.h: 113: void StartCounting();
+[; ;motorcontrol.h: 72: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 75: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"76
+[v _TMR1_GateInterruptHandler `*F15497 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 76: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 78: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"79
+[v _CCP1_CompareInterruptHandler `*F15504 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 79: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void MotorPosition(void);
+[; ;motorcontrol.h: 83: void ForwardPosition(void);
+[; ;motorcontrol.h: 84: void ReversePosition(void);
+[; ;motorcontrol.h: 85: void StorePosition(void);
+[; ;motorcontrol.h: 86: void ReadMotorPositionFromEEPROM(void);
+[; ;motorcontrol.h: 89: void CheckHomeButton(void);
+[; ;motorcontrol.h: 90: void CheckEndButton(void);
+[; ;motorcontrol.h: 91: void CheckForwardButton(void);
+[; ;motorcontrol.h: 92: void CheckReverseButton(void);
+[; ;motorcontrol.h: 93: void ReadInput(void);
+[; ;motorcontrol.h: 94: void Forward_Dir(void);
+[; ;motorcontrol.h: 95: void Reverse_Dir(void);
+[; ;motorcontrol.h: 96: void BrakingMechanism(void);
+[; ;motorcontrol.h: 97: void ResumeMotor(void);
+[; ;motorcontrol.h: 98: void StallDetection(void);
+[; ;motorcontrol.h: 101: void ExpectedRippleCountRemainingAngle(void);
+[; ;motorcontrol.h: 102: void ExpectedRippleCountToHome(void);
+[; ;motorcontrol.h: 103: void ExpectedRippleCountToEndPoint(void);
+[; ;motorcontrol.h: 104: void CompareLoadValue(void);
+[; ;motorcontrol.h: 105: void Compare_ISR(void);
+[; ;motorcontrol.h: 106: void GetAngleTurned(void);
+[; ;motorcontrol.h: 107: void StartCounting(void);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -14477,274 +14459,262 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1734 ]
-[; ;position_retention.c: 48: endPointReached = 1;
 "48
-[e = _endPointReached -> -> 1 `i `uc ]
-"50
 }
 [e :U 1732 ]
-"51
+"49
 }
-[; ;position_retention.c: 50: }
-[; ;position_retention.c: 51: }
+[; ;position_retention.c: 48: }
+[; ;position_retention.c: 49: }
 [e $U 1736  ]
-"52
+"50
 [e :U 1731 ]
-[; ;position_retention.c: 52: else
-[; ;position_retention.c: 53: {
-"53
+[; ;position_retention.c: 50: else
+[; ;position_retention.c: 51: {
+"51
 {
-[; ;position_retention.c: 54: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
-"54
+[; ;position_retention.c: 52: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
+"52
 [e :U 1739 ]
 {
 [e = . . _CWG1AS0bits 2 4 -> -> 1 `i `uc ]
 }
 [e :U 1738 ]
-"55
+"53
 }
 [e :U 1736 ]
-[; ;position_retention.c: 55: }
-[; ;position_retention.c: 57: homeReached = 0;
-"57
-[e = _homeReached -> -> 0 `i `uc ]
-[; ;position_retention.c: 58: reverseOrigin = 0;
-"58
+[; ;position_retention.c: 53: }
+[; ;position_retention.c: 55: reverseOrigin = 0;
+"55
 [e = _reverseOrigin -> -> 0 `i `uc ]
-[; ;position_retention.c: 59: do { LATAbits.LATA5 = 0; } while(0);
-"59
+[; ;position_retention.c: 56: do { LATAbits.LATA5 = 0; } while(0);
+"56
 [e :U 1742 ]
 {
 [e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
 }
 [e :U 1741 ]
-[; ;position_retention.c: 61: printf("totalangleTurned =%d \n\r", totalAngleTurned);
-"61
+[; ;position_retention.c: 58: printf("totalangleTurned =%d \n\r", totalAngleTurned);
+"58
 [e ( _printf , (. :s 1C _totalAngleTurned ]
-[; ;position_retention.c: 62: StorePosition();
-"62
+[; ;position_retention.c: 59: StorePosition();
+"59
 [e ( _StorePosition ..  ]
-[; ;position_retention.c: 63: }
-"63
+[; ;position_retention.c: 60: }
+"60
 [e :UE 1730 ]
 }
-"65
+"62
 [v _ReversePosition `(v ~T0 @X0 1 ef ]
-"66
+"63
 {
-[; ;position_retention.c: 65: void ReversePosition()
-[; ;position_retention.c: 66: {
+[; ;position_retention.c: 62: void ReversePosition()
+[; ;position_retention.c: 63: {
 [e :U _ReversePosition ]
 [f ]
-[; ;position_retention.c: 67: if (totalAngleTurned > 0)
-"67
+[; ;position_retention.c: 64: if (totalAngleTurned > 0)
+"64
 [e $ ! > _totalAngleTurned -> -> 0 `i `ui 1744  ]
-[; ;position_retention.c: 68: {
-"68
+[; ;position_retention.c: 65: {
+"65
 {
-[; ;position_retention.c: 69: totalAngleTurned -= angleTurned;
-"69
+[; ;position_retention.c: 66: totalAngleTurned -= angleTurned;
+"66
 [e =- _totalAngleTurned _angleTurned ]
-[; ;position_retention.c: 70: remainingAngle = totalAngleTurned;
-"70
+[; ;position_retention.c: 67: remainingAngle = totalAngleTurned;
+"67
 [e = _remainingAngle _totalAngleTurned ]
-[; ;position_retention.c: 72: if(remainingAngle == 0)
-"72
+[; ;position_retention.c: 69: if(remainingAngle == 0)
+"69
 [e $ ! == _remainingAngle -> -> 0 `i `ui 1745  ]
-[; ;position_retention.c: 73: {
-"73
+[; ;position_retention.c: 70: {
+"70
 {
-[; ;position_retention.c: 74: do { LATAbits.LATA5 = 1; } while(0);
-"74
+[; ;position_retention.c: 71: do { LATAbits.LATA5 = 1; } while(0);
+"71
 [e :U 1748 ]
 {
 [e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
 }
 [e :U 1747 ]
-[; ;position_retention.c: 75: homeReached = 1;
-"75
-[e = _homeReached -> -> 1 `i `uc ]
-"76
+"72
 }
 [e :U 1745 ]
-"77
+"73
 }
-[; ;position_retention.c: 76: }
-[; ;position_retention.c: 77: }
+[; ;position_retention.c: 72: }
+[; ;position_retention.c: 73: }
 [e $U 1749  ]
-"78
+"74
 [e :U 1744 ]
-[; ;position_retention.c: 78: else
-[; ;position_retention.c: 79: {
-"79
+[; ;position_retention.c: 74: else
+[; ;position_retention.c: 75: {
+"75
 {
-[; ;position_retention.c: 80: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
-"80
+[; ;position_retention.c: 76: do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0);
+"76
 [e :U 1752 ]
 {
 [e = . . _CWG1AS0bits 2 4 -> -> 1 `i `uc ]
 }
 [e :U 1751 ]
-"81
+"77
 }
 [e :U 1749 ]
-[; ;position_retention.c: 81: }
-[; ;position_retention.c: 82: endPointReached = 0;
-"82
-[e = _endPointReached -> -> 0 `i `uc ]
-[; ;position_retention.c: 83: reverseOrigin = 1;
-"83
+[; ;position_retention.c: 77: }
+[; ;position_retention.c: 79: reverseOrigin = 1;
+"79
 [e = _reverseOrigin -> -> 1 `i `uc ]
-[; ;position_retention.c: 84: do { LATAbits.LATA4 = 0; } while(0);
-"84
+[; ;position_retention.c: 80: do { LATAbits.LATA4 = 0; } while(0);
+"80
 [e :U 1755 ]
 {
 [e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
 }
 [e :U 1754 ]
-[; ;position_retention.c: 86: printf("totalangleTurned =%d \n\r", totalAngleTurned);
-"86
+[; ;position_retention.c: 82: printf("totalangleTurned =%d \n\r", totalAngleTurned);
+"82
 [e ( _printf , (. :s 2C _totalAngleTurned ]
-[; ;position_retention.c: 87: StorePosition();
-"87
+[; ;position_retention.c: 83: StorePosition();
+"83
 [e ( _StorePosition ..  ]
-[; ;position_retention.c: 88: }
-"88
+[; ;position_retention.c: 84: }
+"84
 [e :UE 1743 ]
 }
-"90
+"86
 [v _StorePosition `(v ~T0 @X0 1 ef ]
-"91
+"87
 {
-[; ;position_retention.c: 90: void StorePosition()
-[; ;position_retention.c: 91: {
+[; ;position_retention.c: 86: void StorePosition()
+[; ;position_retention.c: 87: {
 [e :U _StorePosition ]
 [f ]
-"92
+"88
 [v _writeByteLSB `uc ~T0 @X0 1 a ]
-[; ;position_retention.c: 92: uint8_t writeByteLSB = totalAngleTurned;
+[; ;position_retention.c: 88: uint8_t writeByteLSB = totalAngleTurned;
 [e = _writeByteLSB -> _totalAngleTurned `uc ]
-"93
+"89
 [v _writeByteMSB `uc ~T0 @X0 1 a ]
-[; ;position_retention.c: 93: uint8_t writeByteMSB = totalAngleTurned >> 8;
+[; ;position_retention.c: 89: uint8_t writeByteMSB = totalAngleTurned >> 8;
 [e = _writeByteMSB -> >> _totalAngleTurned -> 8 `i `uc ]
-[; ;position_retention.c: 94: DATAEE_WriteByte(0x3100F0, writeByteLSB);
-"94
+[; ;position_retention.c: 90: DATAEE_WriteByte(0x3100F0, writeByteLSB);
+"90
 [e ( _DATAEE_WriteByte (2 , -> -> 3211504 `l `uc _writeByteLSB ]
-[; ;position_retention.c: 95: DATAEE_WriteByte(0x3100F2, writeByteMSB);
-"95
+[; ;position_retention.c: 91: DATAEE_WriteByte(0x3100F2, writeByteMSB);
+"91
 [e ( _DATAEE_WriteByte (2 , -> -> 3211506 `l `uc _writeByteMSB ]
-[; ;position_retention.c: 96: }
-"96
+[; ;position_retention.c: 92: }
+"92
 [e :UE 1756 ]
 }
-"98
+"94
 [v _ReadMotorPositionFromEEPROM `(v ~T0 @X0 1 ef ]
-"99
+"95
 {
-[; ;position_retention.c: 98: void ReadMotorPositionFromEEPROM()
-[; ;position_retention.c: 99: {
+[; ;position_retention.c: 94: void ReadMotorPositionFromEEPROM()
+[; ;position_retention.c: 95: {
 [e :U _ReadMotorPositionFromEEPROM ]
 [f ]
-"100
+"96
 [v _readByteMSB `ui ~T0 @X0 1 a ]
-[; ;position_retention.c: 100: uint16_t readByteMSB = DATAEE_ReadByte(0x3100F2);
+[; ;position_retention.c: 96: uint16_t readByteMSB = DATAEE_ReadByte(0x3100F2);
 [e = _readByteMSB -> ( _DATAEE_ReadByte (1 -> -> 3211506 `l `uc `ui ]
-"101
+"97
 [v _readByteLSB `uc ~T0 @X0 1 a ]
-[; ;position_retention.c: 101: uint8_t readByteLSB = DATAEE_ReadByte(0x3100F0);
+[; ;position_retention.c: 97: uint8_t readByteLSB = DATAEE_ReadByte(0x3100F0);
 [e = _readByteLSB ( _DATAEE_ReadByte (1 -> -> 3211504 `l `uc ]
-"102
+"98
 [v _actualPosition `ui ~T0 @X0 1 a ]
-[; ;position_retention.c: 102: uint16_t actualPosition = (readByteMSB << 8) + readByteLSB;
+[; ;position_retention.c: 98: uint16_t actualPosition = (readByteMSB << 8) + readByteLSB;
 [e = _actualPosition + << _readByteMSB -> 8 `i -> _readByteLSB `ui ]
-[; ;position_retention.c: 104: if (actualPosition < 0xFFFF)
-"104
+[; ;position_retention.c: 100: if (actualPosition < 0xFFFF)
+"100
 [e $ ! < _actualPosition -> 65535 `ui 1758  ]
-[; ;position_retention.c: 105: {
-"105
+[; ;position_retention.c: 101: {
+"101
 {
-[; ;position_retention.c: 106: if(actualPosition < 0)
-"106
+[; ;position_retention.c: 102: if(actualPosition < 0)
+"102
 [e $ ! < _actualPosition -> -> 0 `i `ui 1759  ]
+[; ;position_retention.c: 103: {
+"103
+{
+[; ;position_retention.c: 104: totalAngleTurned = abs(actualPosition);
+"104
+[e = _totalAngleTurned -> ( _abs (1 -> _actualPosition `i `ui ]
+"105
+}
+[; ;position_retention.c: 105: }
+[e $U 1760  ]
+"106
+[e :U 1759 ]
+[; ;position_retention.c: 106: else
 [; ;position_retention.c: 107: {
 "107
 {
-[; ;position_retention.c: 108: totalAngleTurned = abs(actualPosition);
+[; ;position_retention.c: 108: totalAngleTurned = actualPosition;
 "108
-[e = _totalAngleTurned -> ( _abs (1 -> _actualPosition `i `ui ]
+[e = _totalAngleTurned _actualPosition ]
 "109
 }
-[; ;position_retention.c: 109: }
-[e $U 1760  ]
-"110
-[e :U 1759 ]
-[; ;position_retention.c: 110: else
-[; ;position_retention.c: 111: {
-"111
-{
-[; ;position_retention.c: 112: totalAngleTurned = actualPosition;
-"112
-[e = _totalAngleTurned _actualPosition ]
-"113
-}
 [e :U 1760 ]
-[; ;position_retention.c: 113: }
-[; ;position_retention.c: 114: printf("actualPosition = %d \n\r", actualPosition);
-"114
+[; ;position_retention.c: 109: }
+[; ;position_retention.c: 110: printf("actualPosition = %d \n\r", actualPosition);
+"110
 [e ( _printf , (. :s 3C _actualPosition ]
-"115
+"111
 }
 [e :U 1758 ]
-[; ;position_retention.c: 115: }
-[; ;position_retention.c: 116: }
-"116
+[; ;position_retention.c: 111: }
+[; ;position_retention.c: 112: }
+"112
 [e :UE 1757 ]
 }
-"118
+"114
 [v _MotorPosition `(v ~T0 @X0 1 ef ]
-"119
+"115
 {
-[; ;position_retention.c: 118: void MotorPosition()
-[; ;position_retention.c: 119: {
+[; ;position_retention.c: 114: void MotorPosition()
+[; ;position_retention.c: 115: {
 [e :U _MotorPosition ]
 [f ]
-[; ;position_retention.c: 120: if(forwardDirection)
-"120
+[; ;position_retention.c: 116: if(forwardDirection)
+"116
 [e $ ! != -> _forwardDirection `i -> -> -> 0 `i `uc `i 1762  ]
-[; ;position_retention.c: 121: {
-"121
+[; ;position_retention.c: 117: {
+"117
 {
-[; ;position_retention.c: 122: forwardDirection = 0;
-"122
+[; ;position_retention.c: 118: forwardDirection = 0;
+"118
 [e = _forwardDirection -> -> 0 `i `uc ]
-[; ;position_retention.c: 123: ForwardPosition();
-"123
+[; ;position_retention.c: 119: ForwardPosition();
+"119
 [e ( _ForwardPosition ..  ]
-"124
+"120
 }
-[; ;position_retention.c: 124: }
+[; ;position_retention.c: 120: }
 [e $U 1763  ]
-"126
+"122
 [e :U 1762 ]
-[; ;position_retention.c: 126: else if(reverseDirection)
+[; ;position_retention.c: 122: else if(reverseDirection)
 [e $ ! != -> _reverseDirection `i -> -> -> 0 `i `uc `i 1764  ]
-[; ;position_retention.c: 127: {
-"127
+[; ;position_retention.c: 123: {
+"123
 {
-[; ;position_retention.c: 128: reverseDirection = 0;
-"128
+[; ;position_retention.c: 124: reverseDirection = 0;
+"124
 [e = _reverseDirection -> -> 0 `i `uc ]
-[; ;position_retention.c: 129: ReversePosition();
-"129
+[; ;position_retention.c: 125: ReversePosition();
+"125
 [e ( _ReversePosition ..  ]
-"130
+"126
 }
 [e :U 1764 ]
-"131
+"127
 [e :U 1763 ]
-[; ;position_retention.c: 130: }
-[; ;position_retention.c: 131: }
+[; ;position_retention.c: 126: }
+[; ;position_retention.c: 127: }
 [e :UE 1761 ]
 }
 [p f _printf 8388736 ]

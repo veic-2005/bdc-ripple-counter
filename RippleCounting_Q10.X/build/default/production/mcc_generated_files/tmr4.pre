@@ -18986,7 +18986,7 @@ T4HLT = 0x04;
 T4RST = 0x10;
 
 
-T4PR = 0x01;
+T4PR = 0xF3;
 
 
 T4TMR = 0x00;

@@ -18914,7 +18914,7 @@ ADREF = 0x00;
 
 ADACT = 0x00;
 
-ADCLK = 0x07;
+ADCLK = 0x0F;
 
 ADCON0 = 0x84;
 

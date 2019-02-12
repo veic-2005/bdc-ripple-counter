@@ -14399,9 +14399,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.c: 94: ADACT = 0x00;
 "94
 [e = _ADACT -> -> 0 `i `uc ]
-[; ;adcc.c: 96: ADCLK = 0x07;
+[; ;adcc.c: 96: ADCLK = 0x0F;
 "96
-[e = _ADCLK -> -> 7 `i `uc ]
+[e = _ADCLK -> -> 15 `i `uc ]
 [; ;adcc.c: 98: ADCON0 = 0x84;
 "98
 [e = _ADCON0 -> -> 132 `i `uc ]

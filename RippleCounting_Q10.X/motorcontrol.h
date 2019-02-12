@@ -43,7 +43,7 @@
 #define FORWARD_DIR         0x2
 #define REVERSE_DIR         0x3
 #define STEER               0x0
-#define PR2_VALUE           0x3
+#define PR2_VALUE           0x22
 
 #define MOTOR_ADDR00    0x3100F0     //0x310000 to 0x3100FF
 #define MOTOR_ADDR01    0x3100F2
@@ -54,19 +54,15 @@
 #define END_POINT  360
 #define HOME     0
 
+//
 bool inputSet = 0;
 bool reverseOrigin = 0;
-
 bool getCountDone = 0;
 bool forwardDirection = 0;
 bool reverseDirection = 0;
-bool dummy = 0;
-
 bool motorStalled = 0;
 
-bool homeReached = 1;
-bool endPointReached = 0;
-
+// Variable Declaration and Definition
 uint16_t angleDesired = 0;
 uint16_t angleTurned = 0;
 uint16_t remainingAngle = END_POINT;
@@ -82,35 +78,33 @@ void(*TMR1_GateInterruptHandler)(void);
 void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
 
-
-
 //Below are the list of functions used for handling position
-void MotorPosition();
-void ForwardPosition();
-void ReversePosition();
-void StorePosition();
-void ReadMotorPositionFromEEPROM();
+void MotorPosition(void);
+void ForwardPosition(void);
+void ReversePosition(void);
+void StorePosition(void);
+void ReadMotorPositionFromEEPROM(void);
 
 //Below are the functions used for dealing with the setting of motor parameters and driving it
-void CheckHomeButton();
-void CheckEndButton();
-void CheckForwardButton();
-void CheckReverseButton();
-void ReadInput();
-void Forward_Dir();
-void Reverse_Dir();
-void BrakingMechanism();
-void ResumeMotor();
-void StallDetection();
+void CheckHomeButton(void);
+void CheckEndButton(void);
+void CheckForwardButton(void);
+void CheckReverseButton(void);
+void ReadInput(void);
+void Forward_Dir(void);
+void Reverse_Dir(void);
+void BrakingMechanism(void);
+void ResumeMotor(void);
+void StallDetection(void);
 
-//for counting
-void ExpectedRippleCountRemainingAngle();
-void ExpectedRippleCountToHome();
-void ExpectedRippleCountToEndPoint();
-void CompareLoadValue();
-void Compare_ISR();
-void GetAngleTurned();
-void StartCounting();
+// Function declaration for Counting Ripples
+void ExpectedRippleCountRemainingAngle(void);
+void ExpectedRippleCountToHome(void);
+void ExpectedRippleCountToEndPoint(void);
+void CompareLoadValue(void);
+void Compare_ISR(void);
+void GetAngleTurned(void);
+void StartCounting(void);
 
 #endif	/* MOTOR_CONTROL_H */
 

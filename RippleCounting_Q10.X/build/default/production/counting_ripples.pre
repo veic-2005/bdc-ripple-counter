@@ -18848,19 +18848,14 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 57 "motorcontrol.h"
+# 58 "motorcontrol.h"
 bool inputSet = 0;
 bool reverseOrigin = 0;
-
 bool getCountDone = 0;
 bool forwardDirection = 0;
 bool reverseDirection = 0;
-bool dummy = 0;
-
 bool motorStalled = 0;
 
-bool homeReached = 1;
-bool endPointReached = 0;
 
 uint16_t angleDesired = 0;
 uint16_t angleTurned = 0;
@@ -18878,34 +18873,32 @@ void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
 
 
+void MotorPosition(void);
+void ForwardPosition(void);
+void ReversePosition(void);
+void StorePosition(void);
+void ReadMotorPositionFromEEPROM(void);
 
 
-void MotorPosition();
-void ForwardPosition();
-void ReversePosition();
-void StorePosition();
-void ReadMotorPositionFromEEPROM();
+void CheckHomeButton(void);
+void CheckEndButton(void);
+void CheckForwardButton(void);
+void CheckReverseButton(void);
+void ReadInput(void);
+void Forward_Dir(void);
+void Reverse_Dir(void);
+void BrakingMechanism(void);
+void ResumeMotor(void);
+void StallDetection(void);
 
 
-void CheckHomeButton();
-void CheckEndButton();
-void CheckForwardButton();
-void CheckReverseButton();
-void ReadInput();
-void Forward_Dir();
-void Reverse_Dir();
-void BrakingMechanism();
-void ResumeMotor();
-void StallDetection();
-
-
-void ExpectedRippleCountRemainingAngle();
-void ExpectedRippleCountToHome();
-void ExpectedRippleCountToEndPoint();
-void CompareLoadValue();
-void Compare_ISR();
-void GetAngleTurned();
-void StartCounting();
+void ExpectedRippleCountRemainingAngle(void);
+void ExpectedRippleCountToHome(void);
+void ExpectedRippleCountToEndPoint(void);
+void CompareLoadValue(void);
+void Compare_ISR(void);
+void GetAngleTurned(void);
+void StartCounting(void);
 
 # 30 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\math.h"
 extern double fabs(double);
@@ -19365,9 +19358,11 @@ extern void (*TMR4_InterruptHandler)(void);
 void TMR4_DefaultInterruptHandler(void);
 
 # 50 "counting_ripples.c"
+bool dummy = 0;
+
 void ReadInput()
 {
-angleDesired = ((ADCC_GetSingleConversion(getRippleChannel) * 45) >> 8) + 1;
+angleDesired = (((ADCC_GetSingleConversion(getRippleChannel) * 45) + 1 ) >> 8);
 (angleDesired % 5 != 0)? printf("") :
 printf("angleDesired = %d \t\r\n", angleDesired);
 
@@ -19412,7 +19407,7 @@ void StartCounting()
 do { LATAbits.LATA7 = 1; } while(0);
 CCP1_SetCompareCount(compareLoadValue);
 TMR1_Reload();
-TMR4_Period8BitSet(0x3);
+TMR4_Period8BitSet(0x22);
 TMR1_StartTimer();
 do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0);
 do{T4CONbits.TMR4ON = 1;} while(0);

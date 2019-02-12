@@ -1,9 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F15406 `(v ~T0 @X0 0 tf ]
-[v F15413 `(v ~T0 @X0 0 tf ]
-[v F15535 `(v ~T0 @X0 0 tf ]
+[v F15403 `(v ~T0 @X0 0 tf ]
+[v F15410 `(v ~T0 @X0 0 tf ]
+[v F15554 `(v ~T0 @X0 0 tf ]
 "810 mcc_generated_files/tmr4.h
-[v _TMR4_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F15535 ]
+[v _TMR4_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F15554 ]
 "39 stall_detection.c
 [v _Stall_ISR `(v ~T0 @X0 0 ef ]
 "27517 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f46q10.h
@@ -14,19 +14,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S1187 . . ]
 "27528
 [v _LATAbits `VS1187 ~T0 @X0 0 e@3970 ]
-"102 motorcontrol.h
+"96 motorcontrol.h
 [v _BrakingMechanism `(v ~T0 @X0 0 ef ]
 "522 mcc_generated_files/tmr4.h
 [v _TMR4_StopTimer `(v ~T0 @X0 0 ef ]
 "161 mcc_generated_files/tmr1.h
 [v _TMR1_StopTimer `(v ~T0 @X0 0 ef ]
-"107 motorcontrol.h
+"101 motorcontrol.h
 [v _ExpectedRippleCountRemainingAngle `(v ~T0 @X0 0 ef ]
-"108
+"102
 [v _ExpectedRippleCountToHome `(v ~T0 @X0 0 ef ]
-"110
+"104
 [v _CompareLoadValue `(v ~T0 @X0 0 ef ]
-"101
+"95
 [v _Reverse_Dir `(v ~T0 @X0 0 ef ]
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;htc.h: 27: extern const char __xc8_OPTIM_SPEED;
@@ -14219,18 +14219,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;cwg.h: 225: bool CWG_IsModuleEnabled(void);
 [; ;cwg.h: 252: void CWG_AutoShutdownEventSet();
 [; ;cwg.h: 289: void CWG_AutoShutdownEventClear();
-"57 motorcontrol.h
+"58 motorcontrol.h
 [v _inputSet `uc ~T0 @X0 1 e ]
 [i _inputSet
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 57: bool inputSet = 0;
-"58
+[; ;motorcontrol.h: 58: bool inputSet = 0;
+"59
 [v _reverseOrigin `uc ~T0 @X0 1 e ]
 [i _reverseOrigin
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 58: bool reverseOrigin = 0;
+[; ;motorcontrol.h: 59: bool reverseOrigin = 0;
 "60
 [v _getCountDone `uc ~T0 @X0 1 e ]
 [i _getCountDone
@@ -14250,95 +14250,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motorcontrol.h: 62: bool reverseDirection = 0;
 "63
-[v _dummy `uc ~T0 @X0 1 e ]
-[i _dummy
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 63: bool dummy = 0;
-"65
 [v _motorStalled `uc ~T0 @X0 1 e ]
 [i _motorStalled
 -> -> 0 `i `uc
 ]
-[; ;motorcontrol.h: 65: bool motorStalled = 0;
-"67
-[v _homeReached `uc ~T0 @X0 1 e ]
-[i _homeReached
--> -> 1 `i `uc
-]
-[; ;motorcontrol.h: 67: bool homeReached = 1;
-"68
-[v _endPointReached `uc ~T0 @X0 1 e ]
-[i _endPointReached
--> -> 0 `i `uc
-]
-[; ;motorcontrol.h: 68: bool endPointReached = 0;
-"70
+[; ;motorcontrol.h: 63: bool motorStalled = 0;
+"66
 [v _angleDesired `ui ~T0 @X0 1 e ]
 [i _angleDesired
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 70: uint16_t angleDesired = 0;
-"71
+[; ;motorcontrol.h: 66: uint16_t angleDesired = 0;
+"67
 [v _angleTurned `ui ~T0 @X0 1 e ]
 [i _angleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 71: uint16_t angleTurned = 0;
-"72
+[; ;motorcontrol.h: 67: uint16_t angleTurned = 0;
+"68
 [v _remainingAngle `ui ~T0 @X0 1 e ]
 [i _remainingAngle
 -> -> 360 `i `ui
 ]
-[; ;motorcontrol.h: 72: uint16_t remainingAngle = 360;
-"73
+[; ;motorcontrol.h: 68: uint16_t remainingAngle = 360;
+"69
 [v _totalAngleTurned `ui ~T0 @X0 1 e ]
 [i _totalAngleTurned
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 73: uint16_t totalAngleTurned = 0;
-"75
+[; ;motorcontrol.h: 69: uint16_t totalAngleTurned = 0;
+"71
 [v _compareLoadValue `ui ~T0 @X0 1 e ]
 [i _compareLoadValue
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 75: uint16_t compareLoadValue = 0;
-"76
+[; ;motorcontrol.h: 71: uint16_t compareLoadValue = 0;
+"72
 [v _expectedRippleCount `ui ~T0 @X0 1 e ]
 [i _expectedRippleCount
 -> -> 0 `i `ui
 ]
-[; ;motorcontrol.h: 76: uint16_t expectedRippleCount = 0;
-[; ;motorcontrol.h: 79: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
-"80
-[v _TMR1_GateInterruptHandler `*F15406 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 80: void(*TMR1_GateInterruptHandler)(void);
-[; ;motorcontrol.h: 82: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
-"83
-[v _CCP1_CompareInterruptHandler `*F15413 ~T0 @X0 1 e ]
-[; ;motorcontrol.h: 83: void(*CCP1_CompareInterruptHandler)(void);
-[; ;motorcontrol.h: 88: void MotorPosition();
-[; ;motorcontrol.h: 89: void ForwardPosition();
-[; ;motorcontrol.h: 90: void ReversePosition();
-[; ;motorcontrol.h: 91: void StorePosition();
-[; ;motorcontrol.h: 92: void ReadMotorPositionFromEEPROM();
-[; ;motorcontrol.h: 95: void CheckHomeButton();
-[; ;motorcontrol.h: 96: void CheckEndButton();
-[; ;motorcontrol.h: 97: void CheckForwardButton();
-[; ;motorcontrol.h: 98: void CheckReverseButton();
-[; ;motorcontrol.h: 99: void ReadInput();
-[; ;motorcontrol.h: 100: void Forward_Dir();
-[; ;motorcontrol.h: 101: void Reverse_Dir();
-[; ;motorcontrol.h: 102: void BrakingMechanism();
-[; ;motorcontrol.h: 103: void ResumeMotor();
-[; ;motorcontrol.h: 104: void StallDetection();
-[; ;motorcontrol.h: 107: void ExpectedRippleCountRemainingAngle();
-[; ;motorcontrol.h: 108: void ExpectedRippleCountToHome();
-[; ;motorcontrol.h: 109: void ExpectedRippleCountToEndPoint();
-[; ;motorcontrol.h: 110: void CompareLoadValue();
-[; ;motorcontrol.h: 111: void Compare_ISR();
-[; ;motorcontrol.h: 112: void GetAngleTurned();
-[; ;motorcontrol.h: 113: void StartCounting();
+[; ;motorcontrol.h: 72: uint16_t expectedRippleCount = 0;
+[; ;motorcontrol.h: 75: void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
+"76
+[v _TMR1_GateInterruptHandler `*F15403 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 76: void(*TMR1_GateInterruptHandler)(void);
+[; ;motorcontrol.h: 78: void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
+"79
+[v _CCP1_CompareInterruptHandler `*F15410 ~T0 @X0 1 e ]
+[; ;motorcontrol.h: 79: void(*CCP1_CompareInterruptHandler)(void);
+[; ;motorcontrol.h: 82: void MotorPosition(void);
+[; ;motorcontrol.h: 83: void ForwardPosition(void);
+[; ;motorcontrol.h: 84: void ReversePosition(void);
+[; ;motorcontrol.h: 85: void StorePosition(void);
+[; ;motorcontrol.h: 86: void ReadMotorPositionFromEEPROM(void);
+[; ;motorcontrol.h: 89: void CheckHomeButton(void);
+[; ;motorcontrol.h: 90: void CheckEndButton(void);
+[; ;motorcontrol.h: 91: void CheckForwardButton(void);
+[; ;motorcontrol.h: 92: void CheckReverseButton(void);
+[; ;motorcontrol.h: 93: void ReadInput(void);
+[; ;motorcontrol.h: 94: void Forward_Dir(void);
+[; ;motorcontrol.h: 95: void Reverse_Dir(void);
+[; ;motorcontrol.h: 96: void BrakingMechanism(void);
+[; ;motorcontrol.h: 97: void ResumeMotor(void);
+[; ;motorcontrol.h: 98: void StallDetection(void);
+[; ;motorcontrol.h: 101: void ExpectedRippleCountRemainingAngle(void);
+[; ;motorcontrol.h: 102: void ExpectedRippleCountToHome(void);
+[; ;motorcontrol.h: 103: void ExpectedRippleCountToEndPoint(void);
+[; ;motorcontrol.h: 104: void CompareLoadValue(void);
+[; ;motorcontrol.h: 105: void Compare_ISR(void);
+[; ;motorcontrol.h: 106: void GetAngleTurned(void);
+[; ;motorcontrol.h: 107: void StartCounting(void);
 [; ;pin_manager.h: 336: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 348: void PIN_MANAGER_IOC(void);
 [; ;tmr1.h: 100: void TMR1_Initialize(void);

@@ -103,8 +103,8 @@ TMR4_CLC7_OUT 22
 TMR4_CLC8_OUT 23
 TMR4_RESERVED_3 24
 ]
-"52 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
-[e E15666 . `uc
+"54 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+[e E15685 . `uc
 getRippleChannel 0
 channel_VSS 60
 channel_Temp 61
@@ -163,21 +163,21 @@ channel_FVR_buf1 63
 [v _CheckHomeButton CheckHomeButton `(v  1 e 1 0 ]
 "75
 [v _CheckEndButton CheckEndButton `(v  1 e 1 0 ]
-"50 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"52 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _ReadInput ReadInput `(v  1 e 1 0 ]
-"68
+"70
 [v _ExpectedRippleCountRemainingAngle ExpectedRippleCountRemainingAngle `(v  1 e 1 0 ]
-"73
+"75
 [v _ExpectedRippleCountToHome ExpectedRippleCountToHome `(v  1 e 1 0 ]
-"80
+"82
 [v _ExpectedRippleCountToEndPoint ExpectedRippleCountToEndPoint `(v  1 e 1 0 ]
-"87
+"89
 [v _CompareLoadValue CompareLoadValue `(v  1 e 1 0 ]
-"92
+"94
 [v _StartCounting StartCounting `(v  1 e 1 0 ]
-"102
+"104
 [v _Compare_ISR Compare_ISR `(v  1 e 1 0 ]
-"112
+"114
 [v _GetAngleTurned GetAngleTurned `(v  1 e 1 0 ]
 "30 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\interrupt_handlers.c
 [v _TMR1_GATE_ISR TMR1_GATE_ISR `(v  1 e 1 0 ]
@@ -277,21 +277,21 @@ channel_FVR_buf1 63
 [v _TMR4_SetInterruptHandler TMR4_SetInterruptHandler `(v  1 e 1 0 ]
 "182
 [v _TMR4_DefaultInterruptHandler TMR4_DefaultInterruptHandler `(v  1 e 1 0 ]
-"36 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
+"35 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
 [v _Forward_Dir Forward_Dir `(v  1 e 1 0 ]
-"55
+"56
 [v _Reverse_Dir Reverse_Dir `(v  1 e 1 0 ]
 "76
 [v _BrakingMechanism BrakingMechanism `(v  1 e 1 0 ]
 "38 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
 [v _ForwardPosition ForwardPosition `(v  1 e 1 0 ]
-"65
+"62
 [v _ReversePosition ReversePosition `(v  1 e 1 0 ]
-"90
+"86
 [v _StorePosition StorePosition `(v  1 e 1 0 ]
-"98
+"94
 [v _ReadMotorPositionFromEEPROM ReadMotorPositionFromEEPROM `(v  1 e 1 0 ]
-"118
+"114
 [v _MotorPosition MotorPosition `(v  1 e 1 0 ]
 "41 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\stall_detection.c
 [v _StallDetection StallDetection `(v  1 e 1 0 ]
@@ -684,7 +684,7 @@ channel_FVR_buf1 63
 [v _TRISD TRISD `VEuc  1 e 1 @3978 ]
 "28279
 [v _TRISE TRISE `VEuc  1 e 1 @3979 ]
-[s S2565 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2549 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -694,9 +694,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "28420
-[u S2574 . 1 `S2565 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2574  1 e 1 @3981 ]
-[s S2589 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2558 . 1 `S2549 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2558  1 e 1 @3981 ]
+[s S2573 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -706,8 +706,8 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "28482
-[u S2598 . 1 `S2589 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2598  1 e 1 @3982 ]
+[u S2582 . 1 `S2573 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2582  1 e 1 @3982 ]
 "29714
 [v _TX1REG TX1REG `VEuc  1 e 1 @3993 ]
 "29775
@@ -884,15 +884,17 @@ channel_FVR_buf1 63
 [v _forwardBtnPressed forwardBtnPressed `uc  1 e 1 0 ]
 "8
 [v _reverseBtnPressed reverseBtnPressed `uc  1 e 1 0 ]
+"50 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+[v _dummy dummy `uc  1 e 1 0 ]
 "128 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/memory.c
 [v _secram secram `uc  1 e 1 @3328 ]
 "57 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/tmr1.c
 [v _timer1ReloadVal timer1ReloadVal `VEui  1 e 2 0 ]
 "58 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/tmr4.c
 [v _TMR4_InterruptHandler TMR4_InterruptHandler `*.37(v  1 e 2 0 ]
-"57 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motorcontrol.h
+"58 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motorcontrol.h
 [v _inputSet inputSet `uc  1 e 1 0 ]
-"58
+"59
 [v _reverseOrigin reverseOrigin `uc  1 e 1 0 ]
 "60
 [v _getCountDone getCountDone `uc  1 e 1 0 ]
@@ -901,24 +903,22 @@ channel_FVR_buf1 63
 "62
 [v _reverseDirection reverseDirection `uc  1 e 1 0 ]
 "63
-[v _dummy dummy `uc  1 e 1 0 ]
-"65
 [v _motorStalled motorStalled `uc  1 e 1 0 ]
-"70
+"66
 [v _angleDesired angleDesired `ui  1 e 2 0 ]
-"71
+"67
 [v _angleTurned angleTurned `ui  1 e 2 0 ]
-"72
+"68
 [v _remainingAngle remainingAngle `ui  1 e 2 0 ]
-"73
+"69
 [v _totalAngleTurned totalAngleTurned `ui  1 e 2 0 ]
-"75
+"71
 [v _compareLoadValue compareLoadValue `ui  1 e 2 0 ]
-"76
+"72
 [v _expectedRippleCount expectedRippleCount `ui  1 e 2 0 ]
-"80
+"76
 [v _TMR1_GateInterruptHandler TMR1_GateInterruptHandler `*.37(v  1 e 2 0 ]
-"83
+"79
 [v _CCP1_CompareInterruptHandler CCP1_CompareInterruptHandler `*.37(v  1 e 2 0 ]
 "52 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -1011,16 +1011,16 @@ channel_FVR_buf1 63
 {
 "72
 } 0
-"98 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
+"94 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
 [v _ReadMotorPositionFromEEPROM ReadMotorPositionFromEEPROM `(v  1 e 1 0 ]
 {
-"102
+"98
 [v ReadMotorPositionFromEEPROM@actualPosition actualPosition `ui  1 a 2 29 ]
-"100
+"96
 [v ReadMotorPositionFromEEPROM@readByteMSB readByteMSB `ui  1 a 2 26 ]
-"101
+"97
 [v ReadMotorPositionFromEEPROM@readByteLSB readByteLSB `uc  1 a 1 28 ]
-"116
+"112
 } 0
 "244 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/memory.c
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
@@ -1031,10 +1031,10 @@ channel_FVR_buf1 63
 [v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 2 ]
 "256
 } 0
-"50 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"52 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _ReadInput ReadInput `(v  1 e 1 0 ]
 {
-"66
+"68
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -1055,49 +1055,27 @@ channel_FVR_buf1 63
 [v ADCC_GetSingleConversion@channel channel `E15375  1 a 1 6 ]
 "152
 } 0
-"118 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
+"114 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
 [v _MotorPosition MotorPosition `(v  1 e 1 0 ]
 {
-"131
+"127
 } 0
-"65
+"62
 [v _ReversePosition ReversePosition `(v  1 e 1 0 ]
 {
-"88
+"84
 } 0
 "38
 [v _ForwardPosition ForwardPosition `(v  1 e 1 0 ]
 {
-"63
+"60
 } 0
-"90
-[v _StorePosition StorePosition `(v  1 e 1 0 ]
-{
-"93
-[v StorePosition@writeByteMSB writeByteMSB `uc  1 a 1 6 ]
-"92
-[v StorePosition@writeByteLSB writeByteLSB `uc  1 a 1 5 ]
-"96
-} 0
-"220 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/memory.c
-[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
-{
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-"222
-[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 4 ]
-"220
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-[v DATAEE_WriteByte@bData bData `uc  1 p 1 2 ]
-"222
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 3 ]
-"242
-} 0
-"112 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"114 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _GetAngleTurned GetAngleTurned `(v  1 e 1 0 ]
 {
-"114
+"116
 [v GetAngleTurned@actualRippleCount actualRippleCount `ui  1 a 2 3 ]
-"129
+"131
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -1205,15 +1183,15 @@ channel_FVR_buf1 63
 {
 "73
 } 0
-"55 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
+"56 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
 [v _Reverse_Dir Reverse_Dir `(v  1 e 1 0 ]
 {
 "74
 } 0
-"73 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"75 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _ExpectedRippleCountToHome ExpectedRippleCountToHome `(v  1 e 1 0 ]
 {
-"78
+"80
 } 0
 "10 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\check_buttons.c
 [v _CheckForwardButton CheckForwardButton `(v  1 e 1 0 ]
@@ -1223,17 +1201,39 @@ channel_FVR_buf1 63
 "75
 [v _CheckEndButton CheckEndButton `(v  1 e 1 0 ]
 {
-"104
+"102
 } 0
-"36 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
+"35 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\motor_drive.c
 [v _Forward_Dir Forward_Dir `(v  1 e 1 0 ]
 {
-"53
+"54
 } 0
-"92 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"86 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\position_retention.c
+[v _StorePosition StorePosition `(v  1 e 1 0 ]
+{
+"89
+[v StorePosition@writeByteMSB writeByteMSB `uc  1 a 1 6 ]
+"88
+[v StorePosition@writeByteLSB writeByteLSB `uc  1 a 1 5 ]
+"92
+} 0
+"220 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+"222
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 4 ]
+"220
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 2 ]
+"222
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 3 ]
+"242
+} 0
+"94 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _StartCounting StartCounting `(v  1 e 1 0 ]
 {
-"101
+"103
 } 0
 "155 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/tmr4.c
 [v _TMR4_Period8BitSet TMR4_Period8BitSet `(v  1 e 1 0 ]
@@ -1272,15 +1272,15 @@ channel_FVR_buf1 63
 [v CCP1_SetCompareCount@compareCount compareCount `ui  1 p 2 2 ]
 "90
 } 0
-"80 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"82 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _ExpectedRippleCountToEndPoint ExpectedRippleCountToEndPoint `(v  1 e 1 0 ]
 {
-"85
+"87
 } 0
-"68
+"70
 [v _ExpectedRippleCountRemainingAngle ExpectedRippleCountRemainingAngle `(v  1 e 1 0 ]
 {
-"71
+"73
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\round.c
 [v _round round `(d  1 e 3 0 ]
@@ -1378,10 +1378,10 @@ channel_FVR_buf1 63
 [v ___ftpack@sign sign `uc  1 p 1 6 ]
 "86
 } 0
-"87 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"89 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _CompareLoadValue CompareLoadValue `(v  1 e 1 0 ]
 {
-"90
+"92
 } 0
 "111 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/cwg.c
 [v _CWG_AutoShutdownEventSet CWG_AutoShutdownEventSet `(v  1 e 1 0 ]
@@ -1424,10 +1424,10 @@ channel_FVR_buf1 63
 {
 "51
 } 0
-"102 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
+"104 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\counting_ripples.c
 [v _Compare_ISR Compare_ISR `(v  1 e 1 0 ]
 {
-"110
+"112
 } 0
 "125 C:\Users\A20687\Documents\bdc-ripple-counter\RippleCounting_Q10.X\mcc_generated_files/tmr4.c
 [v _TMR4_StopTimer TMR4_StopTimer `(v  1 e 1 0 ]

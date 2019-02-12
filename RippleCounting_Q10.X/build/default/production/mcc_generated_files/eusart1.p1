@@ -14277,12 +14277,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eusart1.c: 67: TX1STA = 0x24;
 "67
 [e = _TX1STA -> -> 36 `i `uc ]
-[; ;eusart1.c: 70: SP1BRGL = 0xA0;
+[; ;eusart1.c: 70: SP1BRGL = 0x40;
 "70
-[e = _SP1BRGL -> -> 160 `i `uc ]
-[; ;eusart1.c: 73: SP1BRGH = 0x01;
+[e = _SP1BRGL -> -> 64 `i `uc ]
+[; ;eusart1.c: 73: SP1BRGH = 0x03;
 "73
-[e = _SP1BRGH -> -> 1 `i `uc ]
+[e = _SP1BRGH -> -> 3 `i `uc ]
 [; ;eusart1.c: 76: }
 "76
 [e :UE 1726 ]

@@ -18806,19 +18806,14 @@ void CWG_AutoShutdownEventSet();
 # 289
 void CWG_AutoShutdownEventClear();
 
-# 57 "motorcontrol.h"
+# 58 "motorcontrol.h"
 bool inputSet = 0;
 bool reverseOrigin = 0;
-
 bool getCountDone = 0;
 bool forwardDirection = 0;
 bool reverseDirection = 0;
-bool dummy = 0;
-
 bool motorStalled = 0;
 
-bool homeReached = 1;
-bool endPointReached = 0;
 
 uint16_t angleDesired = 0;
 uint16_t angleTurned = 0;
@@ -18836,34 +18831,32 @@ void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
 
 
+void MotorPosition(void);
+void ForwardPosition(void);
+void ReversePosition(void);
+void StorePosition(void);
+void ReadMotorPositionFromEEPROM(void);
 
 
-void MotorPosition();
-void ForwardPosition();
-void ReversePosition();
-void StorePosition();
-void ReadMotorPositionFromEEPROM();
+void CheckHomeButton(void);
+void CheckEndButton(void);
+void CheckForwardButton(void);
+void CheckReverseButton(void);
+void ReadInput(void);
+void Forward_Dir(void);
+void Reverse_Dir(void);
+void BrakingMechanism(void);
+void ResumeMotor(void);
+void StallDetection(void);
 
 
-void CheckHomeButton();
-void CheckEndButton();
-void CheckForwardButton();
-void CheckReverseButton();
-void ReadInput();
-void Forward_Dir();
-void Reverse_Dir();
-void BrakingMechanism();
-void ResumeMotor();
-void StallDetection();
-
-
-void ExpectedRippleCountRemainingAngle();
-void ExpectedRippleCountToHome();
-void ExpectedRippleCountToEndPoint();
-void CompareLoadValue();
-void Compare_ISR();
-void GetAngleTurned();
-void StartCounting();
+void ExpectedRippleCountRemainingAngle(void);
+void ExpectedRippleCountToHome(void);
+void ExpectedRippleCountToEndPoint(void);
+void CompareLoadValue(void);
+void Compare_ISR(void);
+void GetAngleTurned(void);
+void StartCounting(void);
 
 # 336 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
