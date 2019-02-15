@@ -64,8 +64,8 @@ void CMP3_Initialize(void)
        bit of the CMxCON0 register.*/
     PIE2bits.C3IE = 0;
 
-	// C3HYS disabled; C3SP hi_speed; C3ON enabled; C3POL not inverted; C3SYNC asynchronous; C3ZLF unfiltered;                          
-    CM3CON0 = 0x84;
+	// C3HYS disabled; C3SP hi_speed; C3ON enabled; C3POL inverted; C3SYNC asynchronous; C3ZLF unfiltered;                          
+    CM3CON0 = 0x94;
 	
 	// C3INTN no_intFlag; C3INTP no_intFlag;                          
     CM3CON1 = 0x00;
@@ -73,8 +73,8 @@ void CMP3_Initialize(void)
 	// C3NCH CIN2-;                          
     CM3NSEL = 0x02;
 	
-	// C3PCH CIN1+;                          
-    CM3PSEL = 0x01;
+	// C3PCH FVR_buf2;                          
+    CM3PSEL = 0x02;
 	
     // Clearing IF flag before enabling the interrupt.
     PIR2bits.C3IF = 0;

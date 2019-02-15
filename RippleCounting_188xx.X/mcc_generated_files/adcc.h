@@ -89,8 +89,6 @@ typedef signed short long int int24_t;
 typedef enum
 {
     POT =  0x0,
-    OVERCURRENT_M1 =  0x3,
-    OVERCURRENT_M2 =  0x4,
     channel_VSS =  0x3C,
     channel_Temp =  0x3D,
     channel_DAC1 =  0x3E,

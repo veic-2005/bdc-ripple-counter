@@ -41,17 +41,27 @@
     SOFTWARE.
  */
 
+/**
+  Section: Included Files
+ */
 #include "mcc_generated_files/mcc.h"
 #include "motorcontrol.h"
+#include "safety_feature.h"
 #include "lcd.h"
 
-void CheckMotorSelectorButton();
-void nextMotor();
+/**
+ * Section: Function Declaration
+ */
+void CheckMotorSelectorButton(void);
+void nextMotor(void);
+
 /*
                          Main application
  */
 void main(void) {
     SYSTEM_Initialize();
+    StopMotor1();
+    StopMotor2();
     
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
@@ -60,7 +70,7 @@ void main(void) {
     StallDetection();
     OvercurrentDetection();
     
-    CCP1_CompareSetInterruptHandler(Compare_ISR);
+    RetrieveRippleCount();
             
     while (1) 
     {
@@ -92,7 +102,7 @@ void main(void) {
         if(faultDetected)
         {
             faultDetected = 0;
-            GetActualRippleCount();
+            actualRippleCount = GetActualRippleCount();
            
             if(motor01)
             {

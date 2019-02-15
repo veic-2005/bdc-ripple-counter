@@ -12,11 +12,11 @@
 
   @Description
     This header file provides APIs for the Explorer 8 LCD.
-        Device                  :  PIC16F18854
+        Device                  :  PIC18F46Q10
         Driver Version          :  2.00
         Compiler                :  XC8 1.45
-        MPLAB                   :  MPLAB X 4.15
-        MPLAB Code Configurator :  MCC 3.45
+        MPLAB                   :  MPLAB X 5.10
+        MPLAB Code Configurator :  MCC 3.55
  */
 
 /*

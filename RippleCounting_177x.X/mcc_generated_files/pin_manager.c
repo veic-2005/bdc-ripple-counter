@@ -70,7 +70,7 @@ void PIN_MANAGER_Initialize(void)
     */
     TRISE = 0x05;
     TRISA = 0x39;
-    TRISB = 0x7B;
+    TRISB = 0xFB;
     TRISC = 0x16;
     TRISD = 0x0D;
 
@@ -124,7 +124,6 @@ void PIN_MANAGER_Initialize(void)
     SSPDATPPS = 0x14;   //RC4->MSSP:SDI;    
     RC3PPS = 0x21;   //RC3->MSSP:SCK;    
     RE1PPS = 0x0E;   //RE1->COG3:COG3B;    
-    RB7PPS = 0x28;   //RB7->CMP3:C3OUT;    
     SSPCLKPPS = 0x13;   //RC3->MSSP:SCK;    
     RD6PPS = 0x08;   //RD6->COG1:COG1D;    
     RD7PPS = 0x10;   //RD7->COG3:COG3D;    

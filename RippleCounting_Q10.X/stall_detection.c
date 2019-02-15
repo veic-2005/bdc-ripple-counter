@@ -1,6 +1,6 @@
 /*
  * Author : A20687
- * Date: 12/04/2018
+ * Date: 02/14/2019
  * File Name: stall_detection.c
  * Short Description: This file contains codes for addressing the stall condition.
  */
@@ -27,23 +27,26 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
  */
-
-
+/*
+ Section: Include File
+ */
 #include "mcc_generated_files/cwg.h"
-#include "motorcontrol.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
+#include "motorcontrol.h"
 
-
-void Stall_ISR();
+/*
+ Section: ISR declaration for stall detection
+ */
+void Stall_ISR(void);
 
 void StallDetection()
 {
     TMR4_SetInterruptHandler(Stall_ISR);
 }
 
-void Stall_ISR()
+void Stall_ISR(void)
 {
     Stall_IndicatorLED_SetHigh();
     BrakingMechanism();
@@ -52,7 +55,7 @@ void Stall_ISR()
     motorStalled = 1;
 }
 
-void ResumeMotor()
+void ResumeMotor(void)
 {
     Stall_IndicatorLED_SetLow();
     
@@ -70,3 +73,6 @@ void ResumeMotor()
     inputSet = 1;
     Reverse_Dir();
 }
+/**
+ End of File
+*/

@@ -70,20 +70,20 @@ void SMT2_Initialize(void)
     // SMT2CSEL FOSC/4; 
     SMT2CLK = 0x00;
 
-    // SMT2WSEL C2OUT_sync; 
-    SMT2WIN = 0x12;
+    // SMT2WSEL SMT2WINPPS; 
+    SMT2WIN = 0x00;
 
     // SMT2SSEL SMT2SIGPPS; 
     SMT2SIG = 0x00;
 
-    // SMT2PR 0; 
-    SMT2PRU = 0x00;
+    // SMT2PR 127; 
+    SMT2PRU = 0x7F;
 
-    // SMT2PR 5; 
-    SMT2PRH = 0x05;
+    // SMT2PR 255; 
+    SMT2PRH = 0xFF;
 
-    // SMT2PR 0; 
-    SMT2PRL = 0x00;
+    // SMT2PR 255; 
+    SMT2PRL = 0xFF;
 
     // Enabling SMT2 overflow interrupt.
     PIE8bits.SMT2IE = 1;

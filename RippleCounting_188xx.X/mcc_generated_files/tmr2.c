@@ -69,8 +69,8 @@ void TMR2_Initialize(void)
     // T2PSYNC Not Synchronized; T2MODE Software control; T2CKPOL Rising Edge; T2CKSYNC Not Synchronized; 
     T2HLT = 0x00;
 
-    // T2RSEL sync_C1OUT; 
-    T2RST = 0x0B;
+    // T2RSEL T2CKIPPS pin; 
+    T2RST = 0x00;
 
     // PR2 255; 
     T2PR = 0xFF;
@@ -81,8 +81,8 @@ void TMR2_Initialize(void)
     // Clearing IF flag.
     PIR4bits.TMR2IF = 0;
 
-    // T2CKPS 1:128; T2OUTPS 1:1; TMR2ON on; 
-    T2CON = 0xF0;
+    // T2CKPS 1:1; T2OUTPS 1:1; TMR2ON on; 
+    T2CON = 0x80;
 }
 
 void TMR2_ModeSet(TMR2_HLT_MODE mode)

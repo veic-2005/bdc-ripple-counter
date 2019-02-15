@@ -70,20 +70,20 @@ void SMT1_Initialize(void)
     // SMT1CSEL FOSC/4; 
     SMT1CLK = 0x00;
 
-    // SMT1WSEL C1OUT_sync; 
-    SMT1WIN = 0x11;
+    // SMT1WSEL SMT1WINPPS; 
+    SMT1WIN = 0x00;
 
     // SMT1SSEL SMT1SIGPPS; 
     SMT1SIG = 0x00;
 
-    // SMT1PR 0; 
-    SMT1PRU = 0x00;
+    // SMT1PR 127; 
+    SMT1PRU = 0x7F;
 
-    // SMT1PR 5; 
-    SMT1PRH = 0x05;
+    // SMT1PR 255; 
+    SMT1PRH = 0xFF;
 
-    // SMT1PR 0; 
-    SMT1PRL = 0x00;
+    // SMT1PR 255; 
+    SMT1PRL = 0xFF;
 
     // Enabling SMT1 overflow interrupt.
     PIE8bits.SMT1IE = 1;

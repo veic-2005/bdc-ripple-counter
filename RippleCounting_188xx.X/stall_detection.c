@@ -1,8 +1,8 @@
-/* 
+/*
  * Author : A20687
  * Date: 02/14/2019
- * File Name: safety_feature.c
- *  Short Description: This source file contains the code for addressing stall condition.
+ * File Name: stall_detection.c
+ * Short Description: This file contains codes for addressing the stall condition.
  */
 
 /*
@@ -27,88 +27,86 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
  */
-
-/**
-  Section: Included Files
- */
-#include "mcc_generated_files/tmr1.h"
-#include "mcc_generated_files/tmr4.h"
-#include "interrupt_handlers.h"
-#include "mcc_generated_files/interrupt_manager.h"
-#include "mcc_generated_files/pin_manager.h"
-#include "safety_feature.h"
-#include "motorcontrol.h"
 /*
- Section: Function Declaration
+ Section: Include File
  */
-void Stall_ISR(void);
-void Overcurrent_ISR(void);
 
-void StallDetection(void) 
+#include "mcc_generated_files/pin_manager.h"
+#include "mcc_generated_files/smt1.h"
+#include "mcc_generated_files/smt2.h"
+#include "mcc_generated_files/tmr4.h"
+#include "mcc_generated_files/tmr6.h"
+#include "motorcontrol.h"
+
+/*
+ Section: ISR declaration for stall detection
+ */
+void StallM1_ISR(void);
+void StallM2_ISR(void);
+
+void StallDetection(void)
 {
-    TMR4_SetInterruptHandler(Stall_ISR);
+    TMR4_SetInterruptHandler(StallM1_ISR);
+    TMR6_SetInterruptHandler(StallM2_ISR);
 }
 
-void OvercurrentDetection(void)
-{
-    CMP3_SetInterruptHandler(Overcurrent_ISR); 
-}
 
-
-void Stall_ISR(void)
+void StallM1_ISR(void)
 {
     STALL_LED_SetHigh();
     BrakingMechanism();
-    BrakingMechanism02();
+    SMT1_DataAcquisitionDisable();
+    actualRippleCount01 = SMT1_GetTimerValue();
+    SMT1_ManualTimerReset();
     TMR4_StopTimer();
-    TMR1_StopTimer();
-    faultDetected = 1;
+    motor01Stalled = 1;
 }
 
-void Overcurrent_ISR(void)
+void StallM2_ISR(void)
 {
-    OVERCURRENT_LED_SetHigh();
-    BrakingMechanism();
+    STALL_LED_SetHigh();
     BrakingMechanism02();
+    SMT2_DataAcquisitionDisable();
+    actualRippleCount02 = SMT2_GetTimerValue();
+    SMT2_ManualTimerReset();
     TMR4_StopTimer();
-    TMR1_StopTimer();
-    faultDetected = 1;
+    motor02Stalled = 1;
 }
 
-
-void ResumeMotor(void)
+void ResumeMotor01(void)
 {
-    OVERCURRENT_LED_SetLow();
+    MOTOR01_MODE = REVERSE_DIR;
     STALL_LED_SetLow();
     
-    if(motor01)
+    if(reverseOrigin)
     {
-        if(reverseOrigin)
-        {
-            ExpectedRippleCountRemainingAngle();
-        }
-
-        else
-        {
-            ExpectedRippleCountToHome();
-        } 
-        CompareLoadValue();
-        Motor01Reverse_Drive();
+        ExpectedRippleCountRemainingAngle();
     }
+
     else
     {
-        if(reverseOrigin)
-        {
-            ExpectedRippleCountRemainingAngle02();
-        }
-
-        else
-        {
-            ExpectedRippleCountToHome02();
-        }
-        CompareLoadValue();
-        Motor02Reverse_Drive();
+        ExpectedRippleCountToHome();
     }
+
+    InitiateDrive01();
+}
+
+void ResumeMotor02(void)
+{
+    MOTOR02_MODE = REVERSE_DIR;
+    STALL_LED_SetLow();
+    
+    if(reverseOrigin)
+    {
+        ExpectedRippleCountRemainingAngle02();
+    }
+
+    else
+    {
+        ExpectedRippleCountToHome02();
+    }
+
+    InitiateDrive02();
 }
 /**
  End of File

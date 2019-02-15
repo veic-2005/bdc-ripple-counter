@@ -69,19 +69,19 @@ void PIN_MANAGER_Initialize(void)
     TRISx registers
     */
     TRISE = 0x07;
-    TRISA = 0xFF;
+    TRISA = 0xFB;
     TRISB = 0x03;
-    TRISC = 0x3F;
-    TRISD = 0xE0;
+    TRISC = 0x17;
+    TRISD = 0xE2;
 
     /**
     ANSELx registers
     */
-    ANSELD = 0x00;
-    ANSELC = 0x3C;
+    ANSELD = 0x80;
+    ANSELC = 0x24;
     ANSELB = 0x02;
     ANSELE = 0x07;
-    ANSELA = 0x1F;
+    ANSELA = 0x1B;
 
     /**
     WPUx registers
@@ -117,17 +117,22 @@ void PIN_MANAGER_Initialize(void)
    
     
 	
-    CWG2PPS = 0x1F;   //RD7->CWG2:CWG2IN;    
+    SSP1CLKPPS = 0x13;   //RC3->MSSP1:SCK1;    
     RB6PPS = 0x07;   //RB6->CWG1:CWG1C;    
+    RC3PPS = 0x14;   //RC3->MSSP1:SCK1;    
     RB7PPS = 0x08;   //RB7->CWG1:CWG1D;    
     RB5PPS = 0x06;   //RB5->CWG1:CWG1B;    
     RB4PPS = 0x05;   //RB4->CWG1:CWG1A;    
+    T6AINPPS = 0x1E;   //RD6->TMR6:T6IN;    
+    SSP1DATPPS = 0x14;   //RC4->MSSP1:SDI1;    
     RD2PPS = 0x1D;   //RD2->CWG2:CWG2B;    
     SMT2WINPPS = 0x1D;   //RD5->SMT2:SMT2WIN;    
     RD4PPS = 0x1F;   //RD4->CWG2:CWG2D;    
     SMT1WINPPS = 0x10;   //RC0->SMT1:SMT1WIN;    
+    T4AINPPS = 0x11;   //RC1->TMR4:T4IN;    
     RD3PPS = 0x1E;   //RD3->CWG2:CWG2C;    
     SMT1SIGPPS = 0x11;   //RC1->SMT1:SMT1SIG;    
+    RC5PPS = 0x15;   //RC5->MSSP1:SDO1;    
     RC6PPS = 0x10;   //RC6->EUSART:TX;    
     RC7PPS = 0x1C;   //RC7->CWG2:CWG2A;    
     SMT2SIGPPS = 0x1E;   //RD6->SMT2:SMT2SIG;    

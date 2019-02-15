@@ -20,7 +20,7 @@
  */
 
 /* 
- * File:  motorcontrol.h
+ * File:   interrupt_handlers.h
  * Author: A20687
  * Comments:
  * Revision history: 
@@ -28,75 +28,19 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef MOTORCONTROL_H
-#define	MOTORCONTROL_H
+#ifndef INTERRUPT_HANDLERS_H
+#define	INTERRUPT_HANDLERS_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h>
 
-#define StopMotor()        do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0)
-
-/**
-  Section : Motor Position parameters
- */
-#define END_POINT  360
-#define HOME     0
-
-/**
- * Section: Variable Declaration and Definition
- */
-uint16_t angleTurned = 0;
-uint16_t remainingAngle = END_POINT;
-uint16_t totalAngleTurned = 0;
-
-bool inputSet = 0;
-bool reverseOrigin = 0;
-bool getCountDone = 0;
-bool forwardDirection = 0;
-bool reverseDirection = 0;
-bool motorStalled = 0;
-bool endPointReached = 0;
-
-/**
- Section: Interrupt handlers
- */
 void TMR1_GateSetInterruptHandler(void (*GateInterruptHandler)(void));
 void(*TMR1_GateInterruptHandler)(void);
 
 void CCP1_CompareSetInterruptHandler(void (*CompareInterruptHandler)(void));
 void(*CCP1_CompareInterruptHandler)(void);
 
-/**
- Section: Position Handling Functions
- */
-void MotorPosition(void);
-void StorePosition(void);
-void ReadMotorPositionFromEEPROM(void);
+void CMP3_SetInterruptHandler(void (*InterruptHandler)(void));
+void(*CMP3_InterruptHandler)(void);
 
-/**
- Section: Functions for Setting Motor Parameters and Motor Drive
- */
-void CheckHomeButton(void);
-void CheckEndButton(void);
-void CheckForwardButton(void);
-void CheckReverseButton(void);
-void ReadInput(void);
-void Forward_Dir(void);
-void Reverse_Dir(void);
-void BrakingMechanism(void);
-void ResumeMotor(void);
-void StallDetection(void);
-
-/**
- * Section: Function declaration for Counting Ripples
- */
-void ExpectedRippleCountRemainingAngle(void);
-void ExpectedRippleCountToHome(void);
-void ExpectedRippleCountToEndPoint(void);
-void CompareLoadValue(void);
-void Compare_ISR(void);
-void GetAngleTurned(void);
-void RetrieveRippleCount(void);
-void StartCounting(void);
-#endif	/* MOTOR_CONTROL_H */
+#endif	/*INTERRUPT_HANDLERS_H */
 

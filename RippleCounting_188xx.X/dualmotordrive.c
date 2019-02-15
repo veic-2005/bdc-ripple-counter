@@ -1,5 +1,35 @@
+/* 
+ * Author : A20687
+ * Date: 02/14/2019
+ * File Name: dualmotordrive.c
+ *  Short Description: This file contains codes for driving motors 1 and 2 in forward and reverse direction.
+ */
 
+/*
+    (c) 2018 Microchip Technology Inc. and its subsidiaries. You may use this
+    software and any derivatives exclusively with Microchip products.
 
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+    WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+    PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+    WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+    BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+    FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+    ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+    THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+
+    MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+    TERMS.
+*/
+
+/**
+  Section: Included Files
+ */
 
 #include "mcc_generated_files/cwg1.h"
 #include "mcc_generated_files/cwg2.h"
@@ -67,20 +97,9 @@ void DualMotorDrive()
     if(getCountDone01 && getCountDone02)
     {
         getCountDone = 1;
-        
-        SMT1_DataAcquisitionDisable();
-        SMT1_ManualTimerReset();
-        TMR4_Stop();
-        
-        SMT2_DataAcquisitionDisable();
-        SMT2_ManualTimerReset();
-        TMR6_Stop();
-
-    }
-    if(getCountDone)
-    {
         Motor01Position();
         Motor02Position();
+
     }
 }
 
@@ -93,3 +112,6 @@ void InitiateDrive03(void)
     StartStallTimer4();
     StartStallTimer6();
 }
+/**
+ End of File
+*/

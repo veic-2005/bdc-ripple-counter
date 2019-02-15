@@ -1,23 +1,53 @@
+/*
+ * Author : A20687
+ * Date: 02/14/2019
+ * File Name: motordrive01.c
+ * Short Description: This file contains codes for driving motor 1 in forward and reverse direction.
+ */
 
+/*
+    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
+    
+    Subject to your compliance with these terms, you may use Microchip software and any 
+    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
+    license terms applicable to your use of third party software (including open source software) that 
+    may accompany Microchip software.
+    
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
+    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
+    FOR A PARTICULAR PURPOSE.
+    
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
+    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
+    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
+    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
+    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
+    SOFTWARE.
+ */
+
+/**
+  Section: Included Files
+ */
 
 #include "mcc_generated_files/cwg2.h"
+#include "mcc_generated_files/device_config.h"
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/smt2.h"
 #include "mcc_generated_files/tmr6.h"
 #include "motorcontrol.h"
 #include "math.h"
-#include "stdlib.h"
 
-void InitiateDrive02(void);
-
-void MotorDrive02() 
+void MotorDrive02(void) 
 {
     ReadMotor02PositionFromEEPROM();
     ReadInput();
     
     if((angleDesired <= remainingAngle02) || (remainingAngle02 == 0))
     {
-        expectedRippleCount = angleDesired * round(M2_RIPPLE_COUNT_PER_ANGLE);           
+        expectedRippleCount = angleDesired * M2_RIPPLE_COUNT_PER_ANGLE;           
     }
     else if(angleDesired > remainingAngle02)
     {
@@ -63,23 +93,26 @@ void MotorDrive02()
     if(getCountDone02)
     {
         getCountDone02 = 0;
-        
-        SMT2_DataAcquisitionDisable();
-        SMT2_ManualTimerReset();
-        TMR6_Stop();
-        
         Motor02Position();
     }
-}
+    
+    if(motor02Stalled)
+    {
+        motor02Stalled = 0;
+        Motor02Position();
+        __delay_ms(5000);
+        ResumeMotor02();
+    }
+}    
 
 void ExpectedRippleCountRemainingAngle02(void)
 {
-    expectedRippleCount = remainingAngle02 *  round(M2_RIPPLE_COUNT_PER_ANGLE);
+    expectedRippleCount = remainingAngle02 * M2_RIPPLE_COUNT_PER_ANGLE;
 }
 
 void  ExpectedRippleCountToHome02(void)
 {
-    expectedRippleCount = (totalAngleTurned02 * round(M2_RIPPLE_COUNT_PER_ANGLE));
+    expectedRippleCount = totalAngleTurned02 * M2_RIPPLE_COUNT_PER_ANGLE;
 }
 
 void InitiateDrive02(void)
@@ -94,16 +127,16 @@ void InitiateDrive02(void)
 void SMT2_ISR(void)
 {
     BrakingMechanism02();
-//    SMT2_DataAcquisitionDisable();
+    SMT2_DataAcquisitionDisable();
     actualRippleCount02 = SMT2_GetTimerValue();
-//    SMT2_ManualTimerReset();
-//    TMR6_Stop();
+    SMT2_ManualTimerReset();
+    TMR6_Stop();
     getCountDone02 = 1;
 }
 
 void Motor02Position(void)
 {
-    angleTurned02 = (abs(actualRippleCount02) / round(M2_RIPPLE_COUNT_PER_ANGLE));
+    angleTurned02 = (abs(actualRippleCount02) / M2_RIPPLE_COUNT_PER_ANGLE);
 
     printf("actualRippleCount = %d \n\r ", actualRippleCount02);
     printf( "AngleTurned = %d \n\r", angleTurned02);
@@ -124,5 +157,8 @@ void Motor02Position(void)
 void BrakingMechanism02(void) 
 {
     MOTOR02_MODE = STEER;
-    CWG2STR = 0xA0;     //CWGB and CWGD fully on (0xA0)
+    CWG2STR = 0xA0;   
 }
+/**
+ End of File
+*/

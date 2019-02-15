@@ -41,16 +41,26 @@
     SOFTWARE.
 */
 
-#include <stdint.h>
-
+/**
+  Section: Included Files
+ */
 #include "mcc_generated_files/mcc.h"
 #include "motorcontrol.h"
+#include <stdint.h>
 
 #define SWITCH_S1_TTL()    do { INLVLBbits.INLVLB0 = 0; } while(0)
 
+/**
+ * Section: Function Declaration
+ */
 void CheckMotorSelectorButton(void);
+void NextMotor(void);
 
+/**
+ Section: Variable Declaration
+ */
 bool BtnPressed = 0;
+bool switchEvent = 0;
 
 /*
                          Main application
@@ -59,12 +69,14 @@ void main(void)
 {
     SWITCH_S1_TTL();
     SYSTEM_Initialize();
+    StopMotor1();
+    StopMotor2();
     
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-     
-    printf("Start \n\r");
     
+    
+  
     while (1)
     {
         CheckMotorSelectorButton();
@@ -85,12 +97,12 @@ void main(void)
 
 void CheckMotorSelectorButton(void)
 {
-    if(MOTOR_SELECT_PORT == LOW)
+    if(MOTOR_SELECT_BUTTON_PORT == LOW)
     {  
         __delay_ms(100);
         BtnPressed = 1;
     }
-    else if (MOTOR_SELECT_PORT == HIGH)
+    else if (MOTOR_SELECT_BUTTON_PORT == HIGH)
     {
         if(BtnPressed)
         {

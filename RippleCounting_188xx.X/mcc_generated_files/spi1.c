@@ -1,21 +1,21 @@
 /**
-  MSSP Generated Driver File
+  MSSP1 Generated Driver File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    spi.c
+    spi1.c
 
   @Summary
-    This is the generated driver implementation file for the MSSP driver using 
+    This is the generated driver implementation file for the MSSP1 driver using 
     PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   @Description
-    This source file provides APIs SPI.
+    This source file provides APIs SPI1.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
-        Device            :  PIC16F1779
+        Device            :  PIC16F18877
         Driver Version    :  2.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.45
@@ -50,7 +50,7 @@
 */
 
 #include <xc.h>
-#include "spi.h"
+#include "spi1.h"
 
 /**
   Section: Macro Declarations
@@ -62,21 +62,21 @@
   Section: Module APIs
 */
 
-void SPI_Initialize(void)
+void SPI1_Initialize(void)
 {
-    // Set the SPI module to the options selected in the User Interface
+    // Set the SPI1 module to the options selected in the User Interface
     
-    // R_nW write_noTX; P stopbit_notdetected; S startbit_notdetected; BF RCinprocess_TXcomplete; SMP Middle; UA dontupdate; CKE Active to Idle; D_nA lastbyte_address; 
+    // SMP Middle; CKE Active to Idle; 
     SSP1STAT = 0x40;
     
-    // SSPEN enabled; WCOL no_collision; CKP Idle:Low, Active:High; SSPM FOSC/64; SSPOV no_overflow; 
+    // SSPEN enabled; CKP Idle:Low, Active:High; SSPM FOSC/64; 
     SSP1CON1 = 0x22;
     
-    // SSP1ADD 0; 
+    // SSPADD 0; 
     SSP1ADD = 0x00;
 }
 
-uint8_t SPI_Exchange8bit(uint8_t data)
+uint8_t SPI1_Exchange8bit(uint8_t data)
 {
     // Clear the Write Collision flag, to allow writing
     SSP1CON1bits.WCOL = 0;
@@ -90,7 +90,7 @@ uint8_t SPI_Exchange8bit(uint8_t data)
     return (SSP1BUF);
 }
 
-uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut)
+uint8_t SPI1_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut)
 {
     uint8_t bytesWritten = 0;
 
@@ -102,11 +102,11 @@ uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut
             {
                 if(dataOut == NULL)
                 {
-                    SPI_Exchange8bit(dataIn[bytesWritten]);
+                    SPI1_Exchange8bit(dataIn[bytesWritten]);
                 }
                 else
                 {
-                    dataOut[bytesWritten] = SPI_Exchange8bit(dataIn[bytesWritten]);
+                    dataOut[bytesWritten] = SPI1_Exchange8bit(dataIn[bytesWritten]);
                 }
 
                 bytesWritten++;
@@ -118,7 +118,7 @@ uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut
             {
                 while(bytesWritten < bufLen )
                 {
-                    dataOut[bytesWritten] = SPI_Exchange8bit(SPI_DUMMY_DATA);
+                    dataOut[bytesWritten] = SPI1_Exchange8bit(SPI1_DUMMY_DATA);
 
                     bytesWritten++;
                 }
@@ -129,17 +129,17 @@ uint8_t SPI_Exchange8bitBuffer(uint8_t *dataIn, uint8_t bufLen, uint8_t *dataOut
     return bytesWritten;
 }
 
-bool SPI_IsBufferFull(void)
+bool SPI1_IsBufferFull(void)
 {
     return (SSP1STATbits.BF);
 }
 
-bool SPI_HasWriteCollisionOccured(void)
+bool SPI1_HasWriteCollisionOccured(void)
 {
     return (SSP1CON1bits.WCOL);
 }
 
-void SPI_ClearWriteCollisionStatus(void)
+void SPI1_ClearWriteCollisionStatus(void)
 {
     SSP1CON1bits.WCOL = 0;
 }

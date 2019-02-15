@@ -1,4 +1,9 @@
-
+/*
+ * Author : A20687
+ * Date: 02/14/2019
+ * File Name: interrupt_handlers.c
+ * Short Description: This file contains codes of interrupt handler functions.
+ */
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,7 +26,9 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
-
+/*
+ Section: Include File
+ */
 #include "mcc_generated_files/ccp1.h"
 #include "mcc_generated_files/interrupt_manager.h"
 #include "mcc_generated_files/tmr1.h"
@@ -54,3 +61,6 @@ void CCP1_CompareSetInterruptHandler(void (* CompareInterruptHandler)(void))
 {
     CCP1_CompareInterruptHandler = CompareInterruptHandler;
 }
+/**
+ End of File
+*/

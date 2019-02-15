@@ -32,6 +32,8 @@
       </logicalFolder>
       <itemPath>motorcontrol.h</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>interrupt_handlers.h</itemPath>
+      <itemPath>safety_feature.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

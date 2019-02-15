@@ -1,6 +1,38 @@
+/*
+ * Author : A20687
+ * Date: 02/14/2019
+ * File Name: motordrive01.c
+ * Short Description: This file contains codes for driving motor 1 in forward and reverse direction.
+ */
 
+/*
+    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
+    
+    Subject to your compliance with these terms, you may use Microchip software and any 
+    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
+    license terms applicable to your use of third party software (including open source software) that 
+    may accompany Microchip software.
+    
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
+    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
+    FOR A PARTICULAR PURPOSE.
+    
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
+    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
+    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
+    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
+    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
+    SOFTWARE.
+ */
 
+/**
+  Section: Included Files
+ */
 #include "mcc_generated_files/cwg1.h"
+#include "mcc_generated_files/device_config.h"
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/tmr4.h"
 #include "mcc_generated_files/smt1.h"
@@ -8,17 +40,14 @@
 #include "math.h"
 #include "stdlib.h"
 
-
-void InitiateDrive(void);
-
-void MotorDrive01() 
+void MotorDrive01(void) 
 {
     ReadMotor01PositionFromEEPROM();
     ReadInput();
     
     if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
     {
-        expectedRippleCount = angleDesired * round(M1_RIPPLE_COUNT_PER_ANGLE);           
+        expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
     }
     else if(angleDesired > remainingAngle01)
     {
@@ -40,7 +69,7 @@ void MotorDrive01()
         }
         else
         {   
-            InitiateDrive();
+            InitiateDrive01();
         }
     }
     else if(ReverseBtnPressed)
@@ -55,7 +84,7 @@ void MotorDrive01()
         }
         else
         {   
-            InitiateDrive();
+            InitiateDrive01();
         }
     }
     
@@ -63,27 +92,29 @@ void MotorDrive01()
     
     if(getCountDone01)
     {
-        getCountDone01 = 0;
-        
-        SMT1_DataAcquisitionDisable();
-        SMT1_ManualTimerReset();
-        TMR4_Stop();
-                
+        getCountDone01 = 0;              
         Motor01Position();
+    }
+    if(motor01Stalled)
+    {
+        motor01Stalled = 0;
+        Motor01Position();
+        __delay_ms(5000);
+        ResumeMotor01();
     }
 }
 
 void ExpectedRippleCountRemainingAngle(void)
 {
-    expectedRippleCount = remainingAngle01 *  round(M1_RIPPLE_COUNT_PER_ANGLE);
+    expectedRippleCount = remainingAngle01 *  M1_RIPPLE_COUNT_PER_ANGLE;
 }
 
 void  ExpectedRippleCountToHome(void)
 {
-    expectedRippleCount = (totalAngleTurned01 * round(M1_RIPPLE_COUNT_PER_ANGLE));
+    expectedRippleCount = (totalAngleTurned01 * M1_RIPPLE_COUNT_PER_ANGLE);
 }
 
-void InitiateDrive(void)
+void InitiateDrive01(void)
 {
     SMT1_SetPeriod(expectedRippleCount); 
     TMR4_Period8BitSet(PR4_VALUE);
@@ -95,16 +126,16 @@ void InitiateDrive(void)
 void SMT1_ISR(void)
 {
     BrakingMechanism();
-//    SMT1_DataAcquisitionDisable();
+    SMT1_DataAcquisitionDisable();
     actualRippleCount01 = SMT1_GetTimerValue();
-//    SMT1_ManualTimerReset();
-//    TMR4_Stop();
+    SMT1_ManualTimerReset();
+    TMR4_Stop();
     getCountDone01 = 1;
 }
 
 void Motor01Position(void)
 {
-    angleTurned01 = (actualRippleCount01 / round(M1_RIPPLE_COUNT_PER_ANGLE));
+    angleTurned01 = (actualRippleCount01 / M1_RIPPLE_COUNT_PER_ANGLE);
 
     printf("actualRippleCount01 = %d \n\r ", actualRippleCount01);
     printf( "AngleTurned01 = %d \n\r", angleTurned01);
@@ -125,5 +156,8 @@ void Motor01Position(void)
 void BrakingMechanism(void) 
 {
     MOTOR01_MODE = STEER;
-    CWG1STR = 0xA0;     //CWGB and CWGD fully on (0xA0)
+    CWG1STR = 0xA0;     
 }
+/**
+ End of File
+*/

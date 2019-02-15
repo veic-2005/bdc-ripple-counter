@@ -53,13 +53,13 @@ void main(void)
 {
     SYSTEM_Initialize();
     SWITCH_S1_TTL();
-    CWG_AutoShutdownEventSet();
+    StopMotor();
     GetRippleLED_SetLow();
 
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    CCP1_CompareSetInterruptHandler(Compare_ISR);
+    RetrieveRippleCount();
     StallDetection();
     
     while (1)

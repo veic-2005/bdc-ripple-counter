@@ -27,13 +27,28 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
  */
-
+/*
+ Section: Include File
+ */
 #include "mcc_generated_files/cwg.h"
 #include "mcc_generated_files/eusart1.h"
 #include "mcc_generated_files/memory.h"
+#include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
 #include "stdlib.h"
-#include "mcc_generated_files/pin_manager.h"
+
+/*
+ Section: Motor Address Definition
+ */
+#define INITIAL_ADDRESS_VALUE     0xFFFF
+#define MOTOR_ADDR00              0x3100F0  
+#define MOTOR_ADDR01              0x3100F2
+
+/*
+ Section: Declaration of Function used in Positioning
+ */
+void ForwardPosition(void);
+void ReversePosition(void);
 
 void ForwardPosition()
 {   
@@ -46,10 +61,6 @@ void ForwardPosition()
         {
             EndPointReachedLED_SetHigh();
         }
-    }
-    else
-    {
-        StopMotor();
     }
     
     reverseOrigin = 0;
@@ -65,17 +76,13 @@ void ReversePosition()
     {
         totalAngleTurned -= angleTurned;
         remainingAngle = totalAngleTurned;
-        
+
         if(remainingAngle == 0)
         {
             HomeReachedLED_SetHigh();
         }
     }
-    else
-    {
-        StopMotor();
-    }
-    
+       
     reverseOrigin = 1;
     EndPointReachedLED_SetLow();
 
@@ -125,4 +132,6 @@ void MotorPosition()
     ReversePosition();
   }  
 }
-
+/**
+ End of File
+*/

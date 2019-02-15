@@ -69,8 +69,8 @@ void ADC_Initialize(void)
     // GO stop; ADON enabled; CHS AN0; 
     ADCON0 = 0x01;
     
-    // ADFM right; ADNREF VSS; ADPREF VDD; ADCS FOSC/4; 
-    ADCON1 = 0xC0;
+    // ADFM right; ADNREF VSS; ADPREF VDD; ADCS FOSC/16; 
+    ADCON1 = 0xD0;
     
     // TRIGSEL no_auto_trigger; 
     ADCON2 = 0x00;

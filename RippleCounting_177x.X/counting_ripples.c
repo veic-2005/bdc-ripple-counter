@@ -1,6 +1,6 @@
 /*
  * Author : A20687
- * Date: 12/04/2018
+ * Date: 02/14/2019
  * File Name: counting_ripples.c
  * Short Description: This file contains codes for processing  the input and facilitate counting of ripples.
  */
@@ -27,29 +27,39 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
  */
-#include <stdio.h>
-#include "motorcontrol.h"
-#include "math.h"
+
+/**
+  Section: Included Files
+ */
 #include "mcc_generated_files/adc.h"
 #include "mcc_generated_files/ccp1.h"
-#include "mcc_generated_files/cog1.h"
+#include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
-#include "mcc_generated_files/eusart.h"
+#include "interrupt_handlers.h"
+#include "motorcontrol.h"
+#include "math.h"
+#include <stdlib.h>
 #include "lcd.h"
 
-
+/**
+ Section: Macro Declaration
+ */
 #define INITIAL_TIMER_VALUE     0x7FFF       
 #define MAXIMUM_TIMER_VALUE     0xFFFF
-#define PERIOD_TIMER1_VALUE   (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
-#define PR2_VALUE             0x22
+#define PERIOD_TIMER1_VALUE    (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
+#define PR2_VALUE               0x22
+#define CALIBRATION_VALUE       0x8
 
+/**
+ Section: Variable Declaration
+ */
 uint16_t compareLoadValue;
 
 void ReadInput(void) 
 {
-    angleDesired =  (((ADC_GetConversion(POT) + 1) * 45) >> 8); // for 180 degrees  shift to the right by 8
+    angleDesired =  (((ADC_GetConversion(POT) + 1) * 45) >> 8); // for 180 degrees maximum incremental angle shift to the right by 8
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d \t\r\n", angleDesired);  
     
@@ -63,17 +73,17 @@ void ReadInput(void)
 
 void CompareLoadValue(void)
 {
-    compareLoadValue = ((expectedRippleCount - 8)>> 1) + INITIAL_TIMER_VALUE + 1;
+    compareLoadValue = ((expectedRippleCount - CALIBRATION_VALUE)>> 1) + INITIAL_TIMER_VALUE + 1;
 }
 
-void LoadValues()
+void LoadValues(void)
 {
     CCP1_SetCompareCount(compareLoadValue);
     TMR1_Reload();
     TMR4_Period8BitSet(PR2_VALUE);
 }
 
-void Compare_ISR() 
+void Compare_ISR(void) 
 {
     BrakingMechanism02();
     BrakingMechanism();
@@ -85,6 +95,14 @@ void Compare_ISR()
 
 uint16_t GetActualRippleCount(void)
 {
-    timer1Value = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ 8; 
+    timer1Value = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ CALIBRATION_VALUE; 
     return (abs(timer1Value));
 }
+
+void RetrieveRippleCount(void)
+{
+    CCP1_CompareSetInterruptHandler(Compare_ISR);
+}
+/**
+ End of File
+*/

@@ -71,11 +71,11 @@ void TMR6_Initialize(void)
     // T6PSYNC Not Synchronized; T6MODE Resets at rising TMR6_ers; T6CKPOL Rising Edge; T6CKSYNC Not Synchronized; 
     T6HLT = 0x04;
 
-    // T6RSEL sync_C2OUT; 
-    T6RST = 0x0C;
+    // T6RSEL T6CKIPPS pin; 
+    T6RST = 0x00;
 
-    // PR6 249; 
-    T6PR = 0xF9;
+    // PR6 0; 
+    T6PR = 0x00;
 
     // TMR6 0; 
     T6TMR = 0x00;
@@ -89,8 +89,8 @@ void TMR6_Initialize(void)
     // Set Default Interrupt Handler
     TMR6_SetInterruptHandler(TMR6_DefaultInterruptHandler);
 
-    // T6CKPS 1:1; T6OUTPS 1:1; TMR6ON on; 
-    T6CON = 0x80;
+    // T6CKPS 1:128; T6OUTPS 1:10; TMR6ON on; 
+    T6CON = 0xF9;
 }
 
 void TMR6_ModeSet(TMR6_HLT_MODE mode)

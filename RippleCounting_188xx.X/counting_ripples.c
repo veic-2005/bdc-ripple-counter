@@ -28,15 +28,18 @@
     SOFTWARE.
  */
 
-#include "motorcontrol.h"
-#include "math.h"
+/**
+  Section: Included Files
+ */
 #include "mcc_generated_files/adcc.h"
+#include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/smt1.h"
 #include "mcc_generated_files/smt2.h"
-#include "mcc_generated_files/tmr6.h"
 #include "mcc_generated_files/tmr4.h"
-#include "mcc_generated_files/eusart.h"
+#include "mcc_generated_files/tmr6.h"
+#include "motorcontrol.h"
+#include "math.h"
 
 bool motorSelected = 0;
 
@@ -47,7 +50,7 @@ void ReadInput(void)
     printf("angleDesired = %d \t\r\n", angleDesired); 
 }
 
-void MotorInput()
+void MotorInput(void)
 {
     motorSelected = ~motorSelected;
     ReadInput();
@@ -56,7 +59,7 @@ void MotorInput()
     {
         if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
         {
-            expectedRippleCount = angleDesired * round(M1_RIPPLE_COUNT_PER_ANGLE);           
+            expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
         }
         else if(angleDesired > remainingAngle01)
         {
@@ -70,7 +73,7 @@ void MotorInput()
     {
         if((angleDesired <= remainingAngle02) || (remainingAngle02 == 0))
         {
-            expectedRippleCount = angleDesired * round(M2_RIPPLE_COUNT_PER_ANGLE);           
+            expectedRippleCount = angleDesired * M2_RIPPLE_COUNT_PER_ANGLE;           
         }
         else if(angleDesired > remainingAngle02)
         {
@@ -80,4 +83,6 @@ void MotorInput()
         TMR6_Period8BitSet(PR6_VALUE);
     }
 }
-
+/**
+ End of File
+*/

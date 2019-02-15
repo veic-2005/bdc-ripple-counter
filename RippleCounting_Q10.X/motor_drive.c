@@ -1,6 +1,6 @@
 /*
  * Author : A20687
- * Date: 12/04/2018
+ * Date: 02/14/2019
  * File Name: motor_drive.c
  * Short Description: This file contains codes for driving the motor in forward and reverse direction.
  */
@@ -26,11 +26,23 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
-
+/**
+ Section: Include File
+ */
 #include "mcc_generated_files/cwg.h"
 #include "mcc_generated_files/device_config.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
+
+/**
+ * Section : Motor Mode Definitions
+ */
+#define MOTOR_MODE         CWG1CON0bits.MODE 
+#define FORWARD_DIR         0x2
+#define REVERSE_DIR         0x3
+#define STEER               0x0
+
+
 
 void Forward_Dir()
 { 
@@ -43,8 +55,7 @@ void Forward_Dir()
         if(totalAngleTurned >= END_POINT)
         {
             StopMotor();
-            totalAngleTurned = END_POINT;
-            StorePosition();
+            endPointReached = 1;
         }
         else
         {   
@@ -66,6 +77,12 @@ void Reverse_Dir()
         {
             StopMotor();
         }
+//        else if(endPointReached)
+//        {
+//            totalAngleTurned  = END_POINT;
+//            endPointReached = 0;
+//            StartCounting();
+//        }
         else
         {
             StartCounting();
@@ -76,5 +93,8 @@ void Reverse_Dir()
 void BrakingMechanism() 
 {
     MOTOR_MODE = STEER;
-    CWG1STR = 0xA0;     //CWGB and CWGD fully on (0xA0)
+    CWG1STR = 0xA0; 
 }
+/**
+ End of File
+*/

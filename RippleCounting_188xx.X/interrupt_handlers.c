@@ -1,4 +1,9 @@
-
+/*
+ * Author : A20687
+ * Date: 02/14/2019
+ * File Name: interrupt_handlers.c
+ * Short Description: This file contains codes of interrupt handler functions.
+ */
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -58,5 +63,7 @@ void SMT2_SetInterruptHandler(void (* GateInterruptHandler)(void))
 {
     SMT2_InterruptHandler = GateInterruptHandler;
 }
-
+/**
+ End of File
+*/
 

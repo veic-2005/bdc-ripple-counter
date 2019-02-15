@@ -61,8 +61,8 @@
     // PWM9POL active_hi; PWM9EN enabled; 
     PWM9CON = 0x80;   
 
-    // DC 77; 
-    PWM9DCH = 0x4D;   
+    // DC 255; 
+    PWM9DCH = 0xFF;   
 
     // DC 3; 
     PWM9DCL = 0xC0;   
