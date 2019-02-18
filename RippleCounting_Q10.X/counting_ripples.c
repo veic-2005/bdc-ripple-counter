@@ -31,9 +31,6 @@
 /**
   Section: Included Files
  */
-#include "motorcontrol.h"
-#include "math.h"
-#include "stdlib.h"
 #include "mcc_generated_files/adcc.h"
 #include "mcc_generated_files/ccp1.h"
 #include "mcc_generated_files/cwg.h"
@@ -41,6 +38,9 @@
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
+#include "motorcontrol.h"
+#include "math.h"
+#include "stdlib.h"
 
 /**
  Section: Motor Specifications Definition

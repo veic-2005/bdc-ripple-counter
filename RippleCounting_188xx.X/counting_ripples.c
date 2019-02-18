@@ -39,8 +39,12 @@
 #include "mcc_generated_files/tmr4.h"
 #include "mcc_generated_files/tmr6.h"
 #include "motorcontrol.h"
-#include "math.h"
+#include "motorposition.h"
+#include "lcd.h"
 
+/*
+ Section: Variable Declaration
+*/
 bool motorSelected = 0;
 
 void ReadInput(void) 
@@ -53,7 +57,6 @@ void ReadInput(void)
 void MotorInput(void)
 {
     motorSelected = ~motorSelected;
-    ReadInput();
     
     if(motorSelected)
     {
@@ -68,6 +71,13 @@ void MotorInput(void)
         
         SMT1_SetPeriod(expectedRippleCount); 
         TMR4_Period8BitSet(PR4_VALUE);
+        
+        LCD_GoTo(0,7);
+        LCD_WriteByte("D=   ");
+        LCD_GoTo(0,8);
+        LCD_WriteByte(angleDesired/100+'0');
+        LCD_WriteByte((angleDesired/10)%10+'0');
+        LCD_WriteByte((angleDesired/1)% 10+'0');
     }
     else
     {
@@ -81,6 +91,13 @@ void MotorInput(void)
         }
         SMT2_SetPeriod(expectedRippleCount); 
         TMR6_Period8BitSet(PR6_VALUE);
+        
+        LCD_GoTo(1,7);
+        LCD_WriteByte("D=   ");
+        LCD_GoTo(1,8);
+        LCD_WriteByte(angleDesired/100+'0');
+        LCD_WriteByte((angleDesired/10)%10+'0');
+        LCD_WriteByte((angleDesired/1)% 10+'0');
     }
 }
 /**

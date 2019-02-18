@@ -35,7 +35,9 @@
 #include "mcc_generated_files/memory.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
+#include "motorposition.h"
 #include "stdlib.h"
+#include "lcd.h"
 
 /**
  * Macro Declaration 
@@ -43,6 +45,9 @@
 #define MOTOR01_ADDR00        0x7000
 #define MOTOR01_ADDR01        0x7002
 
+/*
+ Section: Function Declaration
+ */
 void StoreMotor01Position(void);
 
 void M1_ForwardPosition(void)
@@ -95,6 +100,13 @@ void ReadMotor01PositionFromEEPROM(void)
             totalAngleTurned01 = actualMotor01Position;
         }
         printf("actualMotor01Position = %d \n\r", actualMotor01Position);
+        
+        LCD_GoTo(0,0);
+        LCD_WriteByte("M1=   ");
+        LCD_GoTo(0,3);
+        LCD_WriteByte(actualMotor01Position/100+'0');
+        LCD_WriteByte((actualMotor01Position/10)%10+'0');
+        LCD_WriteByte((actualMotor01Position/1)% 10+'0');
     }
 }
 /**

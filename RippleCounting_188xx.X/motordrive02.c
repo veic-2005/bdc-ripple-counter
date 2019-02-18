@@ -31,19 +31,27 @@
 /**
   Section: Included Files
  */
-
 #include "mcc_generated_files/cwg2.h"
 #include "mcc_generated_files/device_config.h"
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/smt2.h"
 #include "mcc_generated_files/tmr6.h"
 #include "motorcontrol.h"
-#include "math.h"
+#include "motorposition.h"
+#include "stdlib.h"
+#include "lcd.h"
 
 void MotorDrive02(void) 
 {
     ReadMotor02PositionFromEEPROM();
     ReadInput();
+
+    LCD_GoTo(1,7);
+    LCD_WriteByte("D=   ");
+    LCD_GoTo(1,8);
+    LCD_WriteByte(angleDesired/100+'0');
+    LCD_WriteByte((angleDesired/10)%10+'0');
+    LCD_WriteByte((angleDesired/1)% 10+'0');
     
     if((angleDesired <= remainingAngle02) || (remainingAngle02 == 0))
     {
@@ -140,6 +148,13 @@ void Motor02Position(void)
 
     printf("actualRippleCount = %d \n\r ", actualRippleCount02);
     printf( "AngleTurned = %d \n\r", angleTurned02);
+    
+    LCD_GoTo(1,11);
+    LCD_WriteByte("T=   ");
+    LCD_GoTo(1,13);
+    LCD_WriteByte(angleTurned02/100+'0');
+    LCD_WriteByte((angleTurned02/10)%10+'0');
+    LCD_WriteByte((angleTurned02/1)% 10+'0');
     
     if(forwardDirection)
     {

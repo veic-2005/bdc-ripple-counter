@@ -35,7 +35,9 @@
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
-#include "motorcontrol.h"
+#include "rc_headers/lcd.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/motorposition.h"
 #include "math.h"
 #include "stdlib.h"
 
@@ -47,6 +49,9 @@
 #define GEAR_RATIO_01     250
 #define M1_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_01* MOTOR01_POLE)/180))
 
+/*
+ Section: Function Declaration
+ */
 void Motor1AngleSetting(void);
 
 void Motor1AngleSetting(void) 
@@ -120,6 +125,13 @@ void Motor01Position(void)
 
     printf("actualRippleCount = %d \n\r ", actualRippleCount);
     printf( "AngleTurned = %d \n\r", angleTurned01);
+    
+    LCD_GoTo(0,8);
+    LCD_WriteByte("AT=   ");
+    LCD_GoTo(0,11);
+    LCD_WriteByte(angleTurned01/100+'0');
+    LCD_WriteByte((angleTurned01/10)%10+'0');
+    LCD_WriteByte((angleTurned01/1)% 10+'0');
     
     if(forwardDirection)
     {

@@ -37,7 +37,8 @@
 #include "mcc_generated_files/tmr4.h"
 #include "mcc_generated_files/smt1.h"
 #include "motorcontrol.h"
-#include "math.h"
+#include "motorposition.h"
+#include "lcd.h"
 #include "stdlib.h"
 
 void MotorDrive01(void) 
@@ -45,6 +46,13 @@ void MotorDrive01(void)
     ReadMotor01PositionFromEEPROM();
     ReadInput();
     
+    LCD_GoTo(0,7);
+    LCD_WriteByte("D=   ");
+    LCD_GoTo(0,8);
+    LCD_WriteByte(angleDesired/100+'0');
+    LCD_WriteByte((angleDesired/10)%10+'0');
+    LCD_WriteByte((angleDesired/1)% 10+'0');
+        
     if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
     {
         expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
@@ -139,6 +147,13 @@ void Motor01Position(void)
 
     printf("actualRippleCount01 = %d \n\r ", actualRippleCount01);
     printf( "AngleTurned01 = %d \n\r", angleTurned01);
+    
+    LCD_GoTo(0,11);
+    LCD_WriteByte("T=   ");
+    LCD_GoTo(0,13);
+    LCD_WriteByte(angleTurned01/100+'0');
+    LCD_WriteByte((angleTurned01/10)%10+'0');
+    LCD_WriteByte((angleTurned01/1)% 10+'0');
     
     if(forwardDirection)
     {

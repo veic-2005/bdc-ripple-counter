@@ -28,8 +28,8 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef MOTOR_CONTROL_H
-#define	MOTOR_CONTROL_H
+#ifndef MOTORCONTROL_H
+#define	MOTORCONTROL_H
 
 #include <stdint.h>
 #include <xc.h> // include processor files - each processor file is guarded.  
@@ -41,11 +41,6 @@
 #define REVERSE_DIR        0x3
 #define STEER              0x00
 
-#define INITIAL_ADDRESS_VALUE 0x3FFF
-
-#define ENDPOINT 360
-#define HOME     0
-
 #define StartMotor1()         do{COG1ASD0bits.G1ASE = 0;} while(0)
 #define StartMotor2()         do{COG3ASD0bits.G3ASE = 0;} while(0)
 #define StopMotor1()          do{COG1ASD0bits.G1ASE = 1;} while(0)
@@ -55,12 +50,6 @@
 /**
   Section: Variable Declaration
  */
-uint16_t totalAngleTurned01 = 0;
-uint16_t totalAngleTurned02 = 0;
-uint16_t angleTurned01;
-uint16_t angleTurned02;
-uint16_t remainingAngle01 = ENDPOINT;
-uint16_t remainingAngle02 = ENDPOINT;
 uint16_t angleDesired;
 uint16_t expectedRippleCount;
 uint16_t actualRippleCount;
@@ -92,17 +81,6 @@ void Motor02Forward_Drive(void);
 void Motor02Reverse_Drive(void);
 void BrakingMechanism(void);
 void BrakingMechanism02(void);
-/**
-  Section: Function Declaration dealing with Motors Position
- */
-void Motor01Position(void);
-void Motor02Position(void);
-void M1_ForwardPosition(void);
-void M2_ForwardPosition(void);
-void M1_ReversePosition(void);
-void M2_ReversePosition(void);
-void ReadMotor01PositionFromHEF(void);
-void ReadMotor02PositionFromHEF(void);
 
 /**
   Section: Function Declaration for Checking Buttons
@@ -120,5 +98,5 @@ void CompareLoadValue(void);
 uint16_t GetActualRippleCount(void);
 void RetrieveRippleCount(void);
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	/* MOTORCONTROL_H */
 

@@ -33,11 +33,11 @@
  */
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
-#include "interrupt_handlers.h"
 #include "mcc_generated_files/interrupt_manager.h"
 #include "mcc_generated_files/pin_manager.h"
-#include "safety_feature.h"
-#include "motorcontrol.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/interrupt_handlers.h"
+#include "rc_headers/safety_feature.h"
 /*
  Section: Function Declaration
  */

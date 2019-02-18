@@ -33,8 +33,8 @@
 #include "mcc_generated_files/ccp1.h"
 #include "mcc_generated_files/interrupt_manager.h"
 #include "mcc_generated_files/tmr1.h"
-#include "interrupt_handlers.h"
-#include "motorcontrol.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/interrupt_handlers.h"
 
 void TMR1_GATE_ISR(void)
 {

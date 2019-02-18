@@ -30,7 +30,6 @@
 /**
   Section: Included Files
  */
-
 #include "mcc_generated_files/cwg1.h"
 #include "mcc_generated_files/cwg2.h"
 #include "mcc_generated_files/eusart.h"
@@ -39,13 +38,20 @@
 #include "mcc_generated_files/tmr6.h"
 #include "mcc_generated_files/tmr4.h"
 #include "motorcontrol.h"
-#include "math.h"
+#include "motorposition.h"
 #include "stdlib.h"
 
+/*
+ Section: Variable Declaration
+ */
 bool getCountDone = 0; 
+
+/*
+ Section; Function Declaration
+ */
 void InitiateDrive03(void);
 
-void DualMotorDrive() 
+void DualMotorDrive(void) 
 {
     ReadMotor01PositionFromEEPROM();
     ReadMotor02PositionFromEEPROM();

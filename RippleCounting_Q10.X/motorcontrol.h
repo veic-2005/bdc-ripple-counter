@@ -43,7 +43,7 @@
 #define HOME     0
 
 /**
- * Section: Variable Declaration and Definition
+ * Section: Variable Declaration
  */
 uint16_t angleTurned = 0;
 uint16_t remainingAngle = END_POINT;

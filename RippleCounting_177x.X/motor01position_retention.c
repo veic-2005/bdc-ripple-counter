@@ -35,7 +35,9 @@
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/memory.h"
 #include "mcc_generated_files/pin_manager.h"
-#include "motorcontrol.h"
+#include "rc_headers/lcd.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/motorposition.h"
 #include "stdlib.h"
 
 /**
@@ -106,6 +108,13 @@ void ReadMotor01PositionFromHEF(void)
             totalAngleTurned01 = actualMotor01Position;
         }
         printf("actualMotor01Position = %d \n\r", actualMotor01Position);
+        
+        LCD_GoTo(1,0);
+        LCD_WriteByte("M1 Position=   ");
+        LCD_GoTo(1,12);
+        LCD_WriteByte(actualMotor01Position/100+'0');
+        LCD_WriteByte((actualMotor01Position/10)%10+'0');
+        LCD_WriteByte((actualMotor01Position/1)% 10+'0');
     }
 }
 /**

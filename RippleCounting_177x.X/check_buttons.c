@@ -33,7 +33,7 @@
 
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/device_config.h"
-#include "motorcontrol.h"
+#include "rc_headers/motorcontrol.h"
 
 /**
  Section: Variable Declaration

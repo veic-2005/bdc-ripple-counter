@@ -35,7 +35,9 @@
 #include "mcc_generated_files/memory.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
+#include "motorposition.h"
 #include "stdlib.h"
+#include "lcd.h"
 
 /**
  * Macro Declaration 
@@ -97,6 +99,13 @@ void ReadMotor02PositionFromEEPROM(void)
             totalAngleTurned02 = actualMotor02Position;
         }
         printf("actualMotor02Position = %d \n\r", actualMotor02Position);
+        
+        LCD_GoTo(1,0);
+        LCD_WriteByte("M2=   ");
+        LCD_GoTo(1,3);
+        LCD_WriteByte(actualMotor02Position/100+'0');
+        LCD_WriteByte((actualMotor02Position/10)%10+'0');
+        LCD_WriteByte((actualMotor02Position/1)% 10+'0');
     }
 }
 /**

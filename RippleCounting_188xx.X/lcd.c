@@ -44,7 +44,7 @@
 /**
   Section: Included Files
  */
-#include "rc_headers/lcd.h"
+#include "lcd.h"
 #include "mcc_generated_files/mcc.h"
 
 /**
@@ -81,9 +81,9 @@ void LCD_Initialize(void) {
 
 void LCD_WriteIOExpander(uint8_t reg, uint8_t data) {
     LCD_CHIP_SELECT_SetLow();
-    SPI_Exchange8bit(IO_EXPD_ADDRESS);
-    SPI_Exchange8bit(reg);
-    SPI_Exchange8bit(data);
+    SPI1_Exchange8bit(IO_EXPD_ADDRESS);
+    SPI1_Exchange8bit(reg);
+    SPI1_Exchange8bit(data);
     LCD_CHIP_SELECT_SetHigh();
 }
 

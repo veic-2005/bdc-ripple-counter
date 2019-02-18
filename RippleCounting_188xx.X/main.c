@@ -59,7 +59,7 @@ void NextMotor(void);
 /**
  Section: Variable Declaration
  */
-bool BtnPressed = 0;
+bool btnPressed = 0;
 bool switchEvent = 0;
 
 /*
@@ -100,13 +100,13 @@ void CheckMotorSelectorButton(void)
     if(MOTOR_SELECT_BUTTON_PORT == LOW)
     {  
         __delay_ms(100);
-        BtnPressed = 1;
+        btnPressed = 1;
     }
     else if (MOTOR_SELECT_BUTTON_PORT == HIGH)
     {
-        if(BtnPressed)
+        if(btnPressed)
         {
-            BtnPressed = 0;
+            btnPressed = 0;
             switchEvent = 1;
         }
     }

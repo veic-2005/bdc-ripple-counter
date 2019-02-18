@@ -55,7 +55,6 @@ void Forward_Dir()
         if(totalAngleTurned >= END_POINT)
         {
             StopMotor();
-            endPointReached = 1;
         }
         else
         {   
@@ -72,17 +71,10 @@ void Reverse_Dir()
     {
         inputSet = 0;
         reverseDirection = 1;
-        reverseOrigin = 1; 
         if(totalAngleTurned <= HOME)
         {
             StopMotor();
         }
-//        else if(endPointReached)
-//        {
-//            totalAngleTurned  = END_POINT;
-//            endPointReached = 0;
-//            StartCounting();
-//        }
         else
         {
             StartCounting();

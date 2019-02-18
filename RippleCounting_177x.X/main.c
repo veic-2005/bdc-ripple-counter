@@ -45,15 +45,11 @@
   Section: Included Files
  */
 #include "mcc_generated_files/mcc.h"
-#include "motorcontrol.h"
-#include "safety_feature.h"
-#include "lcd.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/motorposition.h"
+#include "rc_headers/lcd.h"
+#include "rc_headers/safety_feature.h"
 
-/**
- * Section: Function Declaration
- */
-void CheckMotorSelectorButton(void);
-void nextMotor(void);
 
 /*
                          Main application

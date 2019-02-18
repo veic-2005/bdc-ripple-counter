@@ -31,10 +31,9 @@
 #ifndef MOTOR_CONTROL_H
 #define	MOTOR_CONTROL_H
 
-#include <stdint.h>
-#include "stdlib.h"
-#include <xc.h> // include processor files - each processor file is guarded.  
 
+#include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdint.h>
 /**
  * Macro Declaration 
  */
@@ -44,22 +43,6 @@
 #define MOTOR02_MODE    CWG2CON0bits.MODE
 #define STEER           0x00
 
-
-#define INITIAL_ADDRESS_VALUE 0xFFFF
-
-#define MOTOR01_POLE     3
-#define GEAR_RATIO_01    250
-#define M1_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_01* MOTOR01_POLE)/180))
-#define PR4_VALUE       0x22
-
-#define MOTOR02_POLE     3
-#define GEAR_RATIO_02    250
-#define M2_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_02* MOTOR02_POLE)/180))
-#define PR6_VALUE       0x22
-
-#define ENDPOINT 360
-#define HOME     0
-
 #define StartMotor1()         do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0)
 #define StartMotor2()         do{CWG2AS0bits.CWG2SHUTDOWN = 0;} while(0)
 #define StopMotor1()          do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0)
@@ -68,15 +51,8 @@
 #define StartStallTimer6()     do{T6CONbits.TMR6ON = 1;} while(0)
 
 /**
-  Section: Variable Definitions
+  Section: Variable Declaration
  */
-uint16_t totalAngleTurned01 = 0;
-uint16_t totalAngleTurned02 = 0;
-uint16_t angleTurned01;
-uint16_t angleTurned02;
-
-uint16_t remainingAngle01 = ENDPOINT;
-uint16_t remainingAngle02 = ENDPOINT;
 uint16_t angleDesired;
 uint16_t expectedRippleCount;
 uint16_t actualRippleCount01;
@@ -94,6 +70,7 @@ bool reverseOrigin = 0;
 
 bool motor01Stalled = 0;
 bool motor02Stalled = 0;
+
 /**
   Section: Function Declaration for Safety Features
  */
@@ -112,13 +89,6 @@ void(*SMT2_InterruptHandler)(void);
 void SMT1_ISR(void);
 void SMT2_ISR(void);
 
-void LoadValues(void);
-void Compare_ISR(void);
-void ExpectedRippleCountRemainingAngle(void);
-void ExpectedRippleCountRemainingAngle02(void);
-void ExpectedRippleCountToHome(void);
-void ExpectedRippleCountToHome02(void);
-
 /**
   Section: Function Declaration for Motor 1 and 2 Drive
  */
@@ -129,27 +99,12 @@ void MotorDrive02(void);
 void DualMotorDrive(void);
 void ResumeMotor01(void);
 void ResumeMotor02(void);
-
-/**
-  Section: Function Declaration dealing with Motors Position
- */
-void M1_ForwardPosition(void);
-void M2_ForwardPosition(void);
-void M1_ReversePosition(void);
-void M2_ReversePosition(void);
-
-void Motor01Position(void);
 void BrakingMechanism(void);
-void Motor02Position(void);
 void BrakingMechanism02(void);
-
-void ReadMotor01PositionFromEEPROM(void);
-void ReadMotor02PositionFromEEPROM(void);
 
 /**
   Section: Function Declaration for Checking Buttons
  */
-
 void CheckForwardButton(void);
 void CheckReverseButton(void); 
 void CheckInputButton(void);
@@ -160,6 +115,12 @@ void CheckInputButton(void);
 void ReadInput(void);
 void MotorInput(void);
 uint16_t GetActualRippleCount(void);
+void LoadValues(void);
+void Compare_ISR(void);
+void ExpectedRippleCountRemainingAngle(void);
+void ExpectedRippleCountRemainingAngle02(void);
+void ExpectedRippleCountToHome(void);
+void ExpectedRippleCountToHome02(void);
 
 #endif	/*MOTOR_CONTROL_H */
 

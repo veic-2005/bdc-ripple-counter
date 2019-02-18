@@ -37,18 +37,17 @@
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
-#include "interrupt_handlers.h"
-#include "motorcontrol.h"
-#include "math.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/interrupt_handlers.h"
+#include "rc_headers/lcd.h"
 #include <stdlib.h>
-#include "lcd.h"
 
 /**
  Section: Macro Declaration
  */
 #define INITIAL_TIMER_VALUE     0x7FFF       
 #define MAXIMUM_TIMER_VALUE     0xFFFF
-#define PERIOD_TIMER1_VALUE    (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
+#define PERIOD_TIMER_VALUE    (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
 #define PR2_VALUE               0x22
 #define CALIBRATION_VALUE       0x8
 
@@ -63,9 +62,9 @@ void ReadInput(void)
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d \t\r\n", angleDesired);  
     
-    LCD_GoTo(1,0);
-    LCD_WriteByte("AD = ");
-    LCD_GoTo(1,5);
+    LCD_GoTo(0,0);
+    LCD_WriteByte("AD=   ");
+    LCD_GoTo(0,4);
     LCD_WriteByte(angleDesired/100+'0');
     LCD_WriteByte((angleDesired/10)%10+'0');
     LCD_WriteByte((angleDesired/1)% 10+'0');
@@ -95,7 +94,7 @@ void Compare_ISR(void)
 
 uint16_t GetActualRippleCount(void)
 {
-    timer1Value = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ CALIBRATION_VALUE; 
+    timer1Value = ((TMR1_ReadTimer()+ PERIOD_TIMER_VALUE) << 1)+ CALIBRATION_VALUE; 
     return (abs(timer1Value));
 }
 

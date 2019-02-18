@@ -31,13 +31,14 @@
 /**
   Section: Included Files
  */
-
 #include "mcc_generated_files/cog3.h"
 #include "mcc_generated_files/eusart.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/tmr4.h"
+#include "rc_headers/lcd.h"
+#include "rc_headers/motorcontrol.h"
+#include "rc_headers/motorposition.h"
 #include "math.h"
-#include "motorcontrol.h"
 
 /**
  * Section: Macro Declaration
@@ -46,7 +47,9 @@
 #define MOTOR02_POLE            3
 #define GEAR_RATIO_02           250
 #define M2_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_02* MOTOR02_POLE)/180))
-
+/*
+ SEction: Function Declaration
+ */
 void Motor2AngleSetting(void);
 
 void Motor2AngleSetting(void) 
@@ -115,6 +118,16 @@ void Motor02Reverse_Drive(void)
 void Motor02Position(void)
 {
     angleTurned02 = (actualRippleCount / M2_RIPPLE_COUNT_PER_ANGLE);
+    
+    printf("actualRippleCount = %d \n\r ", actualRippleCount);
+    printf( "AngleTurned02 = %d \n\r", angleTurned02);
+    
+    LCD_GoTo(0,8);
+    LCD_WriteByte("AT=   ");
+    LCD_GoTo(0,11);
+    LCD_WriteByte(angleTurned02/100+'0');
+    LCD_WriteByte((angleTurned02/10)%10+'0');
+    LCD_WriteByte((angleTurned02/1)% 10+'0');
     
     if(forwardDirection)
     {
