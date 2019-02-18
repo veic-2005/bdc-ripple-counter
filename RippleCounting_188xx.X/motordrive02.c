@@ -71,7 +71,7 @@ void MotorDrive02(void)
         ForwardBtnPressed = 0;
         forwardDirection = 1;
     
-        if(totalAngleTurned02 >= ENDPOINT)
+        if((totalAngleTurned02 >= ENDPOINT) || (angleDesired % 5 != 0))
         {
             StopMotor2();
         }
@@ -86,7 +86,7 @@ void MotorDrive02(void)
         ReverseBtnPressed = 0;
         reverseDirection = 1;
         
-        if(totalAngleTurned02 <= HOME)
+        if((totalAngleTurned02 <= HOME) || (angleDesired % 5 !=0 ))
         {
            StopMotor2();
         }

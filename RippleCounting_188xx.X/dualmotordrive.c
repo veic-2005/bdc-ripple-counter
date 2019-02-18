@@ -68,7 +68,7 @@ void DualMotorDrive(void)
         ForwardBtnPressed = 0;
         forwardDirection = 1;
     
-        if((totalAngleTurned01 >= ENDPOINT) || (totalAngleTurned02 >= ENDPOINT))
+        if((totalAngleTurned01 >= ENDPOINT) || (totalAngleTurned02 >= ENDPOINT) || (angleDesired %5 != 0))
         {
             StopMotor1();
             StopMotor2();
@@ -86,7 +86,7 @@ void DualMotorDrive(void)
         ReverseBtnPressed = 0;
         reverseDirection = 1;
         
-        if((totalAngleTurned01 <= HOME) || (totalAngleTurned02 <= HOME))
+        if((totalAngleTurned01 <= HOME) || (totalAngleTurned02 <= HOME) ||(angleDesired %5 != 0))
         {
            StopMotor1();
            StopMotor2();

@@ -91,7 +91,8 @@ void ResumeMotor(void)
         else
         {
             ExpectedRippleCountToHome();
-        } 
+        }
+        angleDesired = 0;
         CompareLoadValue();
         Motor01Reverse_Drive();
     }
@@ -106,6 +107,7 @@ void ResumeMotor(void)
         {
             ExpectedRippleCountToHome02();
         }
+        angleDesired = 0;
         CompareLoadValue();
         Motor02Reverse_Drive();
     }

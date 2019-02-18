@@ -52,7 +52,7 @@ void Forward_Dir()
     {
         inputSet = 0;
         forwardDirection = 1;
-        if(totalAngleTurned >= END_POINT)
+        if((totalAngleTurned >= END_POINT) ||(angleDesired%5 != 0))
         {
             StopMotor();
         }
@@ -71,7 +71,7 @@ void Reverse_Dir()
     {
         inputSet = 0;
         reverseDirection = 1;
-        if(totalAngleTurned <= HOME)
+        if((totalAngleTurned <= HOME) || (angleDesired%5 != 0))
         {
             StopMotor();
         }

@@ -45,6 +45,7 @@
 /**
  * Section: Variable Declaration
  */
+uint16_t angleDesired = 0;
 uint16_t angleTurned = 0;
 uint16_t remainingAngle = END_POINT;
 uint16_t totalAngleTurned = 0;

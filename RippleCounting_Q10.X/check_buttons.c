@@ -101,8 +101,10 @@ void CheckHomeButton()
             {
                 ExpectedRippleCountToHome();
             }
+            angleDesired = 0;
             CompareLoadValue();
             Reverse_Dir();
+            
         }
     }
 }
@@ -130,6 +132,7 @@ void CheckEndButton()
             {
                 ExpectedRippleCountRemainingAngle();
             }
+            angleDesired = 0;
             CompareLoadValue();
             Forward_Dir();
         }

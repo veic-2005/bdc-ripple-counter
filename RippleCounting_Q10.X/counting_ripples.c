@@ -64,7 +64,6 @@
  Section: Variable Declaration
  */
 bool dummy = 0;
-uint16_t angleDesired = 0;
 uint16_t compareLoadValue = 0;
 uint16_t expectedRippleCount = 0;
 
