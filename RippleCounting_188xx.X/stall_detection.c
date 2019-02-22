@@ -44,7 +44,7 @@
 void StallM1_ISR(void);
 void StallM2_ISR(void);
 
-void StallDetection(void)
+void StallDetection_Initialize(void)
 {
     TMR4_SetInterruptHandler(StallM1_ISR);
     TMR6_SetInterruptHandler(StallM2_ISR);

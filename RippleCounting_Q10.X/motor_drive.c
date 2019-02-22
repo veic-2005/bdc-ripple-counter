@@ -42,17 +42,17 @@
 #define REVERSE_DIR         0x3
 #define STEER               0x0
 
-
-
 void Forward_Dir()
 { 
     MOTOR_MODE = FORWARD_DIR;
     
-    if (inputSet)
+    if(inputSet)
     {
         inputSet = 0;
         forwardDirection = 1;
-        if((totalAngleTurned >= END_POINT) ||(angleDesired%5 != 0))
+        
+        if((totalAngleTurned >= END_POINT)||(angleDesired % 5 != 0))
+        if(totalAngleTurned >= END_POINT)
         {
             StopMotor();
         }
@@ -67,11 +67,13 @@ void Reverse_Dir()
 {
     MOTOR_MODE = REVERSE_DIR;
     
-    if (inputSet)
+    if(inputSet)
     {
         inputSet = 0;
         reverseDirection = 1;
-        if((totalAngleTurned <= HOME) || (angleDesired%5 != 0))
+
+        if((totalAngleTurned <= HOME) || (angleDesired % 5 != 0))
+        if(totalAngleTurned <= HOME)
         {
             StopMotor();
         }

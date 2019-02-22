@@ -45,6 +45,9 @@
 #define MOTOR02_ADDR00        0x7004
 #define MOTOR02_ADDR01        0x7006
 
+/*
+ Section: Function Declaration
+ */
 void StoreMotor02Position(void);
 
 void M2_ForwardPosition(void)

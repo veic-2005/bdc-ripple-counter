@@ -34,6 +34,8 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
+#include <stdbool.h>
+#include <stdlib.h>
 /**
  * Macro Declaration 
  */
@@ -74,8 +76,7 @@ bool motor02Stalled = 0;
 /**
   Section: Function Declaration for Safety Features
  */
-void StallDetection(void);
-void OvercurrentDetection(void);
+void StallDetection_Initialize(void);
 void ResumeMotor(void);
 
 /**

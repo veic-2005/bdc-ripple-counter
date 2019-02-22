@@ -63,16 +63,16 @@ void main(void) {
     INTERRUPT_PeripheralInterruptEnable();
     LCD_Initialize();
     
-    StallDetection();
-    OvercurrentDetection();
+    StallDetection_Initialize();
+    OvercurrentDetection_Initialize();
     
-    RetrieveRippleCount();
+    Compare_Initialize();
             
     while (1) 
     {
-        ReadInput();
         ReadMotor01PositionFromHEF();
         ReadMotor02PositionFromHEF();
+        ReadInput();
 
         CheckM1ForwardButton();
         CheckM1ReverseButton(); 

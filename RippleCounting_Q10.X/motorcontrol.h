@@ -28,13 +28,20 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef MOTORCONTROL_H
-#define	MOTORCONTROL_H
+#ifndef MOTOR_CONTROL_H
+#define	MOTOR_CONTROL_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
+/*
+ Section: Macro Declaration
+ */
 #define StopMotor()        do{CWG1AS0bits.CWG1SHUTDOWN = 1;} while(0)
+#define StartMotor()       do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0)
+#define StartStallTimer()  do{T4CONbits.TMR4ON = 1;} while(0)
 
 /**
   Section : Motor Position parameters
@@ -51,6 +58,7 @@ uint16_t remainingAngle = END_POINT;
 uint16_t totalAngleTurned = 0;
 
 bool inputSet = 0;
+bool dummy = 0;
 bool reverseOrigin = 0;
 bool getCountDone = 0;
 bool forwardDirection = 0;
@@ -86,7 +94,7 @@ void Forward_Dir(void);
 void Reverse_Dir(void);
 void BrakingMechanism(void);
 void ResumeMotor(void);
-void StallDetection(void);
+void StallDetection_Initialize(void);
 
 /**
  * Section: Function declaration for Counting Ripples
@@ -97,7 +105,7 @@ void ExpectedRippleCountToEndPoint(void);
 void CompareLoadValue(void);
 void Compare_ISR(void);
 void GetAngleTurned(void);
-void RetrieveRippleCount(void);
+void Compare_Initialize(void);
 void StartCounting(void);
 #endif	/* MOTOR_CONTROL_H */
 

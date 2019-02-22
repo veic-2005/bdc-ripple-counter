@@ -33,8 +33,8 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-void StallDetection(void);
-void OvercurrentDetection(void);
+void StallDetection_Initialize(void);
+void OvercurrentDetection_Initialize(void);
 void ResumeMotor(void);
 #endif	/* SAFETY_FEATURE */
 

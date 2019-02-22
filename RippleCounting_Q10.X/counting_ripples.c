@@ -40,14 +40,13 @@
 #include "mcc_generated_files/tmr4.h"
 #include "motorcontrol.h"
 #include "math.h"
-#include "stdlib.h"
 
 /**
  Section: Motor Specifications Definition
  */ 
 #define POLE            3
-#define GEAR_RATIO      250
-#define RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO* POLE)/180))
+#define GEAR_RATIO      240
+#define RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO* POLE)/180)))
 
 /**
  * Section: Macro Declaration
@@ -55,27 +54,27 @@
 #define INITIAL_TIMER_VALUE     0x7FFF       
 #define MAXIMUM_TIMER_VALUE     0xFFFF
 #define PERIOD_TIMER1_VALUE   (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
-#define StartMotor()       do{CWG1AS0bits.CWG1SHUTDOWN = 0;} while(0)
-#define StartStallTimer()  do{T4CONbits.TMR4ON = 1;} while(0)
-#define CALIBRATION_VALUE   0x8
-#define PR2_VALUE           0x22
+
+#define COMPENSATOR_VALUE   0x08
+#define CALIBRATION_VALUE   0x06
+#define PR2_VALUE           0x17
 
 /*
  Section: Variable Declaration
  */
-bool dummy = 0;
+uint16_t actualRippleCount;
 uint16_t compareLoadValue = 0;
 uint16_t expectedRippleCount = 0;
 
 void ReadInput(void) 
 {
-    angleDesired = (((ADCC_GetSingleConversion(getRippleChannel) * 45) + 1 ) >> 8);
+    angleDesired = (((ADCC_GetSingleConversion(getRippleChannel) + 1) * 45) >> 8);
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d", angleDesired);  
         
     if((angleDesired <= remainingAngle ) || (remainingAngle == 0))
     {
-        expectedRippleCount = angleDesired *  RIPPLE_COUNT_PER_ANGLE;
+        expectedRippleCount = (angleDesired *  round(RIPPLE_COUNT_PER_ANGLE));
     }
     else if(angleDesired > remainingAngle)
     {
@@ -88,12 +87,12 @@ void ReadInput(void)
 
 void ExpectedRippleCountRemainingAngle(void)
 {
-    expectedRippleCount = remainingAngle * RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = remainingAngle * round(RIPPLE_COUNT_PER_ANGLE);
 }
 
 void ExpectedRippleCountToHome(void)
 {
-    expectedRippleCount = (totalAngleTurned * RIPPLE_COUNT_PER_ANGLE) + 14;
+    expectedRippleCount = (totalAngleTurned * round(RIPPLE_COUNT_PER_ANGLE)) + CALIBRATION_VALUE + COMPENSATOR_VALUE;
     dummy = 1;
     
 }
@@ -101,13 +100,13 @@ void ExpectedRippleCountToHome(void)
 void ExpectedRippleCountToEndPoint(void)
 {
     angleDesired = END_POINT - remainingAngle;
-    expectedRippleCount = (angleDesired * RIPPLE_COUNT_PER_ANGLE) + 14;
+    expectedRippleCount = (angleDesired * round(RIPPLE_COUNT_PER_ANGLE)) + CALIBRATION_VALUE + COMPENSATOR_VALUE;
     dummy = 1;
 }
 
 void CompareLoadValue(void)
 {
-    compareLoadValue = ((expectedRippleCount - CALIBRATION_VALUE )>> 1) + INITIAL_TIMER_VALUE + 1;
+    compareLoadValue = ((expectedRippleCount - CALIBRATION_VALUE)>> 1) + INITIAL_TIMER_VALUE + 1;
 }
 
 void StartCounting(void)
@@ -130,25 +129,23 @@ void Compare_ISR(void)
     getCountDone = 1;
 }
 
-void RetrieveRippleCount(void)
+void Compare_Initialize(void)
 {
     CCP1_CompareSetInterruptHandler(Compare_ISR);
 }
 
 void GetAngleTurned(void)
-{
-    uint16_t actualRippleCount;
-    
+{    
     if(dummy)
     {
         dummy = 0;
-        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) - 6;
+        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) - COMPENSATOR_VALUE - CALIBRATION_VALUE;
     }
     else
     {
-        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ CALIBRATION_VALUE  + 1 ;
+        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1)+ CALIBRATION_VALUE + 1;
     }
-    angleTurned = (abs(actualRippleCount) / round(RIPPLE_COUNT_PER_ANGLE));
+    angleTurned = (abs(actualRippleCount)/ round(RIPPLE_COUNT_PER_ANGLE));
     
     printf("actual Ripple Count = %d", actualRippleCount);
     printf("\t AngleTurned = %d \n\r", angleTurned);

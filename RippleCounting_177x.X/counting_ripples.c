@@ -49,7 +49,7 @@
 #define MAXIMUM_TIMER_VALUE     0xFFFF
 #define PERIOD_TIMER_VALUE    (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
 #define PR2_VALUE               0x22
-#define CALIBRATION_VALUE       0x8
+#define CALIBRATION_VALUE       0x08
 
 /**
  Section: Variable Declaration
@@ -58,7 +58,7 @@ uint16_t compareLoadValue;
 
 void ReadInput(void) 
 {
-    angleDesired =  (((ADC_GetConversion(POT) + 1) * 45) >> 8); // for 180 degrees maximum incremental angle shift to the right by 8
+    angleDesired =  (((ADC_GetConversion(POT) + 1) * 45) >> 8); 
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d \t\r\n", angleDesired);  
     
@@ -98,7 +98,7 @@ uint16_t GetActualRippleCount(void)
     return (abs(timer1Value));
 }
 
-void RetrieveRippleCount(void)
+void Compare_Initialize(void)
 {
     CCP1_CompareSetInterruptHandler(Compare_ISR);
 }

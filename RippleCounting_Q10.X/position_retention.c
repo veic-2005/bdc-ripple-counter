@@ -35,14 +35,13 @@
 #include "mcc_generated_files/memory.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "motorcontrol.h"
-#include "stdlib.h"
 
 /*
  Section: Motor Address Definition
  */
 #define INITIAL_ADDRESS_VALUE     0xFFFF
-#define MOTOR_ADDR00              0x3100F0  
-#define MOTOR_ADDR01              0x3100F2
+#define MOTOR_ADDR00              0x310000  
+#define MOTOR_ADDR01              0x310010
 
 /*
  Section: Declaration of Function used in Positioning
@@ -61,6 +60,10 @@ void ForwardPosition()
         {
             EndPointReachedLED_SetHigh();
         }
+    }
+    else
+    {
+        StopMotor();
     }
     
     reverseOrigin = 0;
@@ -81,6 +84,10 @@ void ReversePosition()
         {
             HomeReachedLED_SetHigh();
         }
+    }
+    else
+    {
+        StopMotor();
     }
        
     reverseOrigin = 1;
@@ -108,7 +115,8 @@ void ReadMotorPositionFromEEPROM()
     {
         if(actualPosition < 0)
         {
-            totalAngleTurned = abs(actualPosition);
+            actualPosition = abs(actualPosition);
+            totalAngleTurned = actualPosition;
         }
         else
         {

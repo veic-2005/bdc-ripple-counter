@@ -59,8 +59,9 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    RetrieveRippleCount();
-    StallDetection();
+
+    Compare_Initialize();
+    StallDetection_Initialize();
     
     while (1)
     {

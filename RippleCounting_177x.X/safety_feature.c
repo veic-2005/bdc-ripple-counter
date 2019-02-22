@@ -44,12 +44,12 @@
 void Stall_ISR(void);
 void Overcurrent_ISR(void);
 
-void StallDetection(void) 
+void StallDetection_Initialize(void) 
 {
     TMR4_SetInterruptHandler(Stall_ISR);
 }
 
-void OvercurrentDetection(void)
+void OvercurrentDetection_Initialize(void)
 {
     CMP3_SetInterruptHandler(Overcurrent_ISR); 
 }

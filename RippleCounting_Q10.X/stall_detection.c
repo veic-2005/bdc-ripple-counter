@@ -41,7 +41,7 @@
  */
 void Stall_ISR(void);
 
-void StallDetection()
+void StallDetection_Initialize()
 {
     TMR4_SetInterruptHandler(Stall_ISR);
 }
@@ -68,7 +68,8 @@ void ResumeMotor(void)
     {
         ExpectedRippleCountToHome();
     }
-    
+    dummy = 1;
+    angleDesired = 0;
     CompareLoadValue();
     inputSet = 1;
     Reverse_Dir();

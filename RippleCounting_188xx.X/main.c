@@ -46,7 +46,6 @@
  */
 #include "mcc_generated_files/mcc.h"
 #include "motorcontrol.h"
-#include <stdint.h>
 
 #define SWITCH_S1_TTL()    do { INLVLBbits.INLVLB0 = 0; } while(0)
 
@@ -75,8 +74,8 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
     
+    StallDetection_Initialize();
     
-  
     while (1)
     {
         CheckMotorSelectorButton();

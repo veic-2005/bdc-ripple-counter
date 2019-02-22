@@ -47,7 +47,7 @@
 #define MOTOR01_MODE    COG1CON0bits.MD
 #define MOTOR01_POLE      3
 #define GEAR_RATIO_01     250
-#define M1_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_01* MOTOR01_POLE)/180))
+#define M1_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_01* MOTOR01_POLE)/180)))
 
 /*
  Section: Function Declaration

@@ -96,7 +96,7 @@ void CheckM2ReverseButton(void);
 void ReadInput(void);
 void CompareLoadValue(void);
 uint16_t GetActualRippleCount(void);
-void RetrieveRippleCount(void);
+void Compare_Initialize(void);
 
 #endif	/* MOTORCONTROL_H */
 

@@ -49,7 +49,7 @@ bool motorSelected = 0;
 
 void ReadInput(void) 
 {
-    angleDesired =  (((ADCC_GetSingleConversion(POT) + 1) * 45) >> 8); // for 180 degrees  shift to the right by 8
+    angleDesired =  (((ADCC_GetSingleConversion(POT) + 1) * 45) >> 8);
     (angleDesired % 5 != 0)? printf("") :  
     printf("angleDesired = %d \t\r\n", angleDesired); 
 }

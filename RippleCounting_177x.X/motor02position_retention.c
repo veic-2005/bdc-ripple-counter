@@ -43,7 +43,7 @@
  Section: Macro Declaration
  */
 
-#define MOTOR02_ADDR00        0x3F83
+#define MOTOR02_ADDR00        0x3FC0
 
 /*
  Section: Variable Declaration

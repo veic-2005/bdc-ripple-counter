@@ -46,9 +46,9 @@
 #define MOTOR02_MODE        COG3CON0bits.MD
 #define MOTOR02_POLE            3
 #define GEAR_RATIO_02           250
-#define M2_RIPPLE_COUNT_PER_ANGLE (round((1*GEAR_RATIO_02* MOTOR02_POLE)/180))
+#define M2_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_02* MOTOR02_POLE)/180)))
 /*
- SEction: Function Declaration
+ Section: Function Declaration
  */
 void Motor2AngleSetting(void);
 
