@@ -58,8 +58,8 @@ void SYSTEM_Initialize(void)
     TMR4_Initialize();
     SMT1_Initialize();
     TMR2_Initialize();
-    SMT2_Initialize();
     PWM1_Initialize();
+    SMT2_Initialize();
     TMR6_Initialize();
     CWG2_Initialize();
     CWG1_Initialize();

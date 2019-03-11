@@ -13,7 +13,6 @@
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/device_config.h</itemPath>
         <itemPath>mcc_generated_files/eusart.h</itemPath>
-        <itemPath>mcc_generated_files/dac1.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
         <itemPath>mcc_generated_files/adc.h</itemPath>
         <itemPath>mcc_generated_files/tmr2.h</itemPath>
@@ -54,7 +53,6 @@
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/eusart.c</itemPath>
-        <itemPath>mcc_generated_files/dac1.c</itemPath>
         <itemPath>mcc_generated_files/memory.c</itemPath>
         <itemPath>mcc_generated_files/adc.c</itemPath>
         <itemPath>mcc_generated_files/tmr2.c</itemPath>

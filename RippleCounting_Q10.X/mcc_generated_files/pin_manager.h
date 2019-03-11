@@ -311,18 +311,6 @@
 #define RD3_SetAnalogMode()         do { ANSELDbits.ANSELD3 = 1; } while(0)
 #define RD3_SetDigitalMode()        do { ANSELDbits.ANSELD3 = 0; } while(0)
 
-// get/set RD7 procedures
-#define RD7_SetHigh()            do { LATDbits.LATD7 = 1; } while(0)
-#define RD7_SetLow()             do { LATDbits.LATD7 = 0; } while(0)
-#define RD7_Toggle()             do { LATDbits.LATD7 = ~LATDbits.LATD7; } while(0)
-#define RD7_GetValue()              PORTDbits.RD7
-#define RD7_SetDigitalInput()    do { TRISDbits.TRISD7 = 1; } while(0)
-#define RD7_SetDigitalOutput()   do { TRISDbits.TRISD7 = 0; } while(0)
-#define RD7_SetPullup()             do { WPUDbits.WPUD7 = 1; } while(0)
-#define RD7_ResetPullup()           do { WPUDbits.WPUD7 = 0; } while(0)
-#define RD7_SetAnalogMode()         do { ANSELDbits.ANSELD7 = 1; } while(0)
-#define RD7_SetDigitalMode()        do { ANSELDbits.ANSELD7 = 0; } while(0)
-
 /**
    @Param
     none

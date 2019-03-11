@@ -123,6 +123,15 @@ void ReadMotorPositionFromEEPROM()
             totalAngleTurned = actualPosition;
         }
         printf("actualPosition = %d \n\r", actualPosition);
+        
+        if(actualPosition == END_POINT)
+        {
+            EndPointReachedLED_SetHigh();
+        }
+        else if(actualPosition == HOME)
+        {
+            HomeReachedLED_SetHigh();
+        }
     }
 }
 

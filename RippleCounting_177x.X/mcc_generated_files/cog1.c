@@ -115,8 +115,8 @@ void COG1_Initialize(void)
     // PHF 0; 
     COG1PHF = 0x00;
 
-    // G1MD Forward Full-Bridge mode; G1CS FOSC/4; G1LD transfer complete; G1EN enabled; 
-    COG1CON0 = 0x82;
+    // G1MD Forward Full-Bridge mode; G1CS HFINTOSC; G1LD transfer complete; G1EN enabled; 
+    COG1CON0 = 0x92;
 
 }
 

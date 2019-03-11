@@ -89,8 +89,8 @@ void TMR6_Initialize(void)
     // Set Default Interrupt Handler
     TMR6_SetInterruptHandler(TMR6_DefaultInterruptHandler);
 
-    // T6CKPS 1:128; T6OUTPS 1:10; TMR6ON on; 
-    T6CON = 0xF9;
+    // T6CKPS 1:128; T6OUTPS 1:10; TMR6ON off; 
+    T6CON = 0x79;
 }
 
 void TMR6_ModeSet(TMR6_HLT_MODE mode)
