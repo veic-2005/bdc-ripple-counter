@@ -13,12 +13,12 @@
   @Description
     This source file provides implementations for driver APIs for ADCC.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.76
         Device            :  PIC16F18877
-        Driver Version    :  2.13
+        Driver Version    :  2.1.4
     The generated drivers are tested against the following:
-        Compiler          :  XC8 1.45
-        MPLAB             :  MPLAB X 4.15
+        Compiler          :  XC8 2.00
+        MPLAB             :  MPLAB X 5.10
 */
 
 /*

@@ -38,6 +38,7 @@
 #include "rc_headers/lcd.h"
 #include "rc_headers/motorcontrol.h"
 #include "rc_headers/motorposition.h"
+#include "stdlib.h"
 #include "math.h"
 
 /**
@@ -46,17 +47,21 @@
 #define MOTOR02_MODE        COG3CON0bits.MD
 #define MOTOR02_POLE            3
 #define GEAR_RATIO_02           250
-#define M2_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_02* MOTOR02_POLE)/180)))
+
 /*
  Section: Function Declaration
  */
 void Motor2AngleSetting(void);
+/*
+ Section: Variable Declaration
+ */
+float m2RippleCountPerAngle = (float)((float)(MOTOR02_POLE * GEAR_RATIO_02)/180);
 
 void Motor2AngleSetting(void) 
 {
     if((angleDesired <= remainingAngle02 ) || (remainingAngle02 == 0))
     {
-        expectedRippleCount = angleDesired * M2_RIPPLE_COUNT_PER_ANGLE;
+        expectedRippleCount = angleDesired * round(m2RippleCountPerAngle);
     }
     else if(angleDesired > remainingAngle02)
     {
@@ -67,12 +72,12 @@ void Motor2AngleSetting(void)
 
 void ExpectedRippleCountRemainingAngle02(void)
 {
-    expectedRippleCount = remainingAngle02 * M2_RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = remainingAngle02 * round(m2RippleCountPerAngle);
 }
 
 void  ExpectedRippleCountToHome02(void)
 {
-    expectedRippleCount = totalAngleTurned02 * M2_RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = totalAngleTurned02 * round(m2RippleCountPerAngle);
 }
 
 void Motor02Forward_Drive(void)
@@ -117,7 +122,7 @@ void Motor02Reverse_Drive(void)
 
 void Motor02Position(void)
 {
-    angleTurned02 = (actualRippleCount / M2_RIPPLE_COUNT_PER_ANGLE);
+    angleTurned02 = (abs(actualRippleCount) / round(m2RippleCountPerAngle));
     
     printf("actualRippleCount = %d \n\r ", actualRippleCount);
     printf( "AngleTurned02 = %d \n\r", angleTurned02);

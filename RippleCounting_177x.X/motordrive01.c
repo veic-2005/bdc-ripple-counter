@@ -47,18 +47,21 @@
 #define MOTOR01_MODE    COG1CON0bits.MD
 #define MOTOR01_POLE      3
 #define GEAR_RATIO_01     250
-#define M1_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_01* MOTOR01_POLE)/180)))
 
 /*
  Section: Function Declaration
  */
 void Motor1AngleSetting(void);
+/*
+ Section: Variable Declaration
+ */
+float m1RippleCountPerAngle = (float)((float)(MOTOR01_POLE * GEAR_RATIO_01)/180);
 
 void Motor1AngleSetting(void) 
 {
     if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
     {
-        expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
+        expectedRippleCount = angleDesired * m1RippleCountPerAngle;           
     }
     else if(angleDesired > remainingAngle01)
     {
@@ -69,12 +72,12 @@ void Motor1AngleSetting(void)
 
 void ExpectedRippleCountRemainingAngle(void)
 {
-    expectedRippleCount = remainingAngle01 *  M1_RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = remainingAngle01 *  m1RippleCountPerAngle;
 }
 
 void  ExpectedRippleCountToHome(void)
 {
-    expectedRippleCount = totalAngleTurned01 * M1_RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = totalAngleTurned01 * m1RippleCountPerAngle;
 }
 
 void Motor01Forward_Drive(void)
@@ -121,7 +124,7 @@ void Motor01Reverse_Drive(void)
 
 void Motor01Position(void)
 {
-    angleTurned01 = (actualRippleCount / M1_RIPPLE_COUNT_PER_ANGLE);
+    angleTurned01 = (abs(actualRippleCount) / m1RippleCountPerAngle);
 
     printf("actualRippleCount = %d \n\r ", actualRippleCount);
     printf( "AngleTurned = %d \n\r", angleTurned01);

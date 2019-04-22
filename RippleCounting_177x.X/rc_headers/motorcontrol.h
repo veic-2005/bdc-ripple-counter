@@ -32,6 +32,7 @@
 #define	MOTORCONTROL_H
 
 #include <stdint.h>
+#include <stdbool.h>
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 /**

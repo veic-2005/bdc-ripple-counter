@@ -41,13 +41,11 @@
 
 #define MOTOR01_POLE     3
 #define GEAR_RATIO_01    250
-#define M1_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_01* MOTOR01_POLE)/180)))
-#define PR4_VALUE       0x17
+#define PR4_VALUE        0x17
 
 #define MOTOR02_POLE     3
 #define GEAR_RATIO_02    250
-#define M2_RIPPLE_COUNT_PER_ANGLE (round((float)((GEAR_RATIO_02* MOTOR02_POLE)/180)))
-#define PR6_VALUE       0x17
+#define PR6_VALUE        0x17
 
 #define ENDPOINT 360
 #define HOME     0
@@ -61,6 +59,9 @@ uint16_t angleTurned01;
 uint16_t angleTurned02;
 uint16_t remainingAngle01 = ENDPOINT;
 uint16_t remainingAngle02 = ENDPOINT;
+float m1RippleCountPerAngle = (float)((float)(MOTOR01_POLE * GEAR_RATIO_01)/180);
+float m2RippleCountPerAngle = (float)((float)(MOTOR02_POLE * GEAR_RATIO_02)/180);
+
 /**
   Section: Function Declaration 
  */

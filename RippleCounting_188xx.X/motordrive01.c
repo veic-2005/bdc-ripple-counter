@@ -55,7 +55,7 @@ void MotorDrive01(void)
         
     if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
     {
-        expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
+        expectedRippleCount = angleDesired * m1RippleCountPerAngle;           
     }
     else if(angleDesired > remainingAngle01)
     {
@@ -88,7 +88,7 @@ void MotorDrive01(void)
         
         if((totalAngleTurned01 <= HOME)|| (angleDesired %5 != 0))
         {
-           StopMotor1();
+            StopMotor1();
         }
         else
         {   
@@ -114,12 +114,12 @@ void MotorDrive01(void)
 
 void ExpectedRippleCountRemainingAngle(void)
 {
-    expectedRippleCount = remainingAngle01 *  M1_RIPPLE_COUNT_PER_ANGLE;
+    expectedRippleCount = remainingAngle01 *  m1RippleCountPerAngle;
 }
 
 void  ExpectedRippleCountToHome(void)
 {
-    expectedRippleCount = (totalAngleTurned01 * M1_RIPPLE_COUNT_PER_ANGLE);
+    expectedRippleCount = totalAngleTurned01 * m1RippleCountPerAngle;
 }
 
 void InitiateDrive01(void)
@@ -143,7 +143,7 @@ void SMT1_ISR(void)
 
 void Motor01Position(void)
 {
-    angleTurned01 = (actualRippleCount01 / M1_RIPPLE_COUNT_PER_ANGLE);
+    angleTurned01 = (abs(actualRippleCount01) / m1RippleCountPerAngle);
 
     printf("actualRippleCount01 = %d \n\r ", actualRippleCount01);
     printf( "AngleTurned01 = %d \n\r", angleTurned01);

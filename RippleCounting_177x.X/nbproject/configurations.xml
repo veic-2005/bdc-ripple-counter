@@ -100,11 +100,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>1.45</languageToolchainVersion>
+        <languageToolchainVersion>2.05</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC12-16F1xxx_DFP" vendor="Microchip" version="1.0.21"/>
+        <pack name="PIC12-16F1xxx_DFP" vendor="Microchip" version="1.0.28"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -253,8 +253,8 @@
       </PICkit3PlatformTool>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
-        <property key="gcc-opt-driver-new" value="false"/>
-        <property key="gcc-opt-std" value="--std=c89"/>
+        <property key="gcc-opt-driver-new" value="true"/>
+        <property key="gcc-opt-std" value="-std=c90"/>
         <property key="gcc-output-file-format" value="dwarf-3"/>
         <property key="omit-pack-options" value="false"/>
         <property key="output-file-format" value="-mcof,+elf"/>

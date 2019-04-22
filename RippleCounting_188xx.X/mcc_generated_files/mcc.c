@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.76
         Device            :  PIC16F18877
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 1.45 or later
-        MPLAB             :  MPLAB X 4.15
+        Compiler          :  XC8 2.00 or later
+        MPLAB             :  MPLAB X 5.10
 */
 
 /*
@@ -58,8 +58,8 @@ void SYSTEM_Initialize(void)
     TMR4_Initialize();
     SMT1_Initialize();
     TMR2_Initialize();
-    PWM1_Initialize();
     SMT2_Initialize();
+    PWM1_Initialize();
     TMR6_Initialize();
     CWG2_Initialize();
     CWG1_Initialize();

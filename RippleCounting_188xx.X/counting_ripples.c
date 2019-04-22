@@ -62,7 +62,7 @@ void MotorInput(void)
     {
         if((angleDesired <= remainingAngle01 ) || (remainingAngle01 == 0))
         {
-            expectedRippleCount = angleDesired * M1_RIPPLE_COUNT_PER_ANGLE;           
+            expectedRippleCount = angleDesired * m1RippleCountPerAngle;           
         }
         else if(angleDesired > remainingAngle01)
         {
@@ -83,7 +83,7 @@ void MotorInput(void)
     {
         if((angleDesired <= remainingAngle02) || (remainingAngle02 == 0))
         {
-            expectedRippleCount = angleDesired * M2_RIPPLE_COUNT_PER_ANGLE;           
+            expectedRippleCount = angleDesired * m2RippleCountPerAngle;           
         }
         else if(angleDesired > remainingAngle02)
         {
