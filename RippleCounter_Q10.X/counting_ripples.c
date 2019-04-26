@@ -56,7 +56,7 @@
 
 #define COMPENSATOR_VALUE   0x08
 #define CALIBRATION_VALUE   0x06
-#define PR2_VALUE           0x17
+#define PR4_VALUE           0xA2
 
 /*
  Section: Variable Declaration
@@ -106,7 +106,7 @@ void ExpectedRippleCountToEndPoint(void)
 
 void CompareLoadValue(void)
 {
-    compareLoadValue = ((expectedRippleCount) >> 1) + INITIAL_TIMER_VALUE + 1;
+    compareLoadValue = ((expectedRippleCount - CALIBRATION_VALUE) >> 1) + INITIAL_TIMER_VALUE + 1;
 }
 
 void StartCounting(void)
@@ -114,7 +114,7 @@ void StartCounting(void)
     GetRippleLED_SetHigh();
     CCP1_SetCompareCount(compareLoadValue);
     TMR1_Reload();
-    TMR4_Period8BitSet(PR2_VALUE);
+    TMR4_Period8BitSet(PR4_VALUE);
     TMR1_StartTimer();
     StartMotor();
     StartStallTimer();
@@ -157,7 +157,7 @@ void GetAngleTurned(void)
     }
     else
     {
-        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) + 1;
+        actualRippleCount = ((TMR1_ReadTimer()+ PERIOD_TIMER1_VALUE) << 1) + CALIBRATION_VALUE + 1;
     }
     angleTurned = (abs(actualRippleCount)/ rippleCountPerAngle);
     

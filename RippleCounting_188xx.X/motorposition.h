@@ -41,11 +41,11 @@
 
 #define MOTOR01_POLE     3
 #define GEAR_RATIO_01    250
-#define PR4_VALUE        0x17
+#define PR4_VALUE        0xA2
 
 #define MOTOR02_POLE     3
 #define GEAR_RATIO_02    250
-#define PR6_VALUE        0x17
+#define PR6_VALUE        0xA2
 
 #define ENDPOINT 360
 #define HOME     0

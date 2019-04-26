@@ -48,7 +48,7 @@
 #define INITIAL_TIMER_VALUE     0x7FFF       
 #define MAXIMUM_TIMER_VALUE     0xFFFF
 #define PERIOD_TIMER_VALUE    (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
-#define PR2_VALUE               0x22
+#define PR4_VALUE               0xA2
 #define CALIBRATION_VALUE       0x08
 
 /**
@@ -79,7 +79,7 @@ void LoadValues(void)
 {
     CCP1_SetCompareCount(compareLoadValue);
     TMR1_Reload();
-    TMR4_Period8BitSet(PR2_VALUE);
+    TMR4_Period8BitSet(PR4_VALUE);
 }
 
 void Compare_ISR(void) 

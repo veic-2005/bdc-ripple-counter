@@ -45,7 +45,7 @@
 #include "motorcontrol.h"
 
 #define SWITCH_S1_TTL()    do { INLVLBbits.INLVLB0 =0; } while(0)
-uint16_t timer = 0;
+
 /*
                          Main application
  */
@@ -61,7 +61,6 @@ void main(void)
 
 
     Compare_Initialize();
-//    CCP1_CompareSetInterruptHandler(Compare_ISR);
     StallDetection_Initialize();
     
     while (1)
@@ -73,6 +72,7 @@ void main(void)
         CheckReverseButton();
         CheckHomeButton();
         CheckEndButton();
+        
         if(getCountDone)
         {
             getCountDone = 0;
