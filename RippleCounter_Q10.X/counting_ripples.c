@@ -54,8 +54,8 @@
 #define MAXIMUM_TIMER_VALUE     0xFFFF
 #define PERIOD_TIMER1_VALUE   (MAXIMUM_TIMER_VALUE - INITIAL_TIMER_VALUE)
 
-#define COMPENSATOR_VALUE   0x08
-#define CALIBRATION_VALUE   0x06
+#define COMPENSATOR_VALUE   0x08    //This correction value is used for moving from home or end points to compensate the accumulated error produced by excess ripples in incremental movements. 
+#define CALIBRATION_VALUE   0x06   //This correction value is dependent on the excess ripples produced by a specific motor before it fully stopped.
 #define PR4_VALUE           0xA2
 
 /*
